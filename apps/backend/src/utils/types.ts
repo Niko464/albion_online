@@ -10,27 +10,3 @@ export type ABDMarketOrder = {
   AuctionType: 'offer' | 'request';
   Expires: string; // ISO timestamp string
 };
-
-export const rawRessourceNames = ['HIDE', 'WOOD', 'FIBER', 'ORE', 'ROCK'];
-
-export const refinedRessourceNames = [
-  'LEATHER',
-  'PLANKS',
-  'CLOTH',
-  'METALBAR',
-  'STONEBLOCK',
-];
-
-export const allRessourceIds: string[] = (() => {
-  const toReturn: string[] = [];
-
-  const allRessourceNames = [...rawRessourceNames, ...refinedRessourceNames];
-
-  for (const ressourceName of allRessourceNames) {
-    for (let i = 1; i <= 8; i++) {
-      toReturn.push(`T${i}_${ressourceName}`);
-    }
-  }
-
-  return toReturn;
-})();

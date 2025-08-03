@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GetPricesDto, GetPricesResponse } from '@albion_online/common';
 import { ABDMarketOrderMessage } from '@/utils/zod/ABDMarketOrderSchema';
-import { allRessourceIds } from '@/utils/types';
 import { getLocationName } from '@/utils/getLocationName';
+
+import allRessourceIds from '../../watch_list.json';
 
 @Injectable()
 export class PricesService {

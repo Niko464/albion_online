@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { connect, NatsConnection, Msg } from 'nats';
+import { connect, NatsConnection } from 'nats';
 import { ABDMarketOrderMessageSchema } from '@/utils/zod/ABDMarketOrderSchema';
 import z from 'zod';
 import { PricesService } from '../prices/prices.service';
