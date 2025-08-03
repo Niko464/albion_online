@@ -7,24 +7,26 @@ export class GetPricesDto {
   itemIds!: string[];
 }
 
+export type Order = {
+  id: string;
+  marketOrderId: string;
+  itemId: string;
+  locationName: string;
+  quality: number;
+  enchantmentLevel: number;
+  type: string;
+  amount: number;
+  price: number;
+  expiresAt: Date;
+  receivedAt: Date;
+};
 export type GetPricesResponse = {
   prices: {
     itemId: string;
     markets: {
       locationName: string;
-      orders: {
-        id: string;
-        marketOrderId: string;
-        itemId: string;
-        locationName: string;
-        quality: number;
-        enchantmentLevel: number;
-        type: string;
-        amount: number;
-        price: number;
-        expiresAt: Date;
-        receivedAt: Date;
-      }[];
+      offerOrders: Order[];
+      requestOrders: Order[];
     }[];
   }[];
 };

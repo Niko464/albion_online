@@ -1,8 +1,9 @@
-import { Module } from "@nestjs/common";
-import { NatsListenerService } from "./nats-listener.service";
-
+import { Module } from '@nestjs/common';
+import { NatsListenerService } from './nats-listener.service';
+import { PricesModule } from '../prices/prices.module';
 
 @Module({
-  providers: [NatsListenerService]
+  imports: [PricesModule],
+  providers: [NatsListenerService],
 })
 export class NatsModule {}

@@ -24,14 +24,6 @@ import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
 import type { GetPricesResponse } from "@albion_online/common";
 import { useItemTiers } from "@/hooks/useItemTiers";
 
-function parseAlbionDate(dateStr: string): Date {
-  // Append 'Z' if not present (to treat as UTC)
-  if (!dateStr.endsWith("Z")) {
-    dateStr += "Z";
-  }
-  return new Date(dateStr);
-}
-
 export default function CustomResourcePricesPage() {
   const { resource } = useParams();
   const itemIds = useItemTiers(resource!);
@@ -92,21 +84,24 @@ export default function CustomResourcePricesPage() {
                     console.log("Item data:", itemData);
                     return (
                       <TableRow key={itemId}>
-                        <TableCell>
+                        <TableCell className="w-24">
                           <img
                             src={`https://render.albiononline.com/v1/item/${itemId}.png`}
                             alt={itemId}
-                            className="w-12 h-12 object-contain"
+                            className="w-24 h-24 object-contain"
                           />
                         </TableCell>
                         <TableCell>
                           <div className="flex flex-wrap gap-2 py-2">
                             {itemData?.markets.map((marketData) => {
+                              if (marketData.offerOrders.length === 0) {
+                                return null;
+                              }
                               const color =
                                 cityColors[marketData.locationName] ||
                                 "#d1d5db";
                               const parsedDate =
-                                marketData.orders[0].receivedAt;
+                                marketData.offerOrders[0].receivedAt;
                               const minutesOld = differenceInMinutes(
                                 new Date(),
                                 parsedDate
@@ -142,11 +137,11 @@ export default function CustomResourcePricesPage() {
                                     </div>
                                     <div>
                                       Price:{" "}
-                                      {marketData.orders[0].price.toLocaleString()}{" "}
+                                      {marketData.offerOrders[0].price.toLocaleString()}{" "}
                                       Silver
                                     </div>
                                     <div>
-                                      Amt: {marketData.orders[0].amount}
+                                      Amt: {marketData.offerOrders[0].amount}
                                     </div>
                                     <div>Age: {ageText}</div>
                                   </TooltipContent>

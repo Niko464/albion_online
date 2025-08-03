@@ -1,16 +1,14 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { connect, NatsConnection } from 'nats';
+import { connect, NatsConnection, Msg } from 'nats';
 import { ABDMarketOrderMessageSchema } from '@/utils/zod/ABDMarketOrderSchema';
-import { allRessourceIds } from '@/utils/types';
-import { PrismaService } from '../prisma/prisma.service';
-import { getLocationName } from '@/utils/getLocationName';
 import z from 'zod';
+import { PricesService } from '../prices/prices.service';
 
 @Injectable()
 export class NatsListenerService implements OnModuleInit {
   private nc: NatsConnection | null = null;
 
-  constructor(private prismaService: PrismaService) {}
+  constructor(private pricesService: PricesService) {}
 
   async onModuleInit() {
     // Initialize NATS connection
@@ -36,7 +34,18 @@ export class NatsListenerService implements OnModuleInit {
 
     for await (const msg of sub) {
       try {
-        const raw = msg.data.toString();
+        let raw: string;
+        if (msg.data instanceof Uint8Array || Buffer.isBuffer(msg.data)) {
+          raw = Buffer.from(msg.data).toString('utf-8').trim();
+        } else {
+          console.warn(
+            'Unexpected type for msg.data:',
+            typeof msg.data,
+            msg.data,
+          );
+          continue; // Skip if msg.data is not a Uint8Array or Buffer
+        }
+
         const parsed: unknown = JSON.parse(raw);
         const result = ABDMarketOrderMessageSchema.safeParse(parsed);
 
@@ -48,104 +57,15 @@ export class NatsListenerService implements OnModuleInit {
           continue;
         }
 
-        const orders = result.data.Orders;
-
-        if (orders.length === 0) {
-          continue;
-        }
-
-        const itemTypeId = orders[0].ItemTypeId;
-        const enchantmentLevel = orders[0].EnchantmentLevel;
-        const qualityLevel = orders[0].QualityLevel;
-        const locationId = orders[0].LocationId;
-        const auctionType = orders[0].AuctionType;
-
-        const allSameEnchantmentLevel = orders.every(
-          (order) => order.EnchantmentLevel === enchantmentLevel,
-        );
-
-        const allSameQuality = orders.every(
-          (order) => order.QualityLevel === qualityLevel,
-        );
-
-        const allSameLocation = orders.every(
-          (order) => order.LocationId === locationId,
-        );
-        const allSameAuctionType = orders.every(
-          (order) => order.AuctionType === auctionType,
-        );
-
-        if (!allRessourceIds.includes(itemTypeId)) {
-          console.log('Skipping non-resource item:', itemTypeId);
-          continue;
-        }
-
-        if (!allSameEnchantmentLevel) {
-          throw new Error(
-            `Inconsistent enchantment levels for item type ${itemTypeId}`,
-          );
-        }
-
-        if (!allSameQuality) {
-          throw new Error(
-            `Inconsistent quality levels for item type ${itemTypeId}`,
-          );
-        }
-
-        if (!allSameLocation) {
-          throw new Error(`Inconsistent locations for item type ${itemTypeId}`);
-        }
-
-        if (!allSameAuctionType) {
-          throw new Error(
-            `Inconsistent auction types for item type ${itemTypeId}`,
-          );
-        }
-
-        const marketOrderIds = orders.map((order) => order.Id.toString());
-        const locationName = getLocationName(locationId.toString());
-
-        // Delete existing market orders for the item type
-        await this.prismaService.marketOrder.deleteMany({
-          where: {
-            itemId: itemTypeId,
-            marketOrderId: {
-              notIn: marketOrderIds,
-            },
-            enchantmentLevel,
-            quality: qualityLevel,
-            locationName,
-            type: auctionType,
-          },
-        });
-
-        // Insert new market orders
-        await this.prismaService.marketOrder.createMany({
-          data: orders.map((el) => ({
-            marketOrderId: el.Id.toString(),
-            itemId: el.ItemTypeId,
-            enchantmentLevel: el.EnchantmentLevel,
-            quality: el.QualityLevel,
-            locationName,
-            type: auctionType,
-            price: el.UnitPriceSilver,
-            amount: el.Amount,
-            expiresAt: new Date(el.Expires),
-          })),
-        });
-
-        console.log('Processed market orders for item:', itemTypeId, {
-          enchantmentLevel,
-          qualityLevel,
-          locationName,
-          auctionType,
-          count: orders.length,
-        });
+        await this.pricesService.receivedOrders(result.data);
       } catch (err: any) {
         console.warn(
           'Failed to process message:',
           err instanceof Error ? err.message : err,
+          'Raw message:',
+          msg.data,
         );
+
         continue;
       }
     }
