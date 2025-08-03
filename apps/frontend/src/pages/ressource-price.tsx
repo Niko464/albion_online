@@ -19,41 +19,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import {
   formatDistanceToNowStrict,
-  parseISO,
   differenceInMinutes,
 } from "date-fns";
 import { allCities, cityColors } from "@/utils/types";
 import { ENDPOINT } from "@/constants";
+import { itemIdMap } from "@/utils/idMappings";
+import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
 
-// 🧠 Get age freshness color
-function getAgeCategoryColor(minutesOld: number): string {
-  if (minutesOld < 30) return "bg-green-500";
-  if (minutesOld < 60) return "bg-yellow-400";
-  if (minutesOld < 90) return "bg-orange-500";
-  return "bg-red-500";
-}
-
-const itemIdMap: Record<string, string[]> = {
-  hide: [
-    "T1_HIDE",
-    "T2_HIDE",
-    "T3_HIDE",
-    "T4_HIDE",
-    "T5_HIDE",
-    "T6_HIDE",
-    "T7_HIDE",
-    "T8_HIDE",
-  ],
-  leather: [
-    "T2_LEATHER",
-    "T3_LEATHER",
-    "T4_LEATHER",
-    "T5_LEATHER",
-    "T6_LEATHER",
-    "T7_LEATHER",
-    "T8_LEATHER",
-  ],
-};
 
 function parseAlbionDate(dateStr: string): Date {
   // Append 'Z' if not present (to treat as UTC)

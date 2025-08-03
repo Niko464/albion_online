@@ -1,0 +1,142 @@
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { connect, NatsConnection } from 'nats';
+import z from 'zod';
+import { ABDMarketOrderMessageSchema } from '@/utils/zod/ABDMarketOrderSchema';
+import { allRessourceIds } from '@/utils/types';
+import { PrismaService } from '../prisma/prisma.service';
+import { getLocationName } from '@/utils/getLocationName';
+
+@Injectable()
+export class NatsListenerService implements OnModuleInit {
+  private nc: NatsConnection | null = null;
+
+  constructor(private prismaService: PrismaService) {}
+
+  async onModuleInit() {
+    this.nc = await connect({
+      servers:
+        'nats://public:thenewalbiondata@nats.albion-online-data.com:34222',
+      user: 'public',
+      pass: 'thenewalbiondata',
+    });
+
+    console.log('Connected to NATS server');
+
+    const sub = this.nc.subscribe('marketorders.ingest');
+
+    for await (const msg of sub) {
+      try {
+        const raw = msg.data.toString();
+        const parsed: unknown = JSON.parse(raw);
+        const result = ABDMarketOrderMessageSchema.safeParse(parsed);
+
+        if (!result.success) {
+          console.warn(
+            'Invalid market order message:',
+            z.treeifyError(result.error),
+          );
+          continue;
+        }
+
+        const orders = result.data.Orders;
+
+        if (orders.length === 0) {
+          continue;
+        }
+
+        const itemTypeId = orders[0].ItemTypeId;
+        const enchantmentLevel = orders[0].EnchantmentLevel;
+        const qualityLevel = orders[0].QualityLevel;
+        const locationId = orders[0].LocationId;
+        const auctionType = orders[0].AuctionType;
+
+        const allSameEnchantmentLevel = orders.every(
+          (order) => order.EnchantmentLevel === enchantmentLevel,
+        );
+
+        const allSameQuality = orders.every(
+          (order) => order.QualityLevel === qualityLevel,
+        );
+
+        const allSameLocation = orders.every(
+          (order) => order.LocationId === locationId,
+        );
+        const allSameAuctionType = orders.every(
+          (order) => order.AuctionType === auctionType,
+        );
+
+        if (allRessourceIds.includes(itemTypeId) === false) {
+          console.log('Skipping non-ressource item:', itemTypeId);
+          continue;
+        }
+
+        if (!allSameEnchantmentLevel) {
+          throw new Error(
+            `Inconsistent enchantment levels for item type ${itemTypeId}`,
+          );
+        }
+
+        if (!allSameQuality) {
+          throw new Error(
+            `Inconsistent quality levels for item type ${itemTypeId}`,
+          );
+        }
+
+        if (!allSameLocation) {
+          throw new Error(`Inconsistent locations for item type ${itemTypeId}`);
+        }
+
+        if (!allSameAuctionType) {
+          throw new Error(
+            `Inconsistent auction types for item type ${itemTypeId}`,
+          );
+        }
+        const marketOrderIds = orders.map((order) => order.Id.toString());
+
+        // Delete existing market orders for the item type
+        await this.prismaService.marketOrder.deleteMany({
+          where: {
+            itemId: itemTypeId,
+            marketOrderId: {
+              notIn: marketOrderIds,
+            },
+            enchantmentLevel,
+            quality: qualityLevel,
+            locationName: getLocationName(locationId.toString()),
+            type: orders[0].AuctionType,
+          },
+        });
+
+        const locationName = getLocationName(locationId.toString());
+
+        await this.prismaService.marketOrder.createMany({
+          data: orders.map((el) => ({
+            marketOrderId: el.Id.toString(),
+            itemId: el.ItemTypeId,
+            enchantmentLevel: el.EnchantmentLevel,
+            quality: el.QualityLevel,
+            locationName,
+            type: auctionType,
+            price: el.UnitPriceSilver,
+            amount: el.Amount,
+            expiresAt: new Date(el.Expires),
+          })),
+        });
+
+        console.log('Processed market orders for item:', itemTypeId, {
+          enchantmentLevel,
+          qualityLevel,
+          locationName,
+          auctionType,
+          count: orders.length,
+        });
+      } catch (err: any) {
+        console.warn(
+          'Failed to process message:',
+          err instanceof Error ? err.message : err,
+        );
+        continue;
+      }
+    }
+  }
+}

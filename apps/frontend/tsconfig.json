@@ -5,7 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
    "compilerOptions": {
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

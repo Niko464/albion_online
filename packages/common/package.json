@@ -1,0 +1,26 @@
+{
+  "name": "@albion_online/common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "typescript": "^5.8.3",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.4"
+  }
+}
