@@ -127,7 +127,7 @@ export class PricesService {
     );
 
     if (!allRessourceIds.includes(itemTypeId)) {
-      console.log('Skipping non-resource item:', itemTypeId);
+      // console.log('Skipping non-resource item:', itemTypeId);
       return;
     }
 

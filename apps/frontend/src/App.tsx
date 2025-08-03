@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ResourcePricesPage from "./pages/ressource-price";
-import CustomResourcePricesPage from "./pages/custom-ressource-prices";
+import CustomResourcePricesPage from "./pages/CustomRessourcePrices/custom-ressource-prices";
 
 function App() {
   return (
