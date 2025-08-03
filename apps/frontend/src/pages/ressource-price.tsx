@@ -17,15 +17,11 @@ import {
 } from "@/components/ui/tooltip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
-import {
-  formatDistanceToNowStrict,
-  differenceInMinutes,
-} from "date-fns";
+import { formatDistanceToNowStrict, differenceInMinutes } from "date-fns";
 import { allCities, cityColors } from "@/utils/types";
 import { ENDPOINT } from "@/constants";
-import { itemIdMap } from "@/utils/idMappings";
 import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
-
+import { useItemTiers } from "@/hooks/useItemTiers";
 
 function parseAlbionDate(dateStr: string): Date {
   // Append 'Z' if not present (to treat as UTC)
@@ -37,7 +33,7 @@ function parseAlbionDate(dateStr: string): Date {
 
 export default function ResourcePricesPage() {
   const { resource } = useParams();
-  const itemIds = itemIdMap[resource || ""] ?? [];
+  const itemIds = useItemTiers(resource!);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["prices", resource],

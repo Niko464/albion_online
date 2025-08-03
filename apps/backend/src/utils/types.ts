@@ -15,7 +15,7 @@ export const rawRessourceNames = ['HIDE', 'WOOD', 'FIBER', 'ORE', 'ROCK'];
 
 export const refinedRessourceNames = [
   'LEATHER',
-  'PLANK',
+  'PLANKS',
   'CLOTH',
   'METALBAR',
   'STONEBLOCK',

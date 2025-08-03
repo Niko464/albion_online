@@ -20,9 +20,9 @@ import { Card } from "@/components/ui/card";
 import { formatDistanceToNowStrict, differenceInMinutes } from "date-fns";
 import { cityColors } from "@/utils/types";
 import { BACKEND_URL } from "@/constants";
-import { itemIdMap } from "@/utils/idMappings";
 import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
 import type { GetPricesResponse } from "@albion_online/common";
+import { useItemTiers } from "@/hooks/useItemTiers";
 
 function parseAlbionDate(dateStr: string): Date {
   // Append 'Z' if not present (to treat as UTC)
@@ -34,12 +34,12 @@ function parseAlbionDate(dateStr: string): Date {
 
 export default function CustomResourcePricesPage() {
   const { resource } = useParams();
-  const itemIds = itemIdMap[resource || ""] ?? [];
+  const itemIds = useItemTiers(resource!);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["custom-prices", resource],
     queryFn: async () => {
-      const url = `${BACKEND_URL}/prices/hello`;
+      const url = `${BACKEND_URL}/prices`;
       const response = await axios.patch<GetPricesResponse>(url, {
         itemIds,
       });
@@ -85,6 +85,11 @@ export default function CustomResourcePricesPage() {
                   ))
                 : sortedIds.map((itemId) => {
                     console.log("Processing itemId:", itemId);
+                    const itemData = data?.prices.find(
+                      (el) => el.itemId === itemId
+                    );
+
+                    console.log("Item data:", itemData);
                     return (
                       <TableRow key={itemId}>
                         <TableCell>
@@ -96,12 +101,12 @@ export default function CustomResourcePricesPage() {
                         </TableCell>
                         <TableCell>
                           <div className="flex flex-wrap gap-2 py-2">
-                            {data.map((entry) => {
-                              const color = cityColors[entry.city] || "#d1d5db";
-                              const parsedDate = parseAlbionDate(
-                                entry.sell_price_min_date
-                              );
-
+                            {itemData?.markets.map((marketData) => {
+                              const color =
+                                cityColors[marketData.locationName] ||
+                                "#d1d5db";
+                              const parsedDate =
+                                marketData.orders[0].receivedAt;
                               const minutesOld = differenceInMinutes(
                                 new Date(),
                                 parsedDate
@@ -116,13 +121,15 @@ export default function CustomResourcePricesPage() {
                               );
 
                               return (
-                                <Tooltip key={`${entry.city}-${entry.item_id}`}>
+                                <Tooltip
+                                  key={`${marketData.locationName}-${itemId}`}
+                                >
                                   <TooltipTrigger asChild>
                                     <span
                                       className="text-xs text-white px-3 py-1 rounded-full font-medium flex items-center gap-1 cursor-default"
                                       style={{ backgroundColor: color }}
                                     >
-                                      <span>{entry.city}</span>
+                                      <span>{marketData.locationName}</span>
                                       <span
                                         className={`w-2 h-2 rounded-full ${freshnessColor}`}
                                         title={`Updated ${minutesOld} mins ago`}
@@ -131,15 +138,15 @@ export default function CustomResourcePricesPage() {
                                   </TooltipTrigger>
                                   <TooltipContent className="text-xs">
                                     <div className="font-semibold mb-1">
-                                      {entry.city}
+                                      {marketData.locationName}
                                     </div>
                                     <div>
                                       Price:{" "}
-                                      {entry.sell_price_min.toLocaleString()}{" "}
+                                      {marketData.orders[0].price.toLocaleString()}{" "}
                                       Silver
                                     </div>
                                     <div>
-                                      Volume: {entry.sell_price_min_volume}
+                                      Amt: {marketData.orders[0].amount}
                                     </div>
                                     <div>Age: {ageText}</div>
                                   </TooltipContent>

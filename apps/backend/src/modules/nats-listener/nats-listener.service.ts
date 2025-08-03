@@ -1,10 +1,10 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { connect, NatsConnection } from 'nats';
-import z from 'zod';
 import { ABDMarketOrderMessageSchema } from '@/utils/zod/ABDMarketOrderSchema';
 import { allRessourceIds } from '@/utils/types';
 import { PrismaService } from '../prisma/prisma.service';
 import { getLocationName } from '@/utils/getLocationName';
+import z from 'zod';
 
 @Injectable()
 export class NatsListenerService implements OnModuleInit {
@@ -13,6 +13,7 @@ export class NatsListenerService implements OnModuleInit {
   constructor(private prismaService: PrismaService) {}
 
   async onModuleInit() {
+    // Initialize NATS connection
     this.nc = await connect({
       servers:
         'nats://public:thenewalbiondata@nats.albion-online-data.com:34222',
@@ -21,6 +22,15 @@ export class NatsListenerService implements OnModuleInit {
     });
 
     console.log('Connected to NATS server');
+
+    // Start message processing without blocking
+    this.startProcessing();
+  }
+
+  private async startProcessing() {
+    if (!this.nc) {
+      throw new Error('NATS connection not initialized');
+    }
 
     const sub = this.nc.subscribe('marketorders.ingest');
 
@@ -65,8 +75,8 @@ export class NatsListenerService implements OnModuleInit {
           (order) => order.AuctionType === auctionType,
         );
 
-        if (allRessourceIds.includes(itemTypeId) === false) {
-          console.log('Skipping non-ressource item:', itemTypeId);
+        if (!allRessourceIds.includes(itemTypeId)) {
+          console.log('Skipping non-resource item:', itemTypeId);
           continue;
         }
 
@@ -91,7 +101,9 @@ export class NatsListenerService implements OnModuleInit {
             `Inconsistent auction types for item type ${itemTypeId}`,
           );
         }
+
         const marketOrderIds = orders.map((order) => order.Id.toString());
+        const locationName = getLocationName(locationId.toString());
 
         // Delete existing market orders for the item type
         await this.prismaService.marketOrder.deleteMany({
@@ -102,13 +114,12 @@ export class NatsListenerService implements OnModuleInit {
             },
             enchantmentLevel,
             quality: qualityLevel,
-            locationName: getLocationName(locationId.toString()),
-            type: orders[0].AuctionType,
+            locationName,
+            type: auctionType,
           },
         });
 
-        const locationName = getLocationName(locationId.toString());
-
+        // Insert new market orders
         await this.prismaService.marketOrder.createMany({
           data: orders.map((el) => ({
             marketOrderId: el.Id.toString(),
@@ -137,6 +148,13 @@ export class NatsListenerService implements OnModuleInit {
         );
         continue;
       }
+    }
+  }
+
+  async onModuleDestroy() {
+    if (this.nc) {
+      await this.nc.close();
+      console.log('NATS connection closed');
     }
   }
 }

@@ -20,27 +20,53 @@ import { DollarSign } from "lucide-react";
 
 const items = [
   {
-    title: "Prices",
+    title: "Albion Online Prices",
     icon: DollarSign,
     children: [
       {
         title: "Raw Resources",
         children: [
-          { title: "Hide", url: "/prices/raw/hide" },
-          { title: "Wood", url: "/prices/raw/wood" },
-          { title: "Ore", url: "/prices/raw/ore" },
-          { title: "Fiber", url: "/prices/raw/fiber" },
-          { title: "Stone", url: "/prices/raw/stone" },
+          { title: "Hide", url: "/prices/raw/HIDE" },
+          { title: "Wood", url: "/prices/raw/WOOD" },
+          { title: "Ore", url: "/prices/raw/ORE" },
+          { title: "Fiber", url: "/prices/raw/FIBER" },
+          { title: "Stone", url: "/prices/raw/ROCK" },
         ],
       },
       {
         title: "Refined Resources",
         children: [
-          { title: "Leather", url: "/prices/refined/leather" },
-          { title: "Planks", url: "/prices/refined/planks" },
-          { title: "Metal Bars", url: "/prices/refined/metal-bars" },
-          { title: "Cloth", url: "/prices/refined/cloth" },
-          { title: "Blocks", url: "/prices/refined/blocks" },
+          { title: "Leather", url: "/prices/refined/LEATHER" },
+          { title: "Planks", url: "/prices/refined/PLANKS" },
+          { title: "Metal Bars", url: "/prices/refined/METALBAR" },
+          { title: "Cloth", url: "/prices/refined/CLOTH" },
+          { title: "Blocks", url: "/prices/refined/STONEBLOCK" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Custom Prices",
+    icon: DollarSign,
+    children: [
+      {
+        title: "Raw Resources",
+        children: [
+          { title: "Hide", url: "/custom-prices/raw/HIDE" },
+          { title: "Wood", url: "/custom-prices/raw/WOOD" },
+          { title: "Ore", url: "/custom-prices/raw/ORE" },
+          { title: "Fiber", url: "/custom-prices/raw/FIBER" },
+          { title: "Stone", url: "/custom-prices/raw/ROCK" },
+        ],
+      },
+      {
+        title: "Refined Resources",
+        children: [
+          { title: "Leather", url: "/custom-prices/refined/LEATHER" },
+          { title: "Planks", url: "/custom-prices/refined/PLANKS" },
+          { title: "Metal Bars", url: "/custom-prices/refined/METALBAR" },
+          { title: "Cloth", url: "/custom-prices/refined/CLOTH" },
+          { title: "Blocks", url: "/custom-prices/refined/STONEBLOCK" },
         ],
       },
     ],

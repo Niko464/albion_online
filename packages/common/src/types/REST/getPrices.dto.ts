@@ -13,10 +13,17 @@ export type GetPricesResponse = {
     markets: {
       locationName: string;
       orders: {
-        orderId: string;
+        id: string;
+        marketOrderId: string;
+        itemId: string;
+        locationName: string;
+        quality: number;
+        enchantmentLevel: number;
+        type: string;
+        amount: number;
         price: number;
-        quantity: number;
-        time: string;
+        expiresAt: Date;
+        receivedAt: Date;
       }[];
     }[];
   }[];

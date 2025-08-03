@@ -14,6 +14,7 @@ export class PricesService {
         },
         enchantmentLevel: 0,
         quality: 1,
+        type: 'offer',
       },
     });
     const result: GetPricesResponse = {
@@ -33,19 +34,37 @@ export class PricesService {
             (order) => order.locationName === locationName,
           );
 
-          const sortedOrders = orders
-            .map((el) => ({
-              orderId: el.marketOrderId,
-              price: el.price,
-              quantity: el.amount,
-              time: el.expiresAt.toISOString(),
-            }))
-            .sort((a, b) => a.price - b.price);
+          const sortedOrders = orders.sort((a, b) => {
+            if (a.price !== b.price) {
+              return a.price - b.price; // Sort by price ascending
+            }
+            return (
+              new Date(a.expiresAt).getTime() - new Date(b.expiresAt).getTime()
+            );
+          });
           return {
             locationName,
-            orders: sortedOrders,
+            orders: sortedOrders.map((el) => ({
+              ...el,
+              price: el.price / 10000,
+            })),
           };
         }),
+      });
+
+      // NOTE: now sort so that the first market is the cheapest
+      result.prices.sort((a, b) => {
+        const aMinPrice = Math.min(
+          ...a.markets.map((market) =>
+            market.orders.length > 0 ? market.orders[0].price : Infinity,
+          ),
+        );
+        const bMinPrice = Math.min(
+          ...b.markets.map((market) =>
+            market.orders.length > 0 ? market.orders[0].price : Infinity,
+          ),
+        );
+        return aMinPrice - bMinPrice;
       });
     }
     return result;
