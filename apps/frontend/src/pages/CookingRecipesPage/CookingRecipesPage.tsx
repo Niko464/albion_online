@@ -12,656 +12,13 @@ import { useCustomPrices } from "@/hooks/useCustomPrices";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState } from "react";
 import { getBestMarket } from "./getBestMarket";
-import type { Recipe } from "@albion_online/common";
-
-const recipes: Recipe[] = [
-  {
-    recipeId: "T1_MEAL_GRILLEDFISH",
-    tier: 1,
-    quantity: 1,
-    ingredients: [{ itemId: "T1_FISH", quantity: 10 }],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T1_MEAL_SEAWEEDSALAD",
-    tier: 1,
-    quantity: 1,
-    ingredients: [{ itemId: "T1_SEAWEED", quantity: 10 }],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_1",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISH", quantity: 15 },
-      { itemId: "T1_SEAWEED", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_2",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISH", quantity: 45 },
-      { itemId: "T1_SEAWEED", quantity: 3 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_3",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISH", quantity: 135 },
-      { itemId: "T1_SEAWEED", quantity: 9 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T1_MEAL_SOUP",
-    tier: 1,
-    quantity: 10,
-    ingredients: [{ itemId: "T1_CARROT", quantity: 16 }],
-    nutrition: 0,
-  },
-  {
-    recipeId: 'T1_MEAL_SOUP_FISH',
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_SWAMP_RARE", quantity: 1 },
-      { itemId: "T1_CARROT", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T2_MEAL_SALAD",
-    tier: 2,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T1_CARROT", quantity: 8 },
-      { itemId: "T2_BEAN", quantity: 8 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T2_MEAL_SALAD_FISH",
-    tier: 2,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_SALTWATER_ALL_RARE", quantity: 1 },
-      { itemId: "T2_BEAN", quantity: 1 },
-      {
-        itemId: "T2_AGARIC",
-        quantity: 1,
-      },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_SOUP",
-    tier: 3,
-    quantity: 10,
-    ingredients: [{ itemId: "T3_WHEAT", quantity: 48 }],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_SOUP_FISH",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_SWAMP_RARE", quantity: 1 },
-      {
-        itemId: "T3_WHEAT",
-        quantity: 2,
-      },
-      { itemId: "T3_COMFREY", quantity: 2 },
-      {
-        itemId: "T3_MEAT",
-        quantity: 2,
-      },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_OMELETTE",
-    tier: 3,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T3_WHEAT", quantity: 4 },
-      { itemId: "T3_MEAT", quantity: 8 },
-      { itemId: "T3_EGG", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_OMELETTE_FISH",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      {
-        itemId: "T3_FISH_FRESHWATER_STEPPE_RARE",
-        quantity: 1,
-      },
-      { itemId: "T3_COMFREY", quantity: 1 },
-      { itemId: "T3_EGG", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_OMELETTE_AVALON",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      {
-        itemId: "T4_MILK",
-        quantity: 4,
-      },
-      { itemId: "T3_MEAT", quantity: 8 },
-      { itemId: "T3_EGG", quantity: 2 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_PIE",
-    tier: 3,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T3_WHEAT", quantity: 2 },
-      { itemId: "T3_FLOUR", quantity: 4 },
-      { itemId: "T3_MEAT", quantity: 8 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_PIE_FISH",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_MOUNTAIN_RARE", quantity: 1 },
-      { itemId: "T3_FLOUR", quantity: 1 },
-      { itemId: "T3_EGG", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_ROAST",
-    tier: 3,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T3_MEAT", quantity: 8 },
-      { itemId: "T2_BEAN", quantity: 4 },
-      { itemId: "T4_MILK", quantity: 4 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T3_MEAL_ROAST_FISH",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_AVALON_RARE", quantity: 1 },
-      { itemId: "T3_COMFREY", quantity: 1 },
-      { itemId: "T4_MILK", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SALAD",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_TURNIP", quantity: 24 },
-      { itemId: "T3_WHEAT", quantity: 24 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SALAD_FISH",
-    tier: 4,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_SALTWATER_ALL_RARE", quantity: 1 },
-      { itemId: "T4_TURNIP", quantity: 2 },
-      { itemId: "T4_BURDOCK", quantity: 2 },
-      { itemId: "T4_MEAT", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_STEW",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_TURNIP", quantity: 4 },
-      { itemId: "T3_BREAD", quantity: 4 },
-      { itemId: "T4_MEAT", quantity: 8 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SANDWICH",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "T3_BREAD", quantity: 4 },
-      { itemId: "T4_BUTTER", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_STEW_FISH",
-    tier: 4,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_FOREST_RARE", quantity: 1 },
-      { itemId: "T4_TURNIP", quantity: 1 },
-      { itemId: "T4_BURDOCK", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_STEW_AVALON",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T1_CARROT", quantity: 4 },
-      { itemId: "T4_TURNIP", quantity: 4 },
-      { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SANDWICH",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 4 },
-      { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "T4_BUTTER", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SANDWICH_FISH",
-    tier: 4,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_HIGHLANDS_RARE", quantity: 1 },
-      { itemId: "T4_TURNIP", quantity: 1 },
-      { itemId: "T4_BUTTER", quantity: 1 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SANDWICH_AVALON",
-    tier: 4,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 4 },
-      { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "T4_BUTTER", quantity: 2 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_SOUP",
-    tier: 5,
-    quantity: 10,
-    ingredients: [{ itemId: "T5_CABBAGE", quantity: 144 }],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_SOUP_FISH",
-    tier: 5,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_SWAMP_RARE", quantity: 1 },
-      { itemId: "T5_CABBAGE", quantity: 6 },
-      { itemId: "T5_TEASEL", quantity: 6 },
-      { itemId: "T5_MEAT", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_OMELETTE",
-    tier: 5,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T5_CABBAGE", quantity: 12 },
-      { itemId: "T5_MEAT", quantity: 24 },
-      { itemId: "T5_EGG", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_OMELETTE_FISH",
-    tier: 5,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_STEPPE_RARE", quantity: 1 },
-      { itemId: "T5_CABBAGE", quantity: 2 },
-      { itemId: "T5_TEASEL", quantity: 2 },
-      { itemId: "T5_EGG", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_OMELETTE_AVALON",
-    tier: 5,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T6_MILK", quantity: 12 },
-      { itemId: "T5_MEAT", quantity: 24 },
-      { itemId: "T5_EGG", quantity: 6 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_PIE",
-    tier: 5,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T5_CABBAGE", quantity: 6 },
-      { itemId: "T3_FLOUR", quantity: 12 },
-      { itemId: "T5_MEAT", quantity: 24 },
-      { itemId: "T4_MILK", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_PIE_FISH",
-    tier: 5,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_MOUNTAIN_RARE", quantity: 1 },
-      { itemId: "T5_CABBAGE", quantity: 2 },
-      { itemId: "T5_TEASEL", quantity: 2 },
-      { itemId: "T5_EGG", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_ROAST",
-    tier: 5,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T5_MEAT", quantity: 24 },
-      { itemId: "T5_CABBAGE", quantity: 12 },
-      { itemId: "T6_MILK", quantity: 12 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T5_MEAL_ROAST_FISH",
-    tier: 5,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_AVALON_RARE", quantity: 1 },
-      { itemId: "T5_CABBAGE", quantity: 2 },
-      { itemId: "T5_TEASEL", quantity: 2 },
-      { itemId: "T6_MILK", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_SALAD",
-    tier: 6,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T6_POTATO", quantity: 72 },
-      { itemId: "T5_CABBAGE", quantity: 72 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_SALAD_FISH",
-    tier: 6,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_SALTWATER_ALL_RARE", quantity: 1 },
-      { itemId: "T6_POTATO", quantity: 6 },
-      { itemId: "T6_FOXGLOVE", quantity: 6 },
-      { itemId: "T6_MEAT", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_STEW",
-    tier: 6,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T6_POTATO", quantity: 12 },
-      { itemId: "T4_BREAD", quantity: 12 },
-      { itemId: "T6_MEAT", quantity: 24 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_STEW_FISH",
-    tier: 6,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_FOREST_RARE", quantity: 1 },
-      { itemId: "T6_POTATO", quantity: 2 },
-      { itemId: "T6_FOXGLOVE", quantity: 2 },
-      { itemId: "T6_MILK", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_STEW_AVALON",
-    tier: 6,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T5_CABBAGE", quantity: 12 },
-      { itemId: "T6_POTATO", quantity: 12 },
-      { itemId: "T6_MEAT", quantity: 24 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_SANDWICH",
-    tier: 6,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 12 },
-      { itemId: "T6_MEAT", quantity: 24 },
-      { itemId: "T6_BUTTER", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_SANDWICH_FISH",
-    tier: 6,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_HIGHLANDS_RARE", quantity: 1 },
-      { itemId: "T6_POTATO", quantity: 2 },
-      { itemId: "T6_FOXGLOVE", quantity: 2 },
-      { itemId: "T6_BUTTER", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T6_MEAL_SANDWICH_AVALON",
-    tier: 6,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 12 },
-      { itemId: "T6_MEAT", quantity: 24 },
-      { itemId: "T6_BUTTER", quantity: 6 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_OMELETTE",
-    tier: 7,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T7_CORN", quantity: 36 },
-      { itemId: "T7_MEAT", quantity: 72 },
-      { itemId: "T5_EGG", quantity: 18 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_OMELETTE_FISH",
-    tier: 7,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_STEPPE_RARE", quantity: 1 },
-      { itemId: "T7_CORN", quantity: 6 },
-      { itemId: "T7_MULLEIN", quantity: 6 },
-      { itemId: "T7_MEAT", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_OMELETTE_AVALON",
-    tier: 7,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T8_MILK", quantity: 36 },
-      { itemId: "T7_MEAT", quantity: 72 },
-      { itemId: "T5_EGG", quantity: 18 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_PIE",
-    tier: 7,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T7_CORN", quantity: 18 },
-      { itemId: "T3_FLOUR", quantity: 36 },
-      { itemId: "T7_MEAT", quantity: 72 },
-      { itemId: "T6_MILK", quantity: 18 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_PIE_FISH",
-    tier: 7,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_MOUNTAIN_RARE", quantity: 1 },
-      { itemId: "T7_CORN", quantity: 6 },
-      { itemId: "T7_MULLEIN", quantity: 6 },
-      { itemId: "T7_MEAT", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_ROAST",
-    tier: 7,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T7_MEAT", quantity: 72 },
-      { itemId: "T7_CORN", quantity: 36 },
-      { itemId: "T8_MILK", quantity: 36 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T7_MEAL_ROAST_FISH",
-    tier: 7,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_AVALON_RARE", quantity: 1 },
-      { itemId: "T7_CORN", quantity: 6 },
-      { itemId: "T7_MULLEIN", quantity: 6 },
-      { itemId: "T8_MILK", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_STEW",
-    tier: 8,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T8_PUMPKIN", quantity: 36 },
-      { itemId: "T4_BREAD", quantity: 36 },
-      { itemId: "T8_MEAT", quantity: 72 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_STEW_FISH",
-    tier: 8,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_FOREST_RARE", quantity: 1 },
-      { itemId: "T8_PUMPKIN", quantity: 6 },
-      { itemId: "T8_YARROW", quantity: 6 },
-      { itemId: "T8_MILK", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_STEW_AVALON",
-    tier: 8,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T7_CORN", quantity: 36 },
-      { itemId: "T8_PUMPKIN", quantity: 36 },
-      { itemId: "T8_MEAT", quantity: 72 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_SANDWICH",
-    tier: 8,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 36 },
-      { itemId: "T8_MEAT", quantity: 72 },
-      { itemId: "T8_BUTTER", quantity: 18 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_SANDWICH_FISH",
-    tier: 8,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T7_FISH_FRESHWATER_HIGHLANDS_RARE", quantity: 1 },
-      { itemId: "T8_PUMPKIN", quantity: 6 },
-      { itemId: "T8_YARROW", quantity: 6 },
-      { itemId: "T8_BUTTER", quantity: 6 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T8_MEAL_SANDWICH_AVALON",
-    tier: 8,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 36 },
-      { itemId: "T8_MEAT", quantity: 72 },
-      { itemId: "T8_BUTTER", quantity: 18 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
-    ],
-    nutrition: 0,
-  },
-];
+import { allCookingRecipes, type Recipe } from "@albion_online/common";
 
 export function CookingRecipesPage() {
-  const ingredientIds = recipes.flatMap((recipe) =>
+  const ingredientIds = allCookingRecipes.flatMap((recipe) =>
     recipe.ingredients.map((ingredient) => ingredient.itemId)
   );
-  const recipeIds = recipes.map((recipe) => recipe.recipeId);
+  const recipeIds = allCookingRecipes.map((recipe) => recipe.recipeId);
   const {
     data: priceData,
     isLoading,
@@ -684,7 +41,7 @@ export function CookingRecipesPage() {
   // Initialize selections with best markets
   const initializeSelections = () => {
     const initial: Record<string, string> = {};
-    recipes.forEach((recipe) => {
+    allCookingRecipes.forEach((recipe) => {
       // Ingredients
       recipe.ingredients.forEach((ingredient, index) => {
         const bestMarket = getBestMarket(ingredient.itemId, priceData);
@@ -772,7 +129,7 @@ export function CookingRecipesPage() {
 
   // Find max number of ingredients for table columns
   const maxIngredients = Math.max(
-    ...recipes.map((recipe) => recipe.ingredients.length)
+    ...allCookingRecipes.map((recipe) => recipe.ingredients.length)
   );
 
   if (error) {
@@ -830,15 +187,19 @@ export function CookingRecipesPage() {
                       </TableCell>
                     </TableRow>
                   ))
-                : recipes.map((recipe) => (
+                : allCookingRecipes.map((recipe) => (
                     <TableRow key={recipe.recipeId}>
                       <TableCell className="flex items-center gap-2">
-                        <img
-                          src={`https://render.albiononline.com/v1/item/${recipe.recipeId}.png`}
-                          alt={recipe.recipeId}
-                          className="w-8 h-8 object-contain"
-                        />
-                        {recipe.recipeId} (T{recipe.tier})
+                        <div className="relative group">
+                          <img
+                            src={`https://render.albiononline.com/v1/item/${recipe.recipeId}.png`}
+                            alt={recipe.recipeId}
+                            className="w-16 h-16 object-contain"
+                          />
+                          <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8">
+                            {recipe.recipeId}
+                          </span>
+                        </div>
                       </TableCell>
                       {Array.from({ length: maxIngredients }).map((_, i) => {
                         const ingredient = recipe.ingredients[i];
@@ -854,14 +215,18 @@ export function CookingRecipesPage() {
                         return (
                           <TableCell key={i}>
                             <div className="flex items-center gap-2">
-                              <img
-                                src={`https://render.albiononline.com/v1/item/${ingredient.itemId}.png`}
-                                alt={ingredient.itemId}
-                                className="w-6 h-6 object-contain"
-                              />
-                              <span>
-                                {ingredient.itemId} ({ingredient.quantity})
-                              </span>
+                              <span>{ingredient.quantity}x</span>
+                              <div className="relative group">
+                                <img
+                                  src={`https://render.albiononline.com/v1/item/${ingredient.itemId}.png`}
+                                  alt={ingredient.itemId}
+                                  className="min-w-12 min-h-12 max-w-12 max-h-12 object-contain"
+                                />
+                                <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8">
+                                  {ingredient.itemId}
+                                </span>
+                              </div>
+
                               <select
                                 className="border rounded-md px-2 py-1 text-sm bg-background hover:bg-accent max-w-xs"
                                 value={selectedCity}
@@ -890,7 +255,7 @@ export function CookingRecipesPage() {
                                       market.offerOrders[0].receivedAt
                                     ),
                                   }))
-                                  .sort((a, b) => a.minPrice - b.minPrice) // Sort by lowest price
+                                  .sort((a, b) => a.minPrice - b.minPrice)
                                   .map((market) => (
                                     <option
                                       key={`${market.locationName}-${ingredient.itemId}`}
@@ -958,12 +323,21 @@ export function CookingRecipesPage() {
                                   ),
                               minutesAgo: getMinutesAgo(
                                 (useInstantSell
-                                  ? market.requestOrders[0]
-                                  : market.offerOrders[0]
-                                ).receivedAt
+                                  ? market.requestOrders?.[0]
+                                  : market.offerOrders?.[0]
+                                )?.receivedAt
                               ),
                             }))
-                            .sort((a, b) => b.price - a.price) // Sort by highest price for instant, lowest for non-instant
+                            .filter(
+                              (market) =>
+                                market.price !== undefined &&
+                                market.minutesAgo !== undefined
+                            )
+                            .sort((a, b) =>
+                              useInstantSell
+                                ? b.price - a.price
+                                : a.price - b.price
+                            )
                             .map((market) => (
                               <option
                                 key={`${market.locationName}-${recipe.recipeId}`}
