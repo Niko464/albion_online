@@ -255,7 +255,7 @@ export class PricesService {
     );
 
     if (!ignoreWatchList && !allRessourceIds.includes(itemTypeId)) {
-      // console.log('Skipping non-resource item:', itemTypeId);
+      console.log('Skipping non-resource item:', itemTypeId);
       return;
     }
 

@@ -5,7 +5,7 @@ export const allCookingRecipes: Recipe[] = [
     recipeId: "T1_MEAL_GRILLEDFISH",
     tier: 1,
     quantity: 1,
-    ingredients: [{ itemId: "T1_FISH", quantity: 10 }],
+    ingredients: [{ itemId: "T1_FISHCHOPS", quantity: 10 }],
     nutrition: 0,
   },
   {
@@ -16,31 +16,31 @@ export const allCookingRecipes: Recipe[] = [
     nutrition: 0,
   },
   {
-    recipeId: "T1_FISHSAUCE_1",
+    recipeId: "T1_FISHSAUCE_LEVEL1",
     tier: 1,
     quantity: 1,
     ingredients: [
-      { itemId: "T1_FISH", quantity: 15 },
+      { itemId: "T1_FISHCHOPS", quantity: 15 },
       { itemId: "T1_SEAWEED", quantity: 1 },
     ],
     nutrition: 0,
   },
   {
-    recipeId: "T1_FISHSAUCE_2",
+    recipeId: "T1_FISHSAUCE_LEVEL2",
     tier: 1,
     quantity: 1,
     ingredients: [
-      { itemId: "T1_FISH", quantity: 45 },
+      { itemId: "T1_FISHCHOPS", quantity: 45 },
       { itemId: "T1_SEAWEED", quantity: 3 },
     ],
     nutrition: 0,
   },
   {
-    recipeId: "T1_FISHSAUCE_3",
+    recipeId: "T1_FISHSAUCE_LEVEL3",
     tier: 1,
     quantity: 1,
     ingredients: [
-      { itemId: "T1_FISH", quantity: 135 },
+      { itemId: "T1_FISHCHOPS", quantity: 135 },
       { itemId: "T1_SEAWEED", quantity: 9 },
     ],
     nutrition: 0,
