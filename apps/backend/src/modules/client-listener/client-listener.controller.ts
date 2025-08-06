@@ -27,14 +27,4 @@ export class ClientListenerController {
   async handleMapData() {
     console.log('Received CUSTOM map data');
   }
-
-  @All('*') // Matches all HTTP methods and paths
-  handleUnmatchedRoutes(@Res() res: Response) {
-    console.log('Unmatched route accessed:', res.req.originalUrl);
-    res.status(404).json({
-      statusCode: 404,
-      message: `Cannot ${res.req.method} ${res.req.originalUrl}`,
-      error: 'Not Found',
-    });
-  }
 }

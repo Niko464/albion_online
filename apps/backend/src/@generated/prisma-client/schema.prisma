@@ -27,3 +27,11 @@ model MarketOrder {
   expiresAt        DateTime
   receivedAt       DateTime @default(now())
 }
+
+model OcrPrice {
+  id        String   @id @default(cuid())
+  itemId    String
+  location  String
+  price     Int
+  createdAt DateTime @default(now())
+}

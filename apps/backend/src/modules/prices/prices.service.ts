@@ -8,6 +8,7 @@ import allRessourceIds from '../../watch_list.json';
 import axios from 'axios';
 import { ABD_ENDPOINT, allCities } from '@/config';
 import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
+import { OCRPriceUpdate } from '@/utils/zod/OCRPriceUpdateSchema';
 
 @Injectable()
 export class PricesService {
@@ -27,6 +28,13 @@ export class PricesService {
         },
         enchantmentLevel: 0,
         quality: 1,
+      },
+    });
+    const ocrPrices = await this.prismaService.ocrPrice.findMany({
+      where: {
+        itemId: {
+          in: dto.itemIds,
+        },
       },
     });
     const result: GetPricesResponse = {
@@ -140,6 +148,59 @@ export class PricesService {
                   },
                 ],
         });
+      }
+      // NOTE: here we check if ocr has fresher prices than ABD or prisma
+      for (const city of allCities) {
+        const ocrPriceData = ocrPrices.find(
+          (el) => el.itemId === itemId && el.location === city,
+        );
+        if (!ocrPriceData) {
+          continue;
+        }
+        const currentPrice = marketsToPush.markets.find((el) =>
+          el.locationName.includes(city),
+        );
+
+        if (!currentPrice) {
+          marketsToPush.markets.push({
+            locationName: city,
+            offerOrders: [
+              {
+                id: 'N/A - OCR',
+                marketOrderId: 'N/A - OCR',
+                itemId,
+                price: ocrPriceData.price,
+                receivedAt: ocrPriceData.createdAt,
+                amount: 1,
+                enchantmentLevel: 0,
+                quality: 1,
+                expiresAt: ocrPriceData.createdAt,
+                type: 'offer',
+                locationName: city,
+              },
+            ],
+            requestOrders: [],
+          });
+        } else if (
+          currentPrice.offerOrders.length > 0 &&
+          ocrPriceData.createdAt.getTime() >
+            currentPrice.offerOrders[0].receivedAt.getTime()
+        ) {
+          // If OCR price is fresher than the current offer price, update it
+          currentPrice.offerOrders.unshift({
+            id: 'N/A - OCR',
+            marketOrderId: 'N/A - OCR',
+            itemId,
+            price: ocrPriceData.price,
+            receivedAt: ocrPriceData.createdAt,
+            amount: 1,
+            enchantmentLevel: 0,
+            quality: 1,
+            expiresAt: ocrPriceData.createdAt,
+            type: 'offer',
+            locationName: city,
+          });
+        }
       }
       result.prices.push(marketsToPush);
 
@@ -257,5 +318,23 @@ export class PricesService {
       auctionType,
       count: orders.length,
     });
+  }
+
+  async ocrPriceUpdate(dto: OCRPriceUpdate) {
+    for (const el of dto) {
+      await this.prismaService.ocrPrice.deleteMany({
+        where: {
+          itemId: el.itemId,
+          location: el.location,
+        },
+      });
+      await this.prismaService.ocrPrice.create({
+        data: {
+          itemId: el.itemId,
+          location: el.location,
+          price: el.price,
+        },
+      });
+    }
   }
 }

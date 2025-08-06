@@ -134,6 +134,14 @@ exports.Prisma.MarketOrderScalarFieldEnum = {
   receivedAt: 'receivedAt'
 };
 
+exports.Prisma.OcrPriceScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  location: 'location',
+  price: 'price',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -146,7 +154,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  MarketOrder: 'MarketOrder'
+  MarketOrder: 'MarketOrder',
+  OcrPrice: 'OcrPrice'
 };
 
 /**

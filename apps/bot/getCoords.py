@@ -1,22 +1,30 @@
-from pynput import mouse
+from pynput import keyboard
+import time
 
-print("Click anywhere on the screen to get the x, y coordinates.")
+print("Press Numpad 3 to print the current mouse position.")
 print("Press Ctrl+C to stop the script.")
 
-# Define the mouse click handler
-def on_click(x, y, button, pressed):
-    if pressed:
-        print(f"Clicked at: x={x}, y={y}")
+from pynput.mouse import Controller
+mouse = Controller()
 
-# Set up the mouse listener
-listener = mouse.Listener(on_click=on_click)
+# Define the key press handler
+def on_press(key):
+    try:
+        # Numpad 3 has a keycode of 99 on many systems
+        if hasattr(key, 'vk') and key.vk == 99:
+            pos = mouse.position
+            print(f"Numpad 3 pressed at: x={pos[0]}, y={pos[1]}")
+    except AttributeError:
+        pass
+
+# Set up the keyboard listener
+listener = keyboard.Listener(on_press=on_press)
 
 try:
-    # Start the listener
     listener.start()
-    listener.wait()  # Wait for the listener to start
     while True:
-        pass  # Keep the script running
+        time.sleep(0.1)  # Sleep to reduce CPU usage
 except KeyboardInterrupt:
-    print("\nScript stopped.")
+    print("\nScript stopped by user.")
     listener.stop()
+    listener.join()
