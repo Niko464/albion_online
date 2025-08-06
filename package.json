@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "apps\\albion-data-project-client\\albiondata-client.exe -i noop -p http://localhost:3000"
   },
   "keywords": [],
   "author": "",

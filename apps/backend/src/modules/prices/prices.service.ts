@@ -5,12 +5,21 @@ import { ABDMarketOrderMessage } from '@/utils/zod/ABDMarketOrderSchema';
 import { getLocationName } from '@/utils/getLocationName';
 
 import allRessourceIds from '../../watch_list.json';
+import axios from 'axios';
+import { ABD_ENDPOINT, allCities } from '@/config';
+import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
 
 @Injectable()
 export class PricesService {
   constructor(private prismaService: PrismaService) {}
 
   async getPrices(dto: GetPricesDto): Promise<GetPricesResponse> {
+    const itemParam = dto.itemIds.join(',');
+    const cityParam = allCities.join(',');
+    const abdPrices = await axios.get<ABDGetPricesResponse>(
+      `${ABD_ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`,
+    );
+
     const prices = await this.prismaService.marketOrder.findMany({
       where: {
         itemId: {
@@ -30,7 +39,7 @@ export class PricesService {
         new Set(itemOrders.map((order) => order.locationName)),
       );
 
-      result.prices.push({
+      const marketsToPush = {
         itemId,
         markets: uniqueLocations.map((locationName) => {
           const offerOrders = itemOrders
@@ -75,7 +84,64 @@ export class PricesService {
             })),
           };
         }),
-      });
+      };
+
+      // NOTE: now any market that we don't have data for will be filled with ABD data
+      for (const city of allCities) {
+        const cityPrices = marketsToPush.markets.find((el) =>
+          el.locationName.includes(city),
+        );
+
+        if (cityPrices) {
+          continue;
+        }
+        const abdPriceData = abdPrices.data.find((el) => {
+          return el.item_id === itemId && el.city === city;
+        });
+        if (!abdPriceData) {
+          continue;
+        }
+        marketsToPush.markets.push({
+          locationName: city,
+          offerOrders:
+            abdPriceData.sell_price_max === 0
+              ? []
+              : [
+                  {
+                    id: 'N/A - Albion Online API',
+                    marketOrderId: 'N/A - Albion Online API',
+                    itemId,
+                    price: abdPriceData.sell_price_max,
+                    receivedAt: new Date(abdPriceData.sell_price_max_date),
+                    amount: 1,
+                    enchantmentLevel: 0,
+                    quality: 1,
+                    expiresAt: new Date(abdPriceData.sell_price_max_date),
+                    type: 'offer',
+                    locationName: city,
+                  },
+                ],
+          requestOrders:
+            abdPriceData.buy_price_min === 0
+              ? []
+              : [
+                  {
+                    id: 'N/A - Albion Online API',
+                    marketOrderId: 'N/A - Albion Online API',
+                    itemId,
+                    price: abdPriceData.buy_price_min,
+                    receivedAt: new Date(abdPriceData.buy_price_min_date),
+                    amount: 1,
+                    enchantmentLevel: 0,
+                    quality: 1,
+                    expiresAt: new Date(abdPriceData.buy_price_min_date),
+                    type: 'request',
+                    locationName: city,
+                  },
+                ],
+        });
+      }
+      result.prices.push(marketsToPush);
 
       // NOTE: now sort so that the first market is the cheapest offer
       result.prices.sort((a, b) => {
@@ -99,7 +165,7 @@ export class PricesService {
     return result;
   }
 
-  async receivedOrders(dto: ABDMarketOrderMessage) {
+  async receivedOrders(dto: ABDMarketOrderMessage, ignoreWatchList = false) {
     const orders = dto.Orders;
 
     if (orders.length === 0) {
@@ -127,7 +193,7 @@ export class PricesService {
       (order) => order.AuctionType === auctionType,
     );
 
-    if (!allRessourceIds.includes(itemTypeId)) {
+    if (!ignoreWatchList && !allRessourceIds.includes(itemTypeId)) {
       // console.log('Skipping non-resource item:', itemTypeId);
       return;
     }

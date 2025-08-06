@@ -18,10 +18,9 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import { formatDistanceToNowStrict, differenceInMinutes } from "date-fns";
-import { allCities, cityColors } from "@/utils/types";
-import { ENDPOINT } from "@/constants";
 import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
 import { useItemTiers } from "@/hooks/useItemTiers";
+import { ABD_ENDPOINT, allCities, cityColors } from "@/config";
 
 function parseAlbionDate(dateStr: string): Date {
   // Append 'Z' if not present (to treat as UTC)
@@ -30,6 +29,7 @@ function parseAlbionDate(dateStr: string): Date {
   }
   return new Date(dateStr);
 }
+
 
 export default function ResourcePricesPage() {
   const { resource } = useParams();
@@ -40,7 +40,7 @@ export default function ResourcePricesPage() {
     queryFn: async () => {
       const itemParam = itemIds.join(",");
       const cityParam = allCities.join(",");
-      const url = `${ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`;
+      const url = `${ABD_ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`;
       const response = await axios.get(url);
       return response.data;
     },

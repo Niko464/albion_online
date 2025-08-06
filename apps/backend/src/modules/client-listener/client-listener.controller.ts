@@ -10,7 +10,7 @@ export class ClientListenerController {
   @Post('marketorders.ingest')
   async handleMarketOrders(@Body() body: ABDMarketOrderMessage) {
     console.log('Received CUSTOM market orders:', body.Orders.length);
-    await this.pricesService.receivedOrders(body);
+    await this.pricesService.receivedOrders(body, true);
   }
 
   @Post('markethistories')

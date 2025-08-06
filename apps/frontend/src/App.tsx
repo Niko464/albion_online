@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ResourcePricesPage from "./pages/ressource-price";
 import CustomResourcePricesPage from "./pages/CustomRessourcePrices/custom-ressource-prices";
+import { CookingRecipesPage } from "./pages/CookingRecipesPage/CookingRecipesPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           path="/custom-prices/:category/:resource"
           element={<CustomResourcePricesPage />}
         />
+        <Route path="/cooking/recipes" element={<CookingRecipesPage />} />
       </Routes>
     </BrowserRouter>
   );

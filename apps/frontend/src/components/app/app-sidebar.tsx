@@ -16,7 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DollarSign } from "lucide-react";
+import { Carrot, DollarSign } from "lucide-react";
 
 const items = [
   {
@@ -68,6 +68,16 @@ const items = [
           { title: "Cloth", url: "/custom-prices/refined/CLOTH" },
           { title: "Blocks", url: "/custom-prices/refined/STONEBLOCK" },
         ],
+      },
+    ],
+  },
+  {
+    title: "Cooking",
+    icon: Carrot,
+    children: [
+      {
+        title: "Recipes",
+        children: [{ title: "All", url: "/cooking/recipes" }],
       },
     ],
   },

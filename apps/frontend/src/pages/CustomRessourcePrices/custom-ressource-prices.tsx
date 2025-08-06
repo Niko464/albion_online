@@ -1,6 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import {
   Table,
   TableBody,
@@ -12,11 +10,11 @@ import {
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
-import { BACKEND_URL } from "@/constants";
 import type { GetPricesResponse } from "@albion_online/common";
 import { useItemTiers } from "@/hooks/useItemTiers";
 import { Tag } from "./Tag";
 import { useState } from "react";
+import { useCustomPrices } from "@/hooks/useCustomPrices";
 
 export default function CustomResourcePricesPage() {
   const { resource } = useParams();
@@ -25,17 +23,7 @@ export default function CustomResourcePricesPage() {
     GetPricesResponse["prices"][number]["markets"][number] | null
   >(null);
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["custom-prices", resource],
-    queryFn: async () => {
-      const url = `${BACKEND_URL}/prices`;
-      const response = await axios.patch<GetPricesResponse>(url, {
-        itemIds,
-      });
-      return response.data;
-    },
-    enabled: itemIds.length > 0,
-  });
+ const { data, isLoading, error } = useCustomPrices(itemIds)
 
   if (error)
     return <div className="p-4 text-destructive">Error fetching prices</div>;

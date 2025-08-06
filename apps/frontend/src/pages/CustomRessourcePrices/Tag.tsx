@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { cityColors } from "@/config";
 import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
-import { cityColors } from "@/utils/types";
-import type { GetPricesResponse } from "@albion_online/common";
+import { type GetPricesResponse } from "@albion_online/common";
 import {
   Tooltip,
   TooltipContent,
