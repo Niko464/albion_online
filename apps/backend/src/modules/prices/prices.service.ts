@@ -6,7 +6,7 @@ import { getLocationName } from '@/utils/getLocationName';
 
 import allRessourceIds from '../../watch_list.json';
 import axios from 'axios';
-import { ABD_ENDPOINT, allCities } from '@/config';
+import { ABD_ENDPOINT, allCities } from '@albion_online/common';
 import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
 import { OCRPriceUpdate } from '@/utils/zod/OCRPriceUpdateSchema';
 
@@ -26,6 +26,9 @@ export class PricesService {
         itemId: {
           in: dto.itemIds,
         },
+        locationName: {
+          in: allCities,
+        },
         enchantmentLevel: 0,
         quality: 1,
       },
@@ -34,6 +37,9 @@ export class PricesService {
       where: {
         itemId: {
           in: dto.itemIds,
+        },
+        location: {
+          in: allCities,
         },
       },
     });
@@ -182,24 +188,27 @@ export class PricesService {
             requestOrders: [],
           });
         } else if (
-          currentPrice.offerOrders.length > 0 &&
-          ocrPriceData.createdAt.getTime() >
-            currentPrice.offerOrders[0].receivedAt.getTime()
+          (currentPrice.offerOrders.length > 0 &&
+            ocrPriceData.createdAt.getTime() >
+              currentPrice.offerOrders[0].receivedAt.getTime()) ||
+          currentPrice.offerOrders.length === 0
         ) {
           // If OCR price is fresher than the current offer price, update it
-          currentPrice.offerOrders.unshift({
-            id: 'N/A - OCR',
-            marketOrderId: 'N/A - OCR',
-            itemId,
-            price: ocrPriceData.price,
-            receivedAt: ocrPriceData.createdAt,
-            amount: 1,
-            enchantmentLevel: 0,
-            quality: 1,
-            expiresAt: ocrPriceData.createdAt,
-            type: 'offer',
-            locationName: city,
-          });
+          currentPrice.offerOrders = [
+            {
+              id: 'N/A - OCR',
+              marketOrderId: 'N/A - OCR',
+              itemId,
+              price: ocrPriceData.price,
+              receivedAt: ocrPriceData.createdAt,
+              amount: 1,
+              enchantmentLevel: 0,
+              quality: 1,
+              expiresAt: ocrPriceData.createdAt,
+              type: 'offer',
+              locationName: city,
+            },
+          ];
         }
       }
       result.prices.push(marketsToPush);
@@ -255,7 +264,7 @@ export class PricesService {
     );
 
     if (!ignoreWatchList && !allRessourceIds.includes(itemTypeId)) {
-      console.log('Skipping non-resource item:', itemTypeId);
+      // console.log('Skipping non-resource item:', itemTypeId);
       return;
     }
 

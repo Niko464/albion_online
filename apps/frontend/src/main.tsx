@@ -6,7 +6,16 @@ import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Layout from "./layout.tsx";
 
-export const queryClient = new QueryClient({});
+export const queryClient = new QueryClient({
+ defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 300000,
+      retry: 1,
+      enabled: true,
+    },
+  },
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

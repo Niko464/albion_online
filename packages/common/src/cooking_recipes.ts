@@ -1,5 +1,21 @@
 import { Recipe } from "./types";
 
+export const test = [
+  {
+    recipeId: "T3_MEAL_PIE_FISH",
+    tier: 3,
+    quantity: 1,
+    ingredients: [
+      { itemId: "T3_FISH_FRESHWATER_MOUNTAIN_RARE", quantity: 1 },
+      { itemId: "T3_FLOUR", quantity: 1 },
+      { itemId: "T3_EGG", quantity: 1 },
+    ],
+    nutrition: 0,
+  },
+];
+
+// TODO: I commented a recipe, reenable it
+
 export const allCookingRecipes: Recipe[] = [
   {
     recipeId: "T1_MEAL_GRILLEDFISH",
@@ -223,7 +239,7 @@ export const allCookingRecipes: Recipe[] = [
     quantity: 10,
     ingredients: [
       { itemId: "T4_TURNIP", quantity: 4 },
-      { itemId: "T3_BREAD", quantity: 4 },
+      { itemId: "T4_BREAD", quantity: 4 },
       { itemId: "T4_MEAT", quantity: 8 },
     ],
     nutrition: 0,
@@ -233,8 +249,8 @@ export const allCookingRecipes: Recipe[] = [
     tier: 4,
     quantity: 10,
     ingredients: [
+      { itemId: "T4_BREAD", quantity: 4 },
       { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "T3_BREAD", quantity: 4 },
       { itemId: "T4_BUTTER", quantity: 2 },
     ],
     nutrition: 0,
@@ -259,17 +275,6 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T4_TURNIP", quantity: 4 },
       { itemId: "T4_MEAT", quantity: 8 },
       { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
-    ],
-    nutrition: 0,
-  },
-  {
-    recipeId: "T4_MEAL_SANDWICH",
-    tier: 4,
-    quantity: 10,
-    ingredients: [
-      { itemId: "T4_BREAD", quantity: 4 },
-      { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "T4_BUTTER", quantity: 2 },
     ],
     nutrition: 0,
   },
@@ -326,18 +331,18 @@ export const allCookingRecipes: Recipe[] = [
     ],
     nutrition: 0,
   },
-  {
-    recipeId: "T5_MEAL_OMELETTE_FISH",
-    tier: 5,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T5_FISH_FRESHWATER_STEPPE_RARE", quantity: 1 },
-      { itemId: "T5_CABBAGE", quantity: 2 },
-      { itemId: "T5_TEASEL", quantity: 2 },
-      { itemId: "T5_EGG", quantity: 2 },
-    ],
-    nutrition: 0,
-  },
+  // {
+  //   recipeId: "T5_MEAL_OMELETTE_FISH",
+  //   tier: 5,
+  //   quantity: 1,
+  //   ingredients: [
+  //     { itemId: "T5_FISH_FRESHWATER_STEPPE_RARE", quantity: 1 },
+  //     { itemId: "T5_CABBAGE", quantity: 2 },
+  //     { itemId: "T5_TEASEL", quantity: 2 },
+  //     { itemId: "T5_EGG", quantity: 2 },
+  //   ],
+  //   nutrition: 0,
+  // },
   {
     recipeId: "T5_MEAL_OMELETTE_AVALON",
     tier: 5,

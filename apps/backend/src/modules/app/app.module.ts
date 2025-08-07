@@ -12,7 +12,7 @@ import { OcrModule } from '../ocr-listener/ocr.module';
     ScheduleModule.forRoot(),
     PrismaModule,
     PricesModule,
-    NatsModule,
+    // NatsModule,
     ClientListenerModule,
     CronJobModule,
     OcrModule,

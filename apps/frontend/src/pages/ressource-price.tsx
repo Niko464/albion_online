@@ -20,7 +20,7 @@ import { Card } from "@/components/ui/card";
 import { formatDistanceToNowStrict, differenceInMinutes } from "date-fns";
 import { getAgeCategoryColor } from "@/utils/getAgeCategoryColor";
 import { useItemTiers } from "@/hooks/useItemTiers";
-import { ABD_ENDPOINT, allCities, cityColors } from "@/config";
+import { ABD_ENDPOINT, allCities, cityColors } from "@albion_online/common";
 
 function parseAlbionDate(dateStr: string): Date {
   // Append 'Z' if not present (to treat as UTC)

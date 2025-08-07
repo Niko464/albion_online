@@ -44,15 +44,22 @@ export function CookingRecipesPage() {
   const initializeSelections = useCallback(() => {
     const initial: Record<string, string> = {};
     [...new Set(ingredientIds)].forEach((itemId) => {
-      const bestMarket = getBestMarket(itemId, priceData);
+      const bestMarket = getBestMarket(itemId, priceData, false);
+      if (!bestMarket) {
+        throw new Error(`No market data found for ingredient ${itemId}`);
+      }
       initial[itemId] = bestMarket ? bestMarket.locationName : "";
     });
     [...new Set(recipeIds)].forEach((itemId) => {
-      const bestMarket = getBestMarket(itemId, priceData, useInstantSell);
+      const bestMarket = getBestMarket(itemId, priceData, true);
+      if (!bestMarket) {
+        throw new Error(`No market data found for recipe ${itemId}`);
+      }
       initial[itemId] = bestMarket ? bestMarket.locationName : "";
     });
+    console.log("Initialized selections:", initial);
     return initial;
-  }, [priceData, useInstantSell, ingredientIds, recipeIds]);
+  }, [priceData, ingredientIds, recipeIds]);
 
   useEffect(() => {
     if (priceData && !initialized) {
@@ -74,6 +81,19 @@ export function CookingRecipesPage() {
       [recipeId]: !prev[recipeId],
     }));
   }, []);
+
+  if (!priceData || isLoading || !initialized) {
+    return (
+      <div className="p-6">
+        <h1 className="text-3xl font-bold mb-4">Cooking Recipes</h1>
+        <Card className="p-4">
+          <Skeleton className="h-6 w-48 mb-2" />
+          <Skeleton className="h-6 w-32 mb-2" />
+          <Skeleton className="h-6 w-full" />
+        </Card>
+      </div>
+    );
+  }
 
   if (error) {
     return <div className="p-4 text-destructive">Error fetching prices</div>;

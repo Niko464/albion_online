@@ -21,7 +21,7 @@ import {
 } from "@radix-ui/react-tooltip";
 import { getMinutesAgo } from "@/utils/getMinutesAgo";
 import type { GetPricesResponse } from "@albion_online/common";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 
 type Props = {
   ingredientIds: string[];
@@ -126,6 +126,7 @@ const ItemRow = memo(
   }
 );
 
+// TODO: T5_FISH_SALTWATER_ALL_RARE does it mean multiple fish are valid ?
 export function MarketPricesSheet({
   ingredientIds,
   priceData,
@@ -134,6 +135,64 @@ export function MarketPricesSheet({
   recipeIds,
   useInstantSell,
 }: Props) {
+  const oldestIngredient = useMemo(() => {
+    let oldest: {
+      itemId: string;
+      minutesAgo: number;
+      location: string;
+    } | null = null;
+    [...new Set(ingredientIds)].forEach((itemId) => {
+      const selectedCity = selections[itemId];
+      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+      const market = itemData?.markets.find(
+        (m) => m.locationName === selectedCity
+      );
+      if (market?.offerOrders?.length) {
+        const minutesAgo = getMinutesAgo(market.offerOrders[0].receivedAt);
+        if (
+          minutesAgo !== undefined &&
+          (!oldest || minutesAgo > oldest.minutesAgo)
+        ) {
+          oldest = { itemId, minutesAgo, location: selectedCity };
+        }
+      }
+    });
+    return oldest;
+  }, [ingredientIds, priceData, selections]);
+
+  const oldestRecipe = useMemo(() => {
+    let oldest: {
+      itemId: string;
+      minutesAgo: number;
+      location: string;
+    } | null = null;
+    [...new Set(recipeIds)].forEach((itemId) => {
+      const selectedCity = selections[itemId];
+      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+      const market = itemData?.markets.find(
+        (m) => m.locationName === selectedCity
+      );
+      if (
+        market &&
+        (useInstantSell
+          ? market.requestOrders?.length
+          : market.offerOrders?.length)
+      ) {
+        const minutesAgo = getMinutesAgo(
+          (useInstantSell ? market.requestOrders?.[0] : market.offerOrders?.[0])
+            ?.receivedAt
+        );
+        if (
+          minutesAgo !== undefined &&
+          (!oldest || minutesAgo > oldest.minutesAgo)
+        ) {
+          oldest = { itemId, minutesAgo, location: selectedCity };
+        }
+      }
+    });
+    return oldest;
+  }, [recipeIds, priceData, selections, useInstantSell]);
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -143,13 +202,60 @@ export function MarketPricesSheet({
         <SheetHeader>
           <SheetTitle>Select Market Cities</SheetTitle>
         </SheetHeader>
+        <div className="mt-4 space-y-2">
+          {oldestIngredient && (
+            <div className="items-center gap-2 text-sm flex-col">
+              <span className="font-semibold">Oldest Selected Ingredient Market:</span>
+              <div className="flex items-center gap-2">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <img
+                      src={`https://render.albiononline.com/v1/item/${oldestIngredient.itemId}.png`}
+                      alt={oldestIngredient.itemId}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-gray-800 text-white text-xs rounded py-1 px-2">
+                    {oldestIngredient.itemId}
+                  </TooltipContent>
+                </Tooltip>
+                <span>
+                  {oldestIngredient.location}, {oldestIngredient.minutesAgo} min
+                  ago
+                </span>
+              </div>
+            </div>
+          )}
+          {oldestRecipe && (
+            <div className="items-center gap-2 text-sm flex-col">
+              <span className="font-semibold">Oldest Selected Recipe Market:</span>
+              <div className="flex items-center gap-2">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <img
+                      src={`https://render.albiononline.com/v1/item/${oldestRecipe.itemId}.png`}
+                      alt={oldestRecipe.itemId}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-gray-800 text-white text-xs rounded py-1 px-2">
+                    {oldestRecipe.itemId}
+                  </TooltipContent>
+                </Tooltip>
+                <span>
+                  {oldestRecipe.location}, {oldestRecipe.minutesAgo} min ago
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
         <Tabs defaultValue="ingredients" className="mt-4">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="ingredients">Ingredients</TabsTrigger>
             <TabsTrigger value="recipes">Recipes</TabsTrigger>
           </TabsList>
           <TabsContent value="ingredients">
-            <div className="mt-4 space-y-4 max-h-[80vh] overflow-y-auto">
+            <div className="mt-4 space-y-4 max-h-[60vh] overflow-y-auto">
               {[...new Set(ingredientIds)].map((itemId) => (
                 <ItemRow
                   key={itemId}
@@ -164,7 +270,7 @@ export function MarketPricesSheet({
             </div>
           </TabsContent>
           <TabsContent value="recipes">
-            <div className="mt-4 space-y-4 max-h-[70vh] overflow-y-auto">
+            <div className="mt-4 space-y-4 max-h-[60vh] overflow-y-auto">
               {[...new Set(recipeIds)].map((itemId) => (
                 <ItemRow
                   key={itemId}
