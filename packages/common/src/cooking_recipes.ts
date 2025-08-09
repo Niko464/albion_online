@@ -16,63 +16,67 @@ export const test = [
   },
 ];
 
+export const returnRateBlackList = [
+  'QUESTITEM_TOKEN_AVALON'
+]
+
 export const allCookingRecipes: Recipe[] = [
-  {
-    recipeId: "T1_MEAL_GRILLEDFISH",
-    tier: 1,
-    quantity: 1,
-    ingredients: [{ itemId: "T1_FISHCHOPS", quantity: 10 }],
-    itemValue: 10,
-    // TODO: check
-    fame: 100,
-    focus: 15,
-  },
-  {
-    recipeId: "T1_MEAL_SEAWEEDSALAD",
-    tier: 1,
-    quantity: 1,
-    ingredients: [{ itemId: "T1_SEAWEED", quantity: 10 }],
-    itemValue: 10,
-    // TODO: check
-    fame: 100,
-    focus: 4,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_LEVEL1",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISHCHOPS", quantity: 15 },
-      { itemId: "T1_SEAWEED", quantity: 1 },
-    ],
-    itemValue: null,
-    fame: null,
-    focus: null,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_LEVEL2",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISHCHOPS", quantity: 45 },
-      { itemId: "T1_SEAWEED", quantity: 3 },
-    ],
-    itemValue: null,
-    fame: null,
-    focus: null,
-  },
-  {
-    recipeId: "T1_FISHSAUCE_LEVEL3",
-    tier: 1,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T1_FISHCHOPS", quantity: 135 },
-      { itemId: "T1_SEAWEED", quantity: 9 },
-    ],
-    itemValue: null,
-    fame: null,
-    focus: null,
-  },
+  // {
+  //   recipeId: "T1_MEAL_GRILLEDFISH",
+  //   tier: 1,
+  //   quantity: 1,
+  //   ingredients: [{ itemId: "T1_FISHCHOPS", quantity: 10 }],
+  //   itemValue: 10,
+  //   // TODO: check
+  //   fame: 100,
+  //   focus: 15,
+  // },
+  // {
+  //   recipeId: "T1_MEAL_SEAWEEDSALAD",
+  //   tier: 1,
+  //   quantity: 1,
+  //   ingredients: [{ itemId: "T1_SEAWEED", quantity: 10 }],
+  //   itemValue: 10,
+  //   // TODO: check
+  //   fame: 100,
+  //   focus: 4,
+  // },
+  // {
+  //   recipeId: "T1_FISHSAUCE_LEVEL1",
+  //   tier: 1,
+  //   quantity: 1,
+  //   ingredients: [
+  //     { itemId: "T1_FISHCHOPS", quantity: 15 },
+  //     { itemId: "T1_SEAWEED", quantity: 1 },
+  //   ],
+  //   itemValue: null,
+  //   fame: null,
+  //   focus: null,
+  // },
+  // {
+  //   recipeId: "T1_FISHSAUCE_LEVEL2",
+  //   tier: 1,
+  //   quantity: 1,
+  //   ingredients: [
+  //     { itemId: "T1_FISHCHOPS", quantity: 45 },
+  //     { itemId: "T1_SEAWEED", quantity: 3 },
+  //   ],
+  //   itemValue: null,
+  //   fame: null,
+  //   focus: null,
+  // },
+  // {
+  //   recipeId: "T1_FISHSAUCE_LEVEL3",
+  //   tier: 1,
+  //   quantity: 1,
+  //   ingredients: [
+  //     { itemId: "T1_FISHCHOPS", quantity: 135 },
+  //     { itemId: "T1_SEAWEED", quantity: 9 },
+  //   ],
+  //   itemValue: null,
+  //   fame: null,
+  //   focus: null,
+  // },
   {
     recipeId: "T1_MEAL_SOUP",
     tier: 1,

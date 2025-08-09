@@ -19,128 +19,57 @@ import { Label } from "@/components/ui/label";
 
 import { MarketPricesSheet } from "./components/MarketPricesSheet";
 import { RecipeRow } from "./components/RecipeRow";
-import type { Recipe } from "@albion_online/common";
 import {
   getCoreRowModel,
   getSortedRowModel,
   flexRender,
   useReactTable,
-  type ColumnDef,
   type SortingState,
 } from "@tanstack/react-table";
+import itemTranslationsJSON from "./parsed_items.json";
 
 // -------------------- Utility functions (memoized calculations) --------------------
-import { type GetPricesResponse } from "@albion_online/common";
-import { getMinutesAgo } from "@/utils/getMinutesAgo";
-
-interface MarketData {
-  locationName: string;
-  price: number;
-  minutesAgo: number;
-}
-
-const getMarketData = (
-  itemId: string,
-  priceData: GetPricesResponse,
-  useInstantSell: boolean,
-  selectedCity: string
-): MarketData | null => {
-  const itemData = priceData?.prices.find((el) => el.itemId === itemId);
-  const market = itemData?.markets.find((m) => m.locationName === selectedCity);
-  if (!market || (!market.offerOrders?.length && !market.requestOrders?.length)) {
-    return null;
-  }
-
-  const orders = useInstantSell ? market.requestOrders : market.offerOrders;
-  if (!orders || orders.length === 0) return null;
-
-  const price = orders[0].price;
-  const minutesAgo = getMinutesAgo(orders[0].receivedAt);
-
-  return { locationName: selectedCity, price, minutesAgo };
-};
-
-const calculateRecipeCost = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>
-): number => {
-  return recipe.ingredients.reduce((total, ingredient) => {
-    const marketData = getMarketData(
-      ingredient.itemId,
-      priceData,
-      false,
-      selections[ingredient.itemId] || ""
-    );
-    if (!marketData) return total;
-    return total + marketData.price * ingredient.quantity;
-  }, 0);
-};
-
-const calculateRecipeProfit = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>,
-  useInstantSell: boolean
-): { profit: number; percentage: number; recipeCost: number } => {
-  const recipeCost = calculateRecipeCost(recipe, priceData, selections);
-  const marketData = getMarketData(
-    recipe.recipeId,
-    priceData,
-    useInstantSell,
-    selections[recipe.recipeId] || ""
-  );
-  if (!marketData) {
-    return { profit: -recipeCost, percentage: -100, recipeCost };
-  }
-  const sellPrice = marketData.price;
-  const profit = sellPrice * recipe.quantity - recipeCost;
-  const percentage = recipeCost > 0 ? (profit / recipeCost) * 100 : 0;
-  return { profit, percentage, recipeCost };
-};
-
-const getOldestComponentAge = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>,
-  useInstantSell: boolean
-): number => {
-  const ages: number[] = [];
-  const recipeMarket = getMarketData(
-    recipe.recipeId,
-    priceData,
-    useInstantSell,
-    selections[recipe.recipeId] || ""
-  );
-  if (recipeMarket) ages.push(recipeMarket.minutesAgo);
-  recipe.ingredients.forEach((ingredient) => {
-    const marketData = getMarketData(
-      ingredient.itemId,
-      priceData,
-      false,
-      selections[ingredient.itemId] || ""
-    );
-    if (marketData) ages.push(marketData.minutesAgo);
-  });
-  return ages.length ? Math.max(...ages) : 0;
-};
+import { useRecipeColumns } from "./hooks/useRecipeColumns";
+import type { RecipeRowData } from "@/utils/types";
+import { calculateRecipeProfit } from "./utils/calculateRecipeProfit";
+import { getOldestComponentAge } from "./utils/getOldestComponentAge";
+import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
 
 // -------------------- Main Component --------------------
 export function CookingRecipesPage() {
   const ingredientIds = useMemo(() => {
-    return allCookingRecipes.flatMap((recipe) =>
-      recipe.ingredients.map((ingredient) => ingredient.itemId)
-    );
+    return [
+      ...new Set(
+        allCookingRecipes.flatMap((recipe) =>
+          recipe.ingredients.map((ingredient) => ingredient.itemId)
+        )
+      ),
+    ];
   }, []);
+
   const recipeIds = useMemo(() => {
     return allCookingRecipes.map((recipe) => recipe.recipeId);
   }, []);
 
-  const {
-    data: priceData,
-    isLoading,
-    error,
-  } = useCustomPrices([...new Set([...ingredientIds, ...recipeIds])]);
+  const allIds = useMemo(() => {
+    return [...new Set([...ingredientIds, ...recipeIds])];
+  }, [ingredientIds, recipeIds]);
+
+  const itemTranslations = useMemo(() => {
+    return allIds.reduce((acc, id) => {
+      const foundItem = itemTranslationsJSON.find(
+        (item) => item.UniqueName === id
+      );
+      if (foundItem) {
+        acc[id] = foundItem.LocalizedName;
+      } else {
+        acc[id] = id;
+      }
+      return acc;
+    }, {} as Record<string, string>);
+  }, [allIds]);
+
+  const { data: priceData, isLoading, error } = useCustomPrices(allIds);
 
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
@@ -188,23 +117,26 @@ export function CookingRecipesPage() {
     }));
   }, []);
 
-  // ---------------- TanStack Table Setup ----------------
-  type RowData = {
-    recipe: Recipe;
-    recipeCost: number;
-    profit: number;
-    profitPercentage: number;
-    oldestAge: number;
-  };
-
-  const data: RowData[] = useMemo(() => {
+  const data: RecipeRowData[] = useMemo(() => {
     if (!priceData) return [];
     return allCookingRecipes.map((recipe) => {
-      const { profit, percentage, recipeCost } = calculateRecipeProfit(
+      const withoutFocusRecipeStats = calculateRecipeProfit(
         recipe,
         priceData,
         selections,
-        useInstantSell
+        useInstantSell,
+        // TODO: not make this hardcoded
+        900,
+        false
+      );
+      const withFocusRecipeStats = calculateRecipeProfit(
+        recipe,
+        priceData,
+        selections,
+        useInstantSell,
+        // TODO: not make this hardcoded
+        900,
+        true
       );
       const oldestAge = getOldestComponentAge(
         recipe,
@@ -212,44 +144,26 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell
       );
+      const effectiveFocus = getEffectiveFocusCost(recipe);
+
       return {
         recipe,
-        recipeCost,
-        profit,
-        profitPercentage: percentage,
+        withFocusRecipeStats,
+        withoutFocusRecipeStats,
         oldestAge,
+        silverPerFocus:
+          (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
+          effectiveFocus,
       };
     });
   }, [priceData, selections, useInstantSell]);
 
-  const columns = useMemo<ColumnDef<RowData>[]>(
-    () => [
-      {
-        accessorKey: "recipe",
-        header: "Recipe",
-        sortingFn: "alphanumeric",
-      },
-      {
-        accessorKey: "recipeCost",
-        header: "Recipe Cost",
-        cell: (info) => (info.getValue<number>() as number).toLocaleString(),
-      },
-      {
-        accessorKey: "profitPercentage",
-        header: "Profit %",
-        cell: (info) => {
-          const value = info.getValue<number>() as number;
-          const sign = value >= 0 ? "+" : "-";
-          return `${sign}${Math.abs(value).toFixed(2)}%`;
-        },
-      },
-      {
-        accessorKey: "profit",
-        header: "Profit (Silver)",
-        cell: (info) => (info.getValue<number>() as number).toLocaleString(),
-      },
-    ],
-    []
+  const columns = useRecipeColumns(
+    itemTranslations,
+    priceData,
+    selections,
+    useInstantSell,
+    handleSelectionChange
   );
 
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -302,7 +216,7 @@ export function CookingRecipesPage() {
           />
         </div>
         <Card className="overflow-x-auto rounded-xl border shadow-sm">
-          <Table className="table-fixed">
+          <Table className="w-full table-fixed">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
@@ -310,7 +224,13 @@ export function CookingRecipesPage() {
                     <TableHead
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
-                      className="cursor-pointer select-none"
+                      className={`cursor-pointer select-none ${
+                        header.column.columnDef.meta?.align || "left"
+                      }`}
+                      style={{
+                        width: header.column.getSize(),
+                        minWidth: header.column.getSize(),
+                      }}
                     >
                       {flexRender(
                         header.column.columnDef.header,
@@ -323,7 +243,6 @@ export function CookingRecipesPage() {
                         : ""}
                     </TableHead>
                   ))}
-                  <TableHead>Sell City</TableHead>
                 </TableRow>
               ))}
             </TableHeader>
@@ -331,36 +250,33 @@ export function CookingRecipesPage() {
               {isLoading
                 ? Array.from({ length: 5 }).map((_, i) => (
                     <TableRow key={i}>
-                      <TableCell className="w-[200px]">
-                        <Skeleton className="w-24 h-6" />
-                      </TableCell>
-                      <TableCell className="w-[150px]">
-                        <Skeleton className="w-16 h-6" />
-                      </TableCell>
-                      <TableCell className="w-[150px]">
-                        <Skeleton className="w-16 h-6" />
-                      </TableCell>
-                      <TableCell className="w-[200px]">
-                        <Skeleton className="w-32 h-8" />
-                      </TableCell>
+                      {columns.map((column, index) => (
+                        <TableCell
+                          key={index}
+                          style={{ width: column.size, minWidth: column.size }}
+                          className={column.meta?.align || "left"}
+                        >
+                          <Skeleton className="w-full h-6" />
+                        </TableCell>
+                      ))}
                     </TableRow>
                   ))
-                : table.getRowModel().rows.map(({ original: row }) => (
-                    <RecipeRow
-                      key={row.recipe.recipeId}
-                      recipe={row.recipe}
-                      priceData={priceData}
-                      selections={selections}
-                      useInstantSell={useInstantSell}
-                      expanded={!!expandedRows[row.recipe.recipeId]}
-                      toggleRow={toggleRow}
-                      handleSelectionChange={handleSelectionChange}
-                      recipeCost={row.recipeCost}
-                      profit={row.profit}
-                      percentage={row.profitPercentage}
-                      oldestAge={row.oldestAge}
-                    />
-                  ))}
+                : table
+                    .getRowModel()
+                    .rows.map((row) => (
+                      <RecipeRow
+                        key={row.original.recipe.recipeId}
+                        recipe={row.original.recipe}
+                        priceData={priceData}
+                        selections={selections}
+                        expanded={!!expandedRows[row.original.recipe.recipeId]}
+                        toggleRow={toggleRow}
+                        handleSelectionChange={handleSelectionChange}
+                        rowData={row.original}
+                        itemTranslations={itemTranslations}
+                        columns={columns}
+                      />
+                    ))}
             </TableBody>
           </Table>
         </Card>
