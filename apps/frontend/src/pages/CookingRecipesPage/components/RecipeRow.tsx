@@ -1,5 +1,5 @@
 import { TableCell, TableRow } from "@/components/ui/table";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { type GetPricesResponse, type Recipe } from "@albion_online/common";
 import {
   Select,
@@ -24,131 +24,30 @@ interface RecipeRowProps {
   expanded: boolean;
   toggleRow: (recipeId: string) => void;
   handleSelectionChange: (itemId: string, value: string) => void;
+  // precomputed values
+  recipeCost: number;
+  profit: number;
+  percentage: number;
+  oldestAge: number;
 }
 
-interface MarketData {
-  locationName: string;
-  price: number;
-  minutesAgo: number;
-}
-
-// Utility to get market data for an item
-const getMarketData = (
-  itemId: string,
-  priceData: GetPricesResponse,
-  useInstantSell: boolean,
-  selectedCity: string
-): MarketData | null => {
-  const itemData = priceData?.prices.find((el) => el.itemId === itemId);
-  const market = itemData?.markets.find((m) => m.locationName === selectedCity);
-  if (
-    !market ||
-    (!market.offerOrders?.length && !market.requestOrders?.length)
-  ) {
-    return null;
-  }
-
-  const orders = useInstantSell ? market.requestOrders : market.offerOrders;
-  if (!orders || orders.length === 0) return null;
-
-  const price = orders[0].price;
-  const minutesAgo = getMinutesAgo(orders[0].receivedAt);
-
-  return { locationName: selectedCity, price, minutesAgo };
-};
-
-// Utility to calculate recipe cost
-const calculateRecipeCost = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>
-): number => {
-  if (!priceData) return 0;
-  return recipe.ingredients.reduce((total, ingredient) => {
-    const marketData = getMarketData(
-      ingredient.itemId,
-      priceData,
-      false,
-      selections[ingredient.itemId] || ""
-    );
-    if (!marketData) {
-      throw new Error(
-        `No market data found for ingredient ${ingredient.itemId} in city ${selections[ingredient.itemId] || ""}`
-      );
-    }
-    return marketData ? total + marketData.price * ingredient.quantity : total;
-  }, 0);
-};
-
-// Utility to calculate recipe profit
-const calculateRecipeProfit = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>,
-  useInstantSell: boolean
-): { profit: number; percentage: number; recipeCost: number } => {
-  const recipeCost = calculateRecipeCost(recipe, priceData, selections);
-  const marketData = getMarketData(
-    recipe.recipeId,
-    priceData,
-    useInstantSell,
-    selections[recipe.recipeId] || ""
-  );
-
-  if (!marketData) {
-    return { profit: -recipeCost, percentage: -100, recipeCost };
-  }
-
-  const sellPrice = marketData.price;
-  const profit = sellPrice * recipe.quantity - recipeCost;
-  const percentage = recipeCost > 0 ? (profit / recipeCost) * 100 : 0;
-  return { profit, percentage, recipeCost };
-};
-
-// Utility to get the oldest component age
-const getOldestComponentAge = (
-  recipe: Recipe,
-  priceData: GetPricesResponse,
-  selections: Record<string, string>,
-  useInstantSell: boolean
-): number => {
-  const ages: number[] = [];
-
-  // Recipe age
-  const recipeMarket = getMarketData(
-    recipe.recipeId,
-    priceData,
-    useInstantSell,
-    selections[recipe.recipeId] || ""
-  );
-  if (recipeMarket) ages.push(recipeMarket.minutesAgo);
-
-  // Ingredients ages
-  recipe.ingredients.forEach((ingredient) => {
-    const marketData = getMarketData(
-      ingredient.itemId,
-      priceData,
-      false,
-      selections[ingredient.itemId] || ""
-    );
-    if (marketData) ages.push(marketData.minutesAgo);
-  });
-
-  return ages.length > 0 ? Math.max(...ages) : 0;
-};
-
-// Utility to render item image with tooltip
 const renderItemImage = (itemId: string) => (
-  <div className="relative group">
-    <img
-      src={`https://render.albiononline.com/v1/item/${itemId}.png`}
-      alt={itemId}
-      className="w-16 h-16 object-contain"
-    />
-    <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8">
-      {itemId}
-    </span>
-  </div>
+  <a
+    href={`https://europe.albiononline2d.com/en/item/id/${itemId}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div className="relative group">
+      <img
+        src={`https://render.albiononline.com/v1/item/${itemId}.png`}
+        alt={itemId}
+        className="w-16 h-16 object-contain"
+      />
+      <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8">
+        {itemId}
+      </span>
+    </div>
+  </a>
 );
 
 // Utility to render market select
@@ -217,25 +116,11 @@ export const RecipeRow = memo(
     expanded,
     toggleRow,
     handleSelectionChange,
+    recipeCost,
+    profit,
+    percentage,
+    oldestAge,
   }: RecipeRowProps) => {
-    const { profit, percentage, recipeCost } = useMemo(() => {
-      return calculateRecipeProfit(
-        recipe,
-        priceData,
-        selections,
-        useInstantSell
-      );
-    }, [recipe, priceData, selections, useInstantSell]);
-
-    const oldestAge = useMemo(() => {
-      return getOldestComponentAge(
-        recipe,
-        priceData,
-        selections,
-        useInstantSell
-      );
-    }, [recipe, priceData, selections, useInstantSell]);
-
     return (
       <Collapsible
         key={recipe.recipeId}
@@ -258,13 +143,19 @@ export const RecipeRow = memo(
           </TableCell>
           <TableCell>{recipeCost.toLocaleString()} Silver</TableCell>
           <TableCell
-            className={`w-[150px] ${
+            className={`w-[120px] ${
               profit >= 0 ? "text-green-600" : "text-red-600"
             }`}
           >
             {percentage >= 0 ? "+" : "-"}
-            {Math.abs(percentage).toFixed(2)}% ({profit.toLocaleString()}{" "}
-            Silver)
+            {Math.abs(percentage).toFixed(2)}%
+          </TableCell>
+          <TableCell
+            className={`w-[150px] ${
+              profit >= 0 ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {profit.toLocaleString()}
           </TableCell>
           <TableCell>
             {renderMarketSelect(

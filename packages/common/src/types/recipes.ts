@@ -3,7 +3,9 @@ export type Recipe = {
   tier: number;
   quantity: number;
   ingredients: { itemId: string; quantity: number }[];
-  nutrition: number;
+  itemValue: number | null;
+  focus: number | null;
+  fame: number | null;
 };
 
 export type PlayerStats = {
