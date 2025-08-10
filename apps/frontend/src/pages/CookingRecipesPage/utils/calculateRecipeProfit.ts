@@ -32,7 +32,8 @@ export const calculateRecipeProfit = (
     };
   }
   const sellPrice = marketData.price;
-  const profit = sellPrice * recipe.quantity - recipeCost;
+  const marketTax = 1 - 0.065; // 6.5%
+  const profit = sellPrice * recipe.quantity * marketTax - recipeCost;
   const percentage = recipeCost > 0 ? (profit / recipeCost) * 100 : 0;
   return {
     profit,

@@ -9,13 +9,13 @@ type Market = GetPricesResponse["prices"][number]["markets"][number];
  *
  * @param itemId - The ID of the item (e.g., "T1_CARROT" or "T1_MEAL_SOUP")
  * @param priceData - The price data containing market information
- * @param isRecipe - Whether the item is a recipe (true) or ingredient (false)
+ * @param returnMaxPrice - Whether we try to maximise or minimise
  * @returns The best market object or null if no valid market is found
  */
 export function getBestMarket(
   itemId: string,
   priceData: GetPricesResponse | undefined,
-  isRecipe: boolean = false
+  returnMaxPrice: boolean = false
 ): Market | null {
   if (!priceData) {
     return null;
@@ -35,7 +35,7 @@ export function getBestMarket(
     return null;
   }
 
-  return findMarketWithBestPrice(validMarkets, isRecipe);
+  return findMarketWithBestPrice(validMarkets, returnMaxPrice);
 }
 
 /**

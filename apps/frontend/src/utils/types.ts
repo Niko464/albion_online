@@ -19,4 +19,6 @@ export type RecipeRowData = {
   withoutFocusRecipeStats: RecipeStats;
   silverPerFocus: number;
   oldestAge: number;
+  famePerSilverInvested: number;
+  famePerSilverInvestedSellCity: string;
 };

@@ -279,7 +279,7 @@ def take_screenshot_and_detect_price():
         text1 = pytesseract.image_to_string(name_region, config='--psm 6').strip()
         text2 = pytesseract.image_to_string(price_region, config='--psm 6').strip()
 
-        return text1, text2
+        return text1, text2.replace("\n", " ")
 
     except Exception as e:
         print(f"Error in screenshot/OCR: {e}")

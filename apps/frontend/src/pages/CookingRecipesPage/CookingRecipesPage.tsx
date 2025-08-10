@@ -34,6 +34,7 @@ import type { RecipeRowData } from "@/utils/types";
 import { calculateRecipeProfit } from "./utils/calculateRecipeProfit";
 import { getOldestComponentAge } from "./utils/getOldestComponentAge";
 import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
+import { getMarketData } from "./utils/getMarketData";
 
 // -------------------- Main Component --------------------
 export function CookingRecipesPage() {
@@ -146,6 +147,25 @@ export function CookingRecipesPage() {
       );
       const effectiveFocus = getEffectiveFocusCost(recipe);
 
+      // NOTE: the place where I can buy the recipe the cheapest at
+      const cheapestMarketPrice = getBestMarket(
+        recipe.recipeId,
+        priceData,
+        false
+      );
+
+      if (!cheapestMarketPrice) {
+        throw new Error(
+          `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
+        );
+      }
+      const famePerSilverInvestedSellCity = cheapestMarketPrice.locationName;
+
+      // TODO: I am trying to maximize fame, I need to make a list
+      const famePerSilverInvested = recipe.fame
+        ? recipe.fame / cheapestMarketPrice.offerOrders[0].price
+        : 0;
+
       return {
         recipe,
         withFocusRecipeStats,
@@ -154,6 +174,8 @@ export function CookingRecipesPage() {
         silverPerFocus:
           (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
           effectiveFocus,
+        famePerSilverInvested,
+        famePerSilverInvestedSellCity,
       };
     });
   }, [priceData, selections, useInstantSell]);

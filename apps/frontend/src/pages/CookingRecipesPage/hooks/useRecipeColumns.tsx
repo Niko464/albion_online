@@ -45,6 +45,18 @@ export const useRecipeColumns = (
       size: 150,
       meta: { align: "right" },
     }),
+    columnHelper.accessor("famePerSilverInvested", {
+      header: "Fame per silver invested",
+      cell: ({ row }) => {
+        return (
+          <span>
+            {row.original.famePerSilverInvested.toFixed(2)} ({row.original.famePerSilverInvestedSellCity})
+          </span>
+        );
+      },
+      size: 150,
+      meta: { align: "right" },
+    }),
     columnHelper.accessor("withoutFocusRecipeStats.percentage", {
       header: "Profit %",
       cell: ({ row }) => {
