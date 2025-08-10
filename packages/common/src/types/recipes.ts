@@ -6,16 +6,10 @@ export type Recipe = {
   itemValue: number | null;
   focus: number | null;
   fame: number | null;
+  specializationBranchName: string | null;
 };
 
-export type PlayerStats = {
+export type PlayerSpecializationStats = {
   mastery: number;
-  specializations: Record<string, number>; // ex: "Chicken Omelette": 50
-};
-
-export type RecipeResult = {
-  item: string;
-  tier: number;
-  fameGained: number;
-  focusCost: number;
+  specializations: Record<string, number>; // ex: "Pie": 50
 };

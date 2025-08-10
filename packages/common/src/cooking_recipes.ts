@@ -1,24 +1,6 @@
 import { Recipe } from "./types";
 
-export const test = [
-  {
-    recipeId: "T3_MEAL_PIE_FISH",
-    tier: 3,
-    quantity: 1,
-    ingredients: [
-      { itemId: "T3_FISH_FRESHWATER_MOUNTAIN_RARE", quantity: 1 },
-      { itemId: "T3_FLOUR", quantity: 1 },
-      { itemId: "T3_EGG", quantity: 1 },
-    ],
-    nutrition: 0,
-    fame: 0,
-    focus: 0,
-  },
-];
-
-export const returnRateBlackList = [
-  'QUESTITEM_TOKEN_AVALON'
-]
+export const returnRateBlackList = ["QUESTITEM_TOKEN_AVALON"];
 
 export const allCookingRecipes: Recipe[] = [
   // {
@@ -85,6 +67,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 64,
     fame: 480,
     focus: 56,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T1_MEAL_SOUP_FISH",
@@ -97,6 +80,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 77,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T2_MEAL_SALAD",
@@ -109,6 +93,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 64,
     fame: 480,
     focus: 56,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T2_MEAL_SALAD_FISH",
@@ -125,6 +110,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 77,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T3_MEAL_SOUP",
@@ -134,6 +120,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 192,
     fame: 1400,
     focus: 168,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T3_MEAL_SOUP_FISH",
@@ -154,6 +141,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 120,
     focus: 231,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T3_MEAL_OMELETTE",
@@ -167,6 +155,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 56,
     fame: 180,
     focus: 52,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T3_MEAL_OMELETTE_FISH",
@@ -183,6 +172,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 77,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T3_MEAL_OMELETTE_AVALON",
@@ -200,6 +190,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 120,
     fame: 180,
     focus: 52,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T3_MEAL_PIE",
@@ -213,6 +204,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 56,
     fame: 180,
     focus: 53,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T3_MEAL_PIE_FISH",
@@ -226,6 +218,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 81,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T3_MEAL_ROAST",
@@ -239,6 +232,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 64,
     fame: 240,
     focus: 58,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T3_MEAL_ROAST_FISH",
@@ -252,6 +246,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 77,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T4_MEAL_SALAD",
@@ -264,6 +259,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 192,
     fame: 1400,
     focus: 168,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T4_MEAL_SALAD_FISH",
@@ -278,6 +274,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 120,
     focus: 231,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T4_MEAL_STEW",
@@ -291,6 +288,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 64,
     fame: 240,
     focus: 61,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T4_MEAL_STEW_FISH",
@@ -304,6 +302,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 77,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T4_MEAL_STEW_AVALON",
@@ -318,6 +317,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 128,
     fame: 240,
     focus: 58,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T4_MEAL_SANDWICH",
@@ -331,6 +331,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 56,
     fame: 180,
     focus: 55,
+    specializationBranchName: "Sandwich",
   },
 
   {
@@ -345,6 +346,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 90,
     fame: 60,
     focus: 81,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T4_MEAL_SANDWICH_AVALON",
@@ -359,6 +361,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 120,
     fame: 180,
     focus: 55,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T5_MEAL_SOUP",
@@ -368,6 +371,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 576,
     fame: 4300,
     focus: 504,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T5_MEAL_SOUP_FISH",
@@ -382,6 +386,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 360,
     focus: 672,
+    specializationBranchName: "Soup",
   },
   {
     recipeId: "T5_MEAL_OMELETTE",
@@ -395,6 +400,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 168,
     fame: 540,
     focus: 155,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T5_MEAL_OMELETTE_FISH",
@@ -409,6 +415,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 180,
     focus: 225,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T5_MEAL_OMELETTE_AVALON",
@@ -423,6 +430,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 360,
     fame: 540,
     focus: 155,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T5_MEAL_PIE",
@@ -437,6 +445,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 192,
     fame: 720,
     focus: 180,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T5_MEAL_PIE_FISH",
@@ -451,6 +460,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 180,
     focus: 225,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T5_MEAL_ROAST",
@@ -464,6 +474,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 192,
     fame: 720,
     focus: 176,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T5_MEAL_ROAST_FISH",
@@ -478,6 +489,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 180,
     focus: 225,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T6_MEAL_SALAD",
@@ -490,6 +502,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 576,
     fame: 4300,
     focus: 504,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T6_MEAL_SALAD_FISH",
@@ -504,6 +517,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 360,
     focus: 672,
+    specializationBranchName: "Salad",
   },
   {
     recipeId: "T6_MEAL_STEW",
@@ -517,6 +531,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 192,
     fame: 720,
     focus: 184,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T6_MEAL_STEW_FISH",
@@ -531,6 +546,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 180,
     focus: 225,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T6_MEAL_STEW_AVALON",
@@ -545,6 +561,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 384,
     fame: 120,
     focus: 176,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T6_MEAL_SANDWICH",
@@ -558,6 +575,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 168,
     fame: 540,
     focus: 165,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T6_MEAL_SANDWICH_FISH",
@@ -572,6 +590,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 260,
     fame: 180,
     focus: 231,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T6_MEAL_SANDWICH_AVALON",
@@ -586,6 +605,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 360,
     fame: 540,
     focus: 165,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T7_MEAL_OMELETTE",
@@ -599,6 +619,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 504,
     fame: 1600,
     focus: 464,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T7_MEAL_OMELETTE_FISH",
@@ -613,6 +634,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 360,
     focus: 672,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T7_MEAL_OMELETTE_AVALON",
@@ -627,6 +649,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 1080,
     fame: 1600,
     focus: 464,
+    specializationBranchName: "Omelette",
   },
   {
     recipeId: "T7_MEAL_PIE",
@@ -641,6 +664,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 576,
     fame: 2200,
     focus: 540,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T7_MEAL_PIE_FISH",
@@ -655,6 +679,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 360,
     focus: 672,
+    specializationBranchName: "Pie",
   },
   {
     recipeId: "T7_MEAL_ROAST",
@@ -668,6 +693,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 576,
     fame: 2200,
     focus: 528,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T7_MEAL_ROAST_FISH",
@@ -682,6 +708,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 540,
     focus: 652,
+    specializationBranchName: "Roast",
   },
   {
     recipeId: "T8_MEAL_STEW",
@@ -695,6 +722,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 576,
     fame: 2200,
     focus: 551,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T8_MEAL_STEW_FISH",
@@ -709,6 +737,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 540,
     focus: 652,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T8_MEAL_STEW_AVALON",
@@ -723,6 +752,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 1152,
     fame: 2200,
     focus: 528,
+    specializationBranchName: "Stew",
   },
   {
     recipeId: "T8_MEAL_SANDWICH",
@@ -736,6 +766,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 504,
     fame: 1600,
     focus: 494,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T8_MEAL_SANDWICH_FISH",
@@ -750,6 +781,7 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 750,
     fame: 540,
     focus: 672,
+    specializationBranchName: "Sandwich",
   },
   {
     recipeId: "T8_MEAL_SANDWICH_AVALON",
@@ -764,5 +796,6 @@ export const allCookingRecipes: Recipe[] = [
     itemValue: 1080,
     fame: 1600,
     focus: 494,
+    specializationBranchName: "Sandwich",
   },
 ];

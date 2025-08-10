@@ -276,7 +276,7 @@ def take_screenshot_and_detect_price():
         price_region = full_screenshot.crop(price_crop_box)
 
         # Perform OCR on cropped images
-        text1 = pytesseract.image_to_string(name_region, config='--psm 6').strip()
+        text1 = pytesseract.image_to_string(name_region, config='--psm 6').strip().replace('\n', " ")
         text2 = pytesseract.image_to_string(price_region, config='--psm 6').strip()
 
         return text1, text2.replace("\n", " ")

@@ -9,7 +9,7 @@ import {
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { renderMarketSelect } from "./renderMarketSelect";
 import { flexRender } from "@tanstack/react-table";
-import type { RecipeRowData, RecipeStats } from "@/utils/types";
+import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "./renderItemImage";
 import type { ColumnDef } from "@tanstack/react-table";
 

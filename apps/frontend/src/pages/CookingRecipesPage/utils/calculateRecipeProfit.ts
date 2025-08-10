@@ -11,7 +11,7 @@ export const calculateRecipeProfit = (
   pricePer100Nutrition: number,
   withFocus: boolean
 ): RecipeStats => {
-  const recipeCost = calculateRecipeCost(
+  const { totalCost: recipeCost, recipeCostDetails } = calculateRecipeCost(
     recipe,
     priceData,
     selections,
@@ -29,15 +29,17 @@ export const calculateRecipeProfit = (
       profit: -recipeCost,
       percentage: -100,
       recipeCost: recipeCost,
+      recipeCostDetails,
     };
   }
   const sellPrice = marketData.price;
-  const marketTax = 1 - 0.065; // 6.5%
-  const profit = sellPrice * recipe.quantity * marketTax - recipeCost;
+  const marketTax = 0.065; // 6.5%
+  const profit = sellPrice * recipe.quantity * (1 - marketTax) - recipeCost;
   const percentage = recipeCost > 0 ? (profit / recipeCost) * 100 : 0;
   return {
     profit,
     percentage,
     recipeCost: recipeCost,
+    recipeCostDetails: recipeCostDetails,
   };
 };

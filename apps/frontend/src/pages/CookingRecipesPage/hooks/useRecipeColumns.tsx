@@ -3,6 +3,11 @@ import type { GetPricesResponse } from "@albion_online/common";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "../components/renderItemImage";
 import { renderMarketSelect } from "../components/renderMarketSelect";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
@@ -25,7 +30,7 @@ export const useRecipeColumns = (
           )}
         </div>
       ),
-      size: 200,
+      size: 110,
       meta: { align: "left" },
     }),
     columnHelper.accessor("oldestAge", {
@@ -34,28 +39,68 @@ export const useRecipeColumns = (
         row.original.oldestAge
           ? `${row.original.oldestAge} min ago`
           : "No data",
-      size: 120,
-      meta: { align: "center" },
+      size: 110,
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withoutFocusRecipeStats.recipeCost", {
       header: "Recipe Cost",
-      cell: ({ row }) =>
-        row.original.withoutFocusRecipeStats.recipeCost.toLocaleString() +
-        " Silver",
-      size: 150,
-      meta: { align: "right" },
+      cell: ({ row }) => {
+        return (
+          <Tooltip>
+            <TooltipTrigger>
+              <span>
+                {Math.round(
+                  row.original.withoutFocusRecipeStats.recipeCost
+                ).toLocaleString() + " Silver"}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="flex flex-col">
+              <span>
+                Nutrition:{" "}
+                {Math.round(
+                  row.original.withoutFocusRecipeStats.recipeCostDetails
+                    .nutritionCost
+                ).toLocaleString()}
+              </span>
+              <span>
+                Not returnable ingredients:{" "}
+                {Math.round(
+                  row.original.withoutFocusRecipeStats.recipeCostDetails
+                    .blacklistedIngredientsCost
+                ).toLocaleString()}
+              </span>
+              <span>
+                Returnable ingredients:{" "}
+                {Math.round(
+                  row.original.withoutFocusRecipeStats.recipeCostDetails
+                    .returnableIngredientsCost
+                ).toLocaleString()}
+              </span>
+              <span>
+                Total:{" "}
+                {Math.round(
+                  row.original.withoutFocusRecipeStats.recipeCostDetails.total
+                ).toLocaleString()}
+              </span>
+            </TooltipContent>
+          </Tooltip>
+        );
+      },
+      size: 120,
+      meta: { align: "left" },
     }),
     columnHelper.accessor("famePerSilverInvested", {
-      header: "Fame per silver invested",
+      header: "Fame/silver (buying item)",
       cell: ({ row }) => {
         return (
           <span>
-            {row.original.famePerSilverInvested.toFixed(2)} ({row.original.famePerSilverInvestedSellCity})
+            {row.original.famePerSilverInvested.toFixed(2)} (
+            {row.original.famePerSilverInvestedSellCity})
           </span>
         );
       },
       size: 150,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withoutFocusRecipeStats.percentage", {
       header: "Profit %",
@@ -70,7 +115,7 @@ export const useRecipeColumns = (
         );
       },
       size: 120,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withoutFocusRecipeStats.profit", {
       header: "Profit (Silver)",
@@ -83,15 +128,16 @@ export const useRecipeColumns = (
         );
       },
       size: 150,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withFocusRecipeStats.recipeCost", {
       header: "Recipe Cost (with focus)",
       cell: ({ row }) =>
-        row.original.withFocusRecipeStats.recipeCost.toLocaleString() +
-        " Silver",
+        Math.round(
+          row.original.withFocusRecipeStats.recipeCost
+        ).toLocaleString() + " Silver",
       size: 150,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withFocusRecipeStats.percentage", {
       header: "Profit % (with focus)",
@@ -106,7 +152,7 @@ export const useRecipeColumns = (
         );
       },
       size: 120,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
     columnHelper.accessor("withFocusRecipeStats.profit", {
       header: "Profit (with focus)",
@@ -119,13 +165,44 @@ export const useRecipeColumns = (
         );
       },
       size: 150,
-      meta: { align: "right" },
+      meta: { align: "left" },
     }),
-    columnHelper.accessor("silverPerFocus", {
-      header: "Silver per Focus",
-      cell: ({ row }) => row.original.silverPerFocus.toLocaleString(),
+    columnHelper.accessor("silverPerFocusWithoutSpecialization", {
+      header: "Base Silver/focus",
+      cell: ({ row }) => {
+        return (
+          <span>
+            {row.original.silverPerFocusWithoutSpecialization.toFixed(2)}
+          </span>
+        );
+      },
       size: 120,
-      meta: { align: "right" },
+      meta: { align: "left" },
+    }),
+    columnHelper.accessor("silverPerFocusWithSpecialization", {
+      header: "Silver/focus (with spec)",
+      cell: ({ row }) => {
+        return (
+          <Tooltip>
+            <TooltipTrigger>
+              <span>
+                {row.original.silverPerFocusWithSpecialization.toFixed(2)}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="flex flex-col">
+              <span>
+                Base focus cost: {row.original.recipe.focus?.toFixed(2)}
+              </span>
+              <span>
+                Spec focus cost:{" "}
+                {row.original.focusCostWithSpecialization.toFixed(2)}
+              </span>
+            </TooltipContent>
+          </Tooltip>
+        );
+      },
+      size: 120,
+      meta: { align: "left" },
     }),
     columnHelper.display({
       id: "sellCity",

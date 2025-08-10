@@ -12,7 +12,10 @@ import { useCustomPrices } from "@/hooks/useCustomPrices";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { getBestMarket } from "./getBestMarket";
-import { allCookingRecipes } from "@albion_online/common";
+import {
+  allCookingRecipes,
+  type PlayerSpecializationStats,
+} from "@albion_online/common";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -34,7 +37,32 @@ import type { RecipeRowData } from "@/utils/types";
 import { calculateRecipeProfit } from "./utils/calculateRecipeProfit";
 import { getOldestComponentAge } from "./utils/getOldestComponentAge";
 import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
-import { getMarketData } from "./utils/getMarketData";
+
+const playerSpec: PlayerSpecializationStats = {
+  mastery: 100,
+  // specializations: {
+  //   Soup: 28,
+  //   Salad: 0,
+  //   Pie: 31,
+  //   Roast: 18,
+  //   Omelette: 2,
+  //   Stew: 18,
+  //   Sandwich: 3,
+  //   Ingredient: 0,
+  //   Butcher: 0,
+  // },
+  specializations: {
+    Soup: 100,
+    Salad: 100,
+    Pie: 100,
+    Roast: 100,
+    Omelette: 100,
+    Stew: 100,
+    Sandwich: 100,
+    Ingredient: 100,
+    Butcher: 100,
+  },
+};
 
 // -------------------- Main Component --------------------
 export function CookingRecipesPage() {
@@ -119,7 +147,7 @@ export function CookingRecipesPage() {
   }, []);
 
   const data: RecipeRowData[] = useMemo(() => {
-    if (!priceData) return [];
+    if (!priceData || !initialized) return [];
     return allCookingRecipes.map((recipe) => {
       const withoutFocusRecipeStats = calculateRecipeProfit(
         recipe,
@@ -127,7 +155,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        900,
+        370,
         false
       );
       const withFocusRecipeStats = calculateRecipeProfit(
@@ -136,7 +164,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        900,
+        370,
         true
       );
       const oldestAge = getOldestComponentAge(
@@ -145,7 +173,14 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell
       );
-      const effectiveFocus = getEffectiveFocusCost(recipe);
+      const effectiveFocusWithoutSpecialization = getEffectiveFocusCost(
+        recipe,
+        null
+      );
+      const effectiveFocusWithSpecialization = getEffectiveFocusCost(
+        recipe,
+        playerSpec
+      );
 
       // NOTE: the place where I can buy the recipe the cheapest at
       const cheapestMarketPrice = getBestMarket(
@@ -171,14 +206,18 @@ export function CookingRecipesPage() {
         withFocusRecipeStats,
         withoutFocusRecipeStats,
         oldestAge,
-        silverPerFocus:
+        silverPerFocusWithoutSpecialization:
           (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
-          effectiveFocus,
+          effectiveFocusWithoutSpecialization,
+        silverPerFocusWithSpecialization:
+          (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
+          effectiveFocusWithSpecialization,
+        focusCostWithSpecialization: effectiveFocusWithSpecialization,
         famePerSilverInvested,
         famePerSilverInvestedSellCity,
-      };
+      } satisfies RecipeRowData;
     });
-  }, [priceData, selections, useInstantSell]);
+  }, [priceData, initialized, selections, useInstantSell]);
 
   const columns = useRecipeColumns(
     itemTranslations,
@@ -241,14 +280,12 @@ export function CookingRecipesPage() {
           <Table className="w-full table-fixed">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
+                <TableRow key={headerGroup.id} className="flex items-center">
                   {headerGroup.headers.map((header) => (
                     <TableHead
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
-                      className={`cursor-pointer select-none ${
-                        header.column.columnDef.meta?.align || "left"
-                      }`}
+                      className={`cursor-pointer select-none overflow-hidden`}
                       style={{
                         width: header.column.getSize(),
                         minWidth: header.column.getSize(),
@@ -276,7 +313,6 @@ export function CookingRecipesPage() {
                         <TableCell
                           key={index}
                           style={{ width: column.size, minWidth: column.size }}
-                          className={column.meta?.align || "left"}
                         >
                           <Skeleton className="w-full h-6" />
                         </TableCell>
