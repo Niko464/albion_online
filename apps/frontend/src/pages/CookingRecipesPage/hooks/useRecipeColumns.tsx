@@ -89,24 +89,27 @@ export const useRecipeColumns = (
       size: 120,
       meta: { align: "left" },
     }),
-    columnHelper.accessor("famePerSilverInvested", {
-      header: "Fame/silver (buying item)",
-      cell: ({ row }) => {
-        return (
-          <span>
-            {row.original.famePerSilverInvested.toFixed(2)} (
-            {row.original.famePerSilverInvestedSellCity})
-          </span>
-        );
-      },
-      size: 150,
-      meta: { align: "left" },
-    }),
+
     columnHelper.accessor("withoutFocusRecipeStats.percentage", {
       header: "Profit %",
       cell: ({ row }) => {
         const profit = row.original.withoutFocusRecipeStats.profit;
         const value = row.original.withoutFocusRecipeStats.percentage;
+        const sign = value >= 0 ? "+" : "-";
+        return (
+          <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
+            {`${sign}${Math.abs(value).toFixed(2)}%`}
+          </span>
+        );
+      },
+      size: 120,
+      meta: { align: "left" },
+    }),
+    columnHelper.accessor("withFocusRecipeStats.percentage", {
+      header: "Profit % (with focus)",
+      cell: ({ row }) => {
+        const profit = row.original.withFocusRecipeStats.profit;
+        const value = row.original.withFocusRecipeStats.percentage;
         const sign = value >= 0 ? "+" : "-";
         return (
           <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
@@ -130,30 +133,16 @@ export const useRecipeColumns = (
       size: 150,
       meta: { align: "left" },
     }),
-    columnHelper.accessor("withFocusRecipeStats.recipeCost", {
-      header: "Recipe Cost (with focus)",
-      cell: ({ row }) =>
-        Math.round(
-          row.original.withFocusRecipeStats.recipeCost
-        ).toLocaleString() + " Silver",
-      size: 150,
-      meta: { align: "left" },
-    }),
-    columnHelper.accessor("withFocusRecipeStats.percentage", {
-      header: "Profit % (with focus)",
-      cell: ({ row }) => {
-        const profit = row.original.withFocusRecipeStats.profit;
-        const value = row.original.withFocusRecipeStats.percentage;
-        const sign = value >= 0 ? "+" : "-";
-        return (
-          <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
-            {`${sign}${Math.abs(value).toFixed(2)}%`}
-          </span>
-        );
-      },
-      size: 120,
-      meta: { align: "left" },
-    }),
+    // columnHelper.accessor("withFocusRecipeStats.recipeCost", {
+    //   header: "Recipe Cost (with focus)",
+    //   cell: ({ row }) =>
+    //     Math.round(
+    //       row.original.withFocusRecipeStats.recipeCost
+    //     ).toLocaleString() + " Silver",
+    //   size: 150,
+    //   meta: { align: "left" },
+    // }),
+
     columnHelper.accessor("withFocusRecipeStats.profit", {
       header: "Profit (with focus)",
       cell: ({ row }) => {
@@ -202,6 +191,27 @@ export const useRecipeColumns = (
         );
       },
       size: 120,
+      meta: { align: "left" },
+    }),
+    columnHelper.accessor("famePerSilverInvested", {
+      header: "Fame/silver (buying item)",
+      cell: ({ row }) => {
+        return (
+          <span>
+            {row.original.famePerSilverInvested.toFixed(2)} (
+            {row.original.famePerSilverInvestedSellCity})
+          </span>
+        );
+      },
+      size: 150,
+      meta: { align: "left" },
+    }),
+    columnHelper.accessor("recipe.fame", {
+      header: "Fame",
+      cell: ({ row }) => {
+        return <span>{row.original.recipe.fame?.toLocaleString()}</span>;
+      },
+      size: 100,
       meta: { align: "left" },
     }),
     columnHelper.display({

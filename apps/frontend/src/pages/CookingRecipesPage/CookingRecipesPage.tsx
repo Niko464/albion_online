@@ -40,28 +40,28 @@ import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
-  // specializations: {
-  //   Soup: 28,
-  //   Salad: 0,
-  //   Pie: 31,
-  //   Roast: 18,
-  //   Omelette: 2,
-  //   Stew: 18,
-  //   Sandwich: 3,
-  //   Ingredient: 0,
-  //   Butcher: 0,
-  // },
   specializations: {
-    Soup: 100,
-    Salad: 100,
-    Pie: 100,
-    Roast: 100,
-    Omelette: 100,
-    Stew: 100,
-    Sandwich: 100,
-    Ingredient: 100,
-    Butcher: 100,
+    Soup: 28,
+    Salad: 0,
+    Pie: 31,
+    Roast: 18,
+    Omelette: 2,
+    Stew: 20,
+    Sandwich: 6,
+    Ingredient: 0,
+    Butcher: 0,
   },
+  // specializations: {
+  //   Soup: 100,
+  //   Salad: 100,
+  //   Pie: 100,
+  //   Roast: 100,
+  //   Omelette: 100,
+  //   Stew: 100,
+  //   Sandwich: 100,
+  //   Ingredient: 100,
+  //   Butcher: 100,
+  // },
 };
 
 // -------------------- Main Component --------------------
@@ -155,7 +155,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        370,
+        900,
         false
       );
       const withFocusRecipeStats = calculateRecipeProfit(
@@ -164,7 +164,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        370,
+        900,
         true
       );
       const oldestAge = getOldestComponentAge(
