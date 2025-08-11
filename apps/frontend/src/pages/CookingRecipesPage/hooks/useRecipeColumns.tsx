@@ -8,13 +8,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
 export const useRecipeColumns = (
   itemTranslations: Record<string, string>,
   priceData: GetPricesResponse | undefined,
-  selections: Record<string, string>,
+  selections: CitySelectionsType,
   useInstantSell: boolean,
   handleSelectionChange: (itemId: string, value: string) => void
 ): ColumnDef<RecipeRowData, any>[] => {

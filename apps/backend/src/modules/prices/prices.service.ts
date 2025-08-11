@@ -6,7 +6,7 @@ import { getLocationName } from '@/utils/getLocationName';
 
 import allRessourceIds from '../../watch_list.json';
 import axios from 'axios';
-import { ABD_ENDPOINT, allCities } from '@albion_online/common';
+import { ABD_ENDPOINT } from '@albion_online/common';
 import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
 import { OCRPriceUpdate } from '@/utils/zod/OCRPriceUpdateSchema';
 
@@ -16,7 +16,7 @@ export class PricesService {
 
   async getPrices(dto: GetPricesDto): Promise<GetPricesResponse> {
     const itemParam = dto.itemIds.join(',');
-    const cityParam = allCities.join(',');
+    const cityParam = dto.cities.join(',');
     const abdPrices = await axios.get<ABDGetPricesResponse>(
       `${ABD_ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`,
     );
@@ -27,7 +27,7 @@ export class PricesService {
           in: dto.itemIds,
         },
         locationName: {
-          in: allCities,
+          in: dto.cities,
         },
         enchantmentLevel: 0,
         quality: 1,
@@ -39,7 +39,7 @@ export class PricesService {
           in: dto.itemIds,
         },
         location: {
-          in: allCities,
+          in: dto.cities,
         },
       },
     });
@@ -101,7 +101,7 @@ export class PricesService {
       };
 
       // NOTE: now any market that we don't have data for will be filled with ABD data
-      for (const city of allCities) {
+      for (const city of dto.cities) {
         const cityPrices = marketsToPush.markets.find((el) =>
           el.locationName.includes(city),
         );
@@ -156,7 +156,7 @@ export class PricesService {
         });
       }
       // NOTE: here we check if ocr has fresher prices than ABD or prisma
-      for (const city of allCities) {
+      for (const city of dto.cities) {
         const ocrPriceData = ocrPrices.find(
           (el) => el.itemId === itemId && el.location === city,
         );

@@ -4,6 +4,7 @@ import {
   type Recipe,
 } from "@albion_online/common";
 import { getMarketData } from "./getMarketData";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 export type RecipeCostDetails = {
   total: number;
@@ -15,7 +16,7 @@ export type RecipeCostDetails = {
 export const calculateRecipeCost = (
   recipe: Recipe,
   priceData: GetPricesResponse,
-  selections: Record<string, string>,
+  selections: CitySelectionsType,
   pricePer100Nutrition: number,
   usingFocus: boolean
 ) => {
@@ -28,23 +29,27 @@ export const calculateRecipeCost = (
   let blacklistedIngredientsCost = 0;
 
   for (const ingredient of recipe.ingredients) {
+    const bestCity = selections[ingredient.itemId];
+    if (!bestCity) {
+      // NOTE: we skip it because we will show in UI that we're missing prices
+      continue;
+    }
     const marketData = getMarketData(
       ingredient.itemId,
       priceData,
       false,
-      selections[ingredient.itemId]
+      bestCity
     );
-    if (!marketData) {
-      console.log("DEBUG ", priceData, selections[ingredient.itemId]);
-      throw new Error(
-        `No market data found for ingredient ${ingredient.itemId}`
-      );
-    }
+    // if (!marketData) {
+    //   throw new Error(
+    //     `No market data found for ingredient ${ingredient.itemId}`
+    //   );
+    // }
 
     if (returnRateBlackList.includes(ingredient.itemId)) {
-      blacklistedIngredientsCost += marketData.price * ingredient.quantity;
+      blacklistedIngredientsCost += (marketData?.price || 0) * ingredient.quantity;
     } else {
-      returnableIngredientsCost += marketData.price * ingredient.quantity;
+      returnableIngredientsCost += (marketData?.price || 0) * ingredient.quantity;
     }
   }
 

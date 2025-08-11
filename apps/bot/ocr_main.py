@@ -80,7 +80,26 @@ watch_list = [
             #NOTE: I don't care about Baby animals
             [3],
             #NOTE: I don't care about Animals
-            [3],
+            [{
+                "tier": 3,
+                "names": ["chicken"]
+            }, {
+                "tier": 4,
+                "names": ["goat"]
+            },
+            {
+                "tier": 5,
+                "names": ["Goose"]},
+            {
+                "tier": 6,
+                "names": ["Sheep"]},
+            {
+                "tier": 7,
+                "names": ["Pig"]},
+            {
+                "tier": 8,
+                "names": ["Cow"]},
+            ],
             [3, 5],
             [4, 6, 8]
         ]

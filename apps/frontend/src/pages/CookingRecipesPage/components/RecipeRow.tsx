@@ -12,17 +12,20 @@ import { flexRender } from "@tanstack/react-table";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "./renderItemImage";
 import type { ColumnDef } from "@tanstack/react-table";
+import { cn } from "@/utils/utils";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 interface RecipeRowProps {
   recipe: Recipe;
   priceData: GetPricesResponse;
-  selections: Record<string, string>;
+  selections: CitySelectionsType;
   expanded: boolean;
   toggleRow: (recipeId: string) => void;
   handleSelectionChange: (itemId: string, value: string) => void;
   itemTranslations: Record<string, string>;
   rowData: RecipeRowData;
   columns: ColumnDef<RecipeRowData>[];
+  missingPriceDataItemIds: string[];
 }
 
 export const RecipeRow = memo(
@@ -36,7 +39,10 @@ export const RecipeRow = memo(
     rowData,
     itemTranslations,
     columns,
+    missingPriceDataItemIds
   }: RecipeRowProps) => {
+    const itemIds = [...recipe.recipeId, ...recipe.ingredients.flatMap(ing => ing.itemId)];
+    const isMissingAnyPriceData = itemIds.some(id => missingPriceDataItemIds.includes(id));
     return (
       <Collapsible
         key={recipe.recipeId}
@@ -49,7 +55,7 @@ export const RecipeRow = memo(
           }
         }}
       >
-        <TableRow>
+        <TableRow className={cn(isMissingAnyPriceData && "opacity-25")}>
           {columns.map((column) => {
             // Safely access cell value for accessor columns
             const isAccessorColumn =

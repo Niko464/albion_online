@@ -5,6 +5,11 @@ export class GetPricesDto {
   @ArrayNotEmpty()
   @IsString({ each: true })
   itemIds!: string[];
+
+  @IsArray()
+  @ArrayNotEmpty()
+  @IsString({ each: true })
+  cities!: string[];
 }
 
 export type Order = {

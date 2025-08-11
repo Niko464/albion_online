@@ -1,12 +1,12 @@
 export const ABD_ENDPOINT = "https://europe.albion-online-data.com"
 
 export const allCities: string[] = [
-  // "Thetford",
+  "Thetford",
   "Lymhurst",
   "Bridgewatch",
   "Martlock",
-  // "FortSterling",
-  // "Caerleon",
+  "FortSterling",
+  "Caerleon",
   // "Brecilien",
 ];
 

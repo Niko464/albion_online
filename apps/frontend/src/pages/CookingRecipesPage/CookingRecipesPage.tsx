@@ -13,6 +13,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { getBestMarket } from "./getBestMarket";
 import {
+  allCities,
   allCookingRecipes,
   type PlayerSpecializationStats,
 } from "@albion_online/common";
@@ -64,6 +65,8 @@ const playerSpec: PlayerSpecializationStats = {
   // },
 };
 
+export type CitySelectionsType = Record<string, string | null>;
+
 // -------------------- Main Component --------------------
 export function CookingRecipesPage() {
   const ingredientIds = useMemo(() => {
@@ -98,39 +101,48 @@ export function CookingRecipesPage() {
     }, {} as Record<string, string>);
   }, [allIds]);
 
-  const { data: priceData, isLoading, error } = useCustomPrices(allIds);
+  const [selectedCities, setSelectedCities] = useState<string[]>([
+    "Bridgewatch",
+  ]);
+  const {
+    data: priceData,
+    isLoading,
+    error,
+  } = useCustomPrices(allIds, selectedCities);
 
-  const [selections, setSelections] = useState<Record<string, string>>({});
+  const [selections, setSelections] = useState<CitySelectionsType>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
-  const [initialized, setInitialized] = useState(false);
+  const [missingPriceDataItemIds, setMissingPriceDataItemIds] = useState<
+    string[] | null
+  >(null);
 
   const initializeSelections = useCallback(() => {
-    const initial: Record<string, string> = {};
+    const missingPriceDataItemIds: string[] = [];
+    const initial: CitySelectionsType = {};
     [...new Set(ingredientIds)].forEach((itemId) => {
       const bestMarket = getBestMarket(itemId, priceData, false);
       if (!bestMarket) {
-        throw new Error(`No market data found for ingredient ${itemId}`);
+        missingPriceDataItemIds.push(itemId);
       }
-      initial[itemId] = bestMarket ? bestMarket.locationName : "";
+      initial[itemId] = bestMarket ? bestMarket.locationName : null;
     });
     [...new Set(recipeIds)].forEach((itemId) => {
       const bestMarket = getBestMarket(itemId, priceData, true);
       if (!bestMarket) {
-        throw new Error(`No market data found for recipe ${itemId}`);
+        missingPriceDataItemIds.push(itemId);
       }
-      initial[itemId] = bestMarket ? bestMarket.locationName : "";
+      initial[itemId] = bestMarket ? bestMarket.locationName : null;
     });
-    console.log("Initialized selections:", initial);
+    setMissingPriceDataItemIds(missingPriceDataItemIds);
     return initial;
   }, [priceData, ingredientIds, recipeIds]);
 
   useEffect(() => {
-    if (priceData && !initialized) {
+    if (priceData && !missingPriceDataItemIds) {
       setSelections(initializeSelections());
-      setInitialized(true);
     }
-  }, [priceData, initialized, initializeSelections]);
+  }, [priceData, missingPriceDataItemIds, initializeSelections]);
 
   const handleSelectionChange = useCallback((itemId: string, value: string) => {
     setSelections((prev) => ({
@@ -146,10 +158,8 @@ export function CookingRecipesPage() {
     }));
   }, []);
 
-
-
   const data: RecipeRowData[] = useMemo(() => {
-    if (!priceData || !initialized) return [];
+    if (!priceData || !missingPriceDataItemIds) return [];
     return allCookingRecipes.map((recipe) => {
       const withoutFocusRecipeStats = calculateRecipeProfit(
         recipe,
@@ -219,12 +229,14 @@ export function CookingRecipesPage() {
         famePerSilverInvestedSellCity,
       } satisfies RecipeRowData;
     });
-  }, [priceData, initialized, selections, useInstantSell]);
+  }, [priceData, missingPriceDataItemIds, selections, useInstantSell]);
 
   const filteredData = useMemo(() => {
     return data;
-    return data.filter((row) => row.recipe.ingredients.find((el) => el.itemId === 'T5_MEAT'))
-  }, [data])
+    return data.filter((row) =>
+      row.recipe.ingredients.find((el) => el.itemId === "T5_MEAT")
+    );
+  }, [data]);
 
   const columns = useRecipeColumns(
     itemTranslations,
@@ -245,7 +257,7 @@ export function CookingRecipesPage() {
     getSortedRowModel: getSortedRowModel(),
   });
 
-  if (!priceData || isLoading || !initialized) {
+  if (!priceData || isLoading || !missingPriceDataItemIds) {
     return (
       <div className="p-6">
         <h1 className="text-3xl font-bold mb-4">Cooking Recipes</h1>
@@ -267,13 +279,14 @@ export function CookingRecipesPage() {
       <div className="p-6">
         <div className="flex items-center gap-4 mb-6">
           <h1 className="text-3xl font-bold">Cooking Recipes</h1>
-          <Label className="flex items-center gap-2">
+          {/* <Label className="flex items-center gap-2">
             <Checkbox
               checked={useInstantSell}
               onCheckedChange={(checked) => setUseInstantSell(!!checked)}
             />
             <span>Use Instant Sell</span>
-          </Label>
+          </Label> */}
+          
           <MarketPricesSheet
             handleSelectionChange={handleSelectionChange}
             selections={selections}
@@ -282,6 +295,25 @@ export function CookingRecipesPage() {
             useInstantSell={useInstantSell}
             recipeIds={recipeIds}
           />
+          <div className="flex flex-row gap-4">
+            {allCities.map((city) => (
+              <div key={city} className="flex justify-center items-center gap-1">
+                <Checkbox
+                  checked={selectedCities.includes(city)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setSelectedCities((prev) => [...prev, city]);
+                    } else {
+                      setSelectedCities((prev) =>
+                        prev.filter((c) => c !== city)
+                      );
+                    }
+                  }}
+                />
+                <span>{city}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <Card className="overflow-x-auto rounded-xl border shadow-sm">
           <Table className="w-full table-fixed">
@@ -340,6 +372,7 @@ export function CookingRecipesPage() {
                         rowData={row.original}
                         itemTranslations={itemTranslations}
                         columns={columns}
+                        missingPriceDataItemIds={missingPriceDataItemIds}
                       />
                     ))}
             </TableBody>

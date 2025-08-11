@@ -2,11 +2,12 @@ import type { RecipeStats } from "@/utils/types";
 import type { GetPricesResponse, Recipe } from "@albion_online/common";
 import { calculateRecipeCost } from "./calculateRecipeCost";
 import { getMarketData } from "./getMarketData";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 export const calculateRecipeProfit = (
   recipe: Recipe,
   priceData: GetPricesResponse,
-  selections: Record<string, string>,
+  selections: CitySelectionsType,
   useInstantSell: boolean,
   pricePer100Nutrition: number,
   withFocus: boolean

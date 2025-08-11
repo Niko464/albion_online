@@ -1,10 +1,11 @@
 import type { GetPricesResponse, Recipe } from "@albion_online/common";
 import { getMarketData } from "./getMarketData";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 export const getOldestComponentAge = (
   recipe: Recipe,
   priceData: GetPricesResponse,
-  selections: Record<string, string>,
+  selections: CitySelectionsType,
   useInstantSell: boolean
 ): number => {
   const ages: number[] = [];
@@ -16,11 +17,13 @@ export const getOldestComponentAge = (
   );
   if (recipeMarket) ages.push(recipeMarket.minutesAgo);
   recipe.ingredients.forEach((ingredient) => {
+    const bestCity = selections[ingredient.itemId];
+    if (!bestCity) return;
     const marketData = getMarketData(
       ingredient.itemId,
       priceData,
       false,
-      selections[ingredient.itemId] || ""
+      bestCity
     );
     if (marketData) ages.push(marketData.minutesAgo);
   });

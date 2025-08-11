@@ -22,11 +22,12 @@ import {
 import { getMinutesAgo } from "@/utils/getMinutesAgo";
 import type { GetPricesResponse } from "@albion_online/common";
 import { memo, useCallback, useMemo } from "react";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 type Props = {
   ingredientIds: string[];
   priceData: GetPricesResponse | undefined;
-  selections: Record<string, string>;
+  selections: CitySelectionsType;
   handleSelectionChange: (itemId: string, value: string) => void;
   recipeIds: string[];
   useInstantSell: boolean;
@@ -43,7 +44,7 @@ const ItemRow = memo(
   }: {
     itemId: string;
     priceData: GetPricesResponse | undefined;
-    selections: Record<string, string>;
+    selections: CitySelectionsType;
     handleSelectionChange: (itemId: string, value: string) => void;
     useInstantSell: boolean;
     isRecipe: boolean;
@@ -136,61 +137,69 @@ export function MarketPricesSheet({
   useInstantSell,
 }: Props) {
   const oldestIngredient = useMemo(() => {
-    let oldest: {
-      itemId: string;
-      minutesAgo: number;
-      location: string;
-    } | null = null;
-    [...new Set(ingredientIds)].forEach((itemId) => {
-      const selectedCity = selections[itemId];
-      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
-      const market = itemData?.markets.find(
-        (m) => m.locationName === selectedCity
-      );
-      if (market?.offerOrders?.length) {
-        const minutesAgo = getMinutesAgo(market.offerOrders[0].receivedAt);
-        if (
-          minutesAgo !== undefined &&
-          (!oldest || minutesAgo > oldest.minutesAgo)
-        ) {
-          oldest = { itemId, minutesAgo, location: selectedCity };
+    return [...new Set(ingredientIds)].reduce(
+      (oldest, itemId) => {
+        const selectedCity = selections[itemId];
+        if (!selectedCity) return oldest;
+        const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+        const market = itemData?.markets.find(
+          (m) => m.locationName === selectedCity
+        );
+        if (market?.offerOrders?.length) {
+          const minutesAgo = getMinutesAgo(market.offerOrders[0].receivedAt);
+          if (
+            minutesAgo !== undefined &&
+            (!oldest || minutesAgo > oldest.minutesAgo)
+          ) {
+            return { itemId, minutesAgo, location: selectedCity };
+          }
         }
-      }
-    });
-    return oldest;
+        return oldest;
+      },
+      null as {
+        itemId: string;
+        minutesAgo: number;
+        location: string;
+      } | null
+    );
   }, [ingredientIds, priceData, selections]);
 
   const oldestRecipe = useMemo(() => {
-    let oldest: {
-      itemId: string;
-      minutesAgo: number;
-      location: string;
-    } | null = null;
-    [...new Set(recipeIds)].forEach((itemId) => {
-      const selectedCity = selections[itemId];
-      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
-      const market = itemData?.markets.find(
-        (m) => m.locationName === selectedCity
-      );
-      if (
-        market &&
-        (useInstantSell
-          ? market.requestOrders?.length
-          : market.offerOrders?.length)
-      ) {
-        const minutesAgo = getMinutesAgo(
-          (useInstantSell ? market.requestOrders?.[0] : market.offerOrders?.[0])
-            ?.receivedAt
+    return [...new Set(recipeIds)].reduce(
+      (oldest, itemId) => {
+        const selectedCity = selections[itemId];
+        if (!selectedCity) return oldest;
+        const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+        const market = itemData?.markets.find(
+          (m) => m.locationName === selectedCity
         );
         if (
-          minutesAgo !== undefined &&
-          (!oldest || minutesAgo > oldest.minutesAgo)
+          market &&
+          (useInstantSell
+            ? market.requestOrders?.length
+            : market.offerOrders?.length)
         ) {
-          oldest = { itemId, minutesAgo, location: selectedCity };
+          const minutesAgo = getMinutesAgo(
+            (useInstantSell
+              ? market.requestOrders?.[0]
+              : market.offerOrders?.[0]
+            )?.receivedAt
+          );
+          if (
+            minutesAgo !== undefined &&
+            (!oldest || minutesAgo > oldest.minutesAgo)
+          ) {
+            oldest = { itemId, minutesAgo, location: selectedCity };
+          }
         }
-      }
-    });
-    return oldest;
+        return oldest;
+      },
+      null as {
+        itemId: string;
+        minutesAgo: number;
+        location: string;
+      } | null
+    );
   }, [recipeIds, priceData, selections, useInstantSell]);
 
   return (
@@ -205,7 +214,9 @@ export function MarketPricesSheet({
         <div className="mt-4 space-y-2">
           {oldestIngredient && (
             <div className="items-center gap-2 text-sm flex-col">
-              <span className="font-semibold">Oldest Selected Ingredient Market:</span>
+              <span className="font-semibold">
+                Oldest Selected Ingredient Market:
+              </span>
               <div className="flex items-center gap-2">
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -228,7 +239,9 @@ export function MarketPricesSheet({
           )}
           {oldestRecipe && (
             <div className="items-center gap-2 text-sm flex-col">
-              <span className="font-semibold">Oldest Selected Recipe Market:</span>
+              <span className="font-semibold">
+                Oldest Selected Recipe Market:
+              </span>
               <div className="flex items-center gap-2">
                 <Tooltip>
                   <TooltipTrigger asChild>

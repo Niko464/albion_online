@@ -7,11 +7,12 @@ import {
 } from "@/components/ui/select";
 import { getMinutesAgo } from "@/utils/getMinutesAgo";
 import type { GetPricesResponse } from "@albion_online/common";
+import type { CitySelectionsType } from "../CookingRecipesPage";
 
 export const renderMarketSelect = (
   itemId: string,
   priceData: GetPricesResponse,
-  selections: Record<string, string>,
+  selections: CitySelectionsType,
   useInstantSell: boolean,
   handleSelectionChange: (itemId: string, value: string) => void,
   placeholder: string,
