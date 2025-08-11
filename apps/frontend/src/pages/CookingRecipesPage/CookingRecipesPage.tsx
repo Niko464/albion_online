@@ -146,6 +146,8 @@ export function CookingRecipesPage() {
     }));
   }, []);
 
+
+
   const data: RecipeRowData[] = useMemo(() => {
     if (!priceData || !initialized) return [];
     return allCookingRecipes.map((recipe) => {
@@ -219,6 +221,11 @@ export function CookingRecipesPage() {
     });
   }, [priceData, initialized, selections, useInstantSell]);
 
+  const filteredData = useMemo(() => {
+    return data;
+    return data.filter((row) => row.recipe.ingredients.find((el) => el.itemId === 'T5_MEAT'))
+  }, [data])
+
   const columns = useRecipeColumns(
     itemTranslations,
     priceData,
@@ -230,7 +237,7 @@ export function CookingRecipesPage() {
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
-    data,
+    data: filteredData,
     columns,
     state: { sorting },
     onSortingChange: setSorting,

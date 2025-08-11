@@ -60,6 +60,118 @@ export const allCookingRecipes: Recipe[] = [
   //   focus: null,
   // },
   {
+    recipeId: 'T3_FLOUR',
+    tier: 3,
+    quantity: 1,
+    ingredients: [{ itemId: "T3_WHEAT", quantity: 1 }],
+    itemValue: 40,
+    fame: 30,
+    focus: 38,
+    specializationBranchName: 'Ingredient'
+  },
+  {
+    recipeId: 'T4_BUTTER',
+    tier: 4,
+    quantity: 1,
+    ingredients: [{ itemId: "T4_MILK", quantity: 1 }],
+    itemValue: 40,
+    fame: 30,
+    focus: 38,
+    specializationBranchName: 'Ingredient'
+  },
+  {
+    recipeId: 'T6_BUTTER',
+    tier: 6,
+    quantity: 1,
+    ingredients: [{ itemId: "T6_MILK", quantity: 1 }],
+    itemValue: 40,
+    fame: 30,
+    focus: 38,
+    specializationBranchName: 'Ingredient'
+  },
+  {
+    recipeId: 'T8_BUTTER',
+    tier: 8,
+    quantity: 1,
+    ingredients: [{ itemId: "T8_MILK", quantity: 1 }],
+    itemValue: 40,
+    fame: 30,
+    focus: 38,
+    specializationBranchName: 'Ingredient'
+  },
+  {
+    recipeId: 'T3_MEAT',
+    tier: 3,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T3_FARM_CHICKEN_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
+    recipeId: 'T4_MEAT',
+    tier: 4,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T4_FARM_GOAT_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
+    recipeId: 'T5_MEAT',
+    tier: 5,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T5_FARM_GOOSE_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
+    recipeId: 'T6_MEAT',
+    tier: 6,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T6_FARM_SHEEP_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
+    recipeId: 'T7_MEAT',
+    tier: 7,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T7_FARM_PIG_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
+    recipeId: 'T8_MEAT',
+    tier: 8,
+    quantity: 18,
+    ingredients: [{
+      itemId: 'T8_FARM_COW_GROWN', quantity: 1
+    }],
+    itemValue: 40,
+    fame: 20,
+    focus: 38,
+    specializationBranchName: 'Butcher'
+  },
+  {
     recipeId: "T1_MEAL_SOUP",
     tier: 1,
     quantity: 10,
