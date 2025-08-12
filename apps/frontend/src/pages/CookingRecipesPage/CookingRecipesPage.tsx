@@ -19,7 +19,6 @@ import {
 } from "@albion_online/common";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 import { MarketPricesSheet } from "./components/MarketPricesSheet";
 import { RecipeRow } from "./components/RecipeRow";
@@ -38,19 +37,26 @@ import type { RecipeRowData } from "@/utils/types";
 import { calculateRecipeProfit } from "./utils/calculateRecipeProfit";
 import { getOldestComponentAge } from "./utils/getOldestComponentAge";
 import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
   specializations: {
-    Soup: 28,
-    Salad: 0,
-    Pie: 31,
+    Soup: 29,
+    Salad: 4,
+    Pie: 41,
     Roast: 18,
     Omelette: 2,
-    Stew: 20,
+    Stew: 30,
     Sandwich: 6,
-    Ingredient: 0,
-    Butcher: 0,
+    Ingredient: 8,
+    Butcher: 27,
   },
   // specializations: {
   //   Soup: 100,
@@ -66,6 +72,8 @@ const playerSpec: PlayerSpecializationStats = {
 };
 
 export type CitySelectionsType = Record<string, string | null>;
+
+const branchNames = Object.keys(playerSpec.specializations);
 
 // -------------------- Main Component --------------------
 export function CookingRecipesPage() {
@@ -102,7 +110,11 @@ export function CookingRecipesPage() {
   }, [allIds]);
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
+    "Martlock",
     "Bridgewatch",
+    "Lymhurst",
+    "FortSterling",
+    "Thetford",
   ]);
   const {
     data: priceData,
@@ -113,6 +125,7 @@ export function CookingRecipesPage() {
   const [selections, setSelections] = useState<CitySelectionsType>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+  const [branchFilter, setBranchFilter] = useState<string>("All");
   const [missingPriceDataItemIds, setMissingPriceDataItemIds] = useState<
     string[] | null
   >(null);
@@ -206,11 +219,12 @@ export function CookingRecipesPage() {
           `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
         );
       }
-      const famePerSilverInvestedSellCity = cheapestMarketPrice.locationName;
+      const famePerSilverInvestedSellCity = cheapestMarketPrice?.locationName || 'Non existing';
 
       // TODO: I am trying to maximize fame, I need to make a list
       const famePerSilverInvested = recipe.fame
-        ? recipe.fame / cheapestMarketPrice.offerOrders[0].price
+        ? (recipe.fame * 2.75) /
+          ((cheapestMarketPrice?.offerOrders[0].price || 1) * recipe.quantity)
         : 0;
 
       return {
@@ -232,11 +246,14 @@ export function CookingRecipesPage() {
   }, [priceData, missingPriceDataItemIds, selections, useInstantSell]);
 
   const filteredData = useMemo(() => {
-    return data;
-    return data.filter((row) =>
-      row.recipe.ingredients.find((el) => el.itemId === "T5_MEAT")
-    );
-  }, [data]);
+    return data.filter((row) => {
+      const passesBranchCheck =
+        branchFilter === "All" ||
+        row.recipe.specializationBranchName === branchFilter;
+      return passesBranchCheck;
+      // && row.recipe.ingredients.find((el) => el.itemId === "T3_MEAT")
+    });
+  }, [data, branchFilter]);
 
   const columns = useRecipeColumns(
     itemTranslations,
@@ -286,7 +303,7 @@ export function CookingRecipesPage() {
             />
             <span>Use Instant Sell</span>
           </Label> */}
-          
+
           <MarketPricesSheet
             handleSelectionChange={handleSelectionChange}
             selections={selections}
@@ -297,7 +314,10 @@ export function CookingRecipesPage() {
           />
           <div className="flex flex-row gap-4">
             {allCities.map((city) => (
-              <div key={city} className="flex justify-center items-center gap-1">
+              <div
+                key={city}
+                className="flex justify-center items-center gap-1"
+              >
                 <Checkbox
                   checked={selectedCities.includes(city)}
                   onCheckedChange={(checked) => {
@@ -314,6 +334,22 @@ export function CookingRecipesPage() {
               </div>
             ))}
           </div>
+          <Select
+            value={branchFilter ?? undefined}
+            onValueChange={(value) => setBranchFilter(value)}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">All Branches</SelectItem>
+              {branchNames.map((branchName) => (
+                <SelectItem key={branchName} value={branchName}>
+                  {branchName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <Card className="overflow-x-auto rounded-xl border shadow-sm">
           <Table className="w-full table-fixed">
