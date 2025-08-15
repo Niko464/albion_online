@@ -27,213 +27,253 @@ running = False
 
 
 watch_list = [
-    {
-        "name": "Food",
-        "size": 8,
-        "ui_path": [
-            510,
-            545
-        ],
-        "tiers_per_index": [
-            [{"tier": 1, "names": ["Carrot soup", "Greenmoor"]}, {
-                "tier": 3,
-                "names": ["Wheat soup", "Murkwater Clam"]
-            }, {"tier": 5, "names": ["Cabbage soup", "Blackbog Clam Soup"]}],
-            [1, {
-                "tier": 2,
-                "names": ["Bean salad", "Shallowshore Squid"]
-            }, {
-                "tier": 4,
-                "names": ["Turnip Salad", "Midwater Octopus Salad"]
-            }, {
-                "tier": 6,
-                "names": ["Potato salad", "Deepwater Kraken"]
-            }],
-            [{
-                "tier": 3,
-                "names": ["Chicken pie", "Upland Coldeye"]
-            }, {
-                "tier": 5,
-                "names": ["Goose pie", "Mountain Blindeye"]
-            }, {
-                "tier": 7,
-                "names": ["Pork pie", "Frostpeak Deadeye Pie"]
-            }],
-            [{
-                "tier": 3,
-                "names": ["Roast chicken", "Roasted Whitefog"]
-            }, {
-                "tier": 5,
-                "names": ["Roast Goose", "Roasted Clearhaze"]
-            }, {
-                "tier": 7,
-                "names": ["Roast Pork", "Roasted Puremist Snapper"]
-            }],
-            [{
-                "tier": 3,
-                "names": ["Chicken", "Lowriver Crab", "Avalonian Chicken Omelette"]
-            }, {
-                "tier": 5,
-                "names": ["Goose omelette", "Drybrook Crab", "Avalonian Goose"]
-            }, {
-                "tier": 7,
-                "names": ["Pork Omelette", "Dusthole Crab Omelette", "Avalonian Pork Omelette"]
-            }],
-            [{
-                "tier": 4,
-                "names": ["Goat stew", "Greenriver Eel", "Avalonian Goat"]
-            }, {
-                "tier": 6, "names": ["Mutton Stew", "Redspring Eel Stew", "Avalonian Mutton Stew"],
-            }, {
-                "tier": 8,
-                "names": ["Beef Stew", "Deadwater Eel Stew", "Avalonian Beef Stew"]
-            }],
-            [{
-                "tier": 4,
-                "names": ["Goat sandwich", "Stonestream Lurcher", "Avalonian Goat"]
-            }, {
-                "tier": 6,
-                "names": ["Mutton Sandwich", "Rushwater Lurcher Sandwich", "Avalonian Mutton Sandwich"]
-            }, {
-                "tier": 8,
-                "names": ["Beef Sandwich", "Thunderfall Lurcher Sandwich", "Avalonian Beef Sandwich"]
-            }],
-            [1]
-        ]
-    },
-    {
-        "name": "Fish",
-        "size": 3,
-        "ui_path": [
-            571, 703
-        ],
-        "tiers_per_index": [
-            [3],
-            [{
-                "tier": 3,
-                "names": ["Shallowshore Squid", "Lowriver Crab", "Greenriver Eel", "Stonestream Lurcher"]
-            },
-             {
-                 "tier": 5,
-                 "names": ["Midwater Octopus", "Murkwater Clam", "Mountain Blindeye", "Clearhaze Snapper", "Redspring Eel", "Rushwater Lurcher"]
-             },
-             {
-                 "tier": 7,
-                 "names": ["Blackbog Clam", "Frostpeak Deadeye", "Puremist Snapper"]
-             }],
-            [{
-                "tier": 1,
-                "names": ["Seaweed", "Basic fish sauce", "Fancy fish sauce", "Special fish sauce", "Chopped Fish"]
-            }]
-        ]
-    },
-     
-    {
-        "name": "Farming products",
-        "size": 5,
-        "ui_path": [
-            627,
-            757
-        ],
-        "tiers_per_index": [
-            [6, 7, 8],
-            [4],
-            [4, 6, 8],
-            [3],
-            [3, 4, 5, 6, 7, 8]
-        ]
-    },
-    {
-        "name": "Pasture",
-        "size": 4,
-        "ui_path": [
-            627,
-            706
-        ],
-        "tiers_per_index": [
-            #NOTE: I don't care about Baby animals
-            [3],
-            #NOTE: I don't care about Animals
-            [{
-                "tier": 3,
-                "names": ["chicken"]
-            }, {
-                "tier": 4,
-                "names": ["goat"]
-            },
-            {
-                "tier": 5,
-                "names": ["Goose"]},
-            {
-                "tier": 6,
-                "names": ["Sheep"]},
-            {
-                "tier": 7,
-                "names": ["Pig"]},
-            {
-                "tier": 8,
-                "names": ["Cow"]},
-            ],
-            [3, 5],
-            [4, 6, 8]
-        ]
-    },
-    {
-        "name": "Plants",
-        "size": 8,
-        "ui_path": [
-            625,
-            650,
-            700,
-        ]
-    },
-    {
-         "name": "Agaric stuff",
-         "size": 7,
-         "ui_path": [
-            623, 672, 734
-         ],
-     },
-    {
-        "name": "Avalonian energy stuff",
-        "size": 3,
-        "ui_path": [
-            571, 650
-        ]
-    },
-    
-    # {
-    #     "name": "Raw ressources",
-    #     "size": 5,
-    #     "ui_path": [
-    #         564, 597
-    #     ],
-    #     "tiers_per_index": [
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #     ]
-    # },{
-    #     "name": "Refined ressources",
-    #     "size": 5,
-    #     "ui_path": [
-    #         564, 624
-    #     ],
-    #     "tiers_per_index": [
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #         [2, 3, 4, 5, 6, 7, 8],
-    #     ]
-    # },
-     
-    
-    
-    
+  {
+    "name": "Food",
+    "size": 8,
+    "ui_path": [510, 545],
+    "tiers_per_index": [
+      [
+        { "tier": 1, "names": ["Carrot soup", "Greenmoor"] },
+        {
+          "tier": 3,
+          "names": ["Wheat soup", "Murkwater Clam"]
+        },
+        { "tier": 5, "names": ["Cabbage soup", "Blackbog Clam Soup"] }
+      ],
+      [
+        1,
+        {
+          "tier": 2,
+          "names": ["Bean salad", "Shallowshore Squid"]
+        },
+        {
+          "tier": 4,
+          "names": ["Turnip Salad", "Midwater Octopus Salad"]
+        },
+        {
+          "tier": 6,
+          "names": ["Potato salad", "Deepwater Kraken"]
+        }
+      ],
+      [
+        {
+          "tier": 3,
+          "names": ["Chicken pie", "Upland Coldeye"]
+        },
+        {
+          "tier": 5,
+          "names": ["Goose pie", "Mountain Blindeye"]
+        },
+        {
+          "tier": 7,
+          "names": ["Pork pie", "Frostpeak Deadeye Pie"]
+        }
+      ],
+      [
+        {
+          "tier": 3,
+          "names": ["Roast chicken", "Roasted Whitefog"]
+        },
+        {
+          "tier": 5,
+          "names": ["Roast Goose", "Roasted Clearhaze"]
+        },
+        {
+          "tier": 7,
+          "names": ["Roast Pork", "Roasted Puremist Snapper"]
+        }
+      ],
+      [
+        {
+          "tier": 3,
+          "names": ["Chicken", "Lowriver Crab", "Avalonian Chicken Omelette"]
+        },
+        {
+          "tier": 5,
+          "names": ["Goose omelette", "Drybrook Crab", "Avalonian Goose"]
+        },
+        {
+          "tier": 7,
+          "names": [
+            "Pork Omelette",
+            "Dusthole Crab Omelette",
+            "Avalonian Pork Omelette"
+          ]
+        }
+      ],
+      [
+        {
+          "tier": 4,
+          "names": ["Goat stew", "Greenriver Eel", "Avalonian Goat"]
+        },
+        {
+          "tier": 6,
+          "names": [
+            "Mutton Stew",
+            "Redspring Eel Stew",
+            "Avalonian Mutton Stew"
+          ]
+        },
+        {
+          "tier": 8,
+          "names": ["Beef Stew", "Deadwater Eel Stew", "Avalonian Beef Stew"]
+        }
+      ],
+      [
+        {
+          "tier": 4,
+          "names": ["Goat sandwich", "Stonestream Lurcher", "Avalonian Goat"]
+        },
+        {
+          "tier": 6,
+          "names": [
+            "Mutton Sandwich",
+            "Rushwater Lurcher Sandwich",
+            "Avalonian Mutton Sandwich"
+          ]
+        },
+        {
+          "tier": 8,
+          "names": [
+            "Beef Sandwich",
+            "Thunderfall Lurcher Sandwich",
+            "Avalonian Beef Sandwich"
+          ]
+        }
+      ],
+      [1]
+    ]
+  },
+  {
+    "name": "Fish",
+    "size": 3,
+    "ui_path": [571, 703],
+    "tiers_per_index": [
+      [3],
+      [
+        {
+          "tier": 3,
+          "names": [
+            "Shallowshore Squid",
+            "Lowriver Crab",
+            "Greenriver Eel",
+            "Stonestream Lurcher"
+          ]
+        },
+        {
+          "tier": 5,
+          "names": [
+            "Midwater Octopus",
+            "Murkwater Clam",
+            "Mountain Blindeye",
+            "Clearhaze Snapper",
+            "Redspring Eel",
+            "Rushwater Lurcher"
+          ]
+        },
+        {
+          "tier": 7,
+          "names": ["Blackbog Clam", "Frostpeak Deadeye", "Puremist Snapper"]
+        }
+      ],
+      [
+        {
+          "tier": 1,
+          "names": [
+            "Seaweed",
+            "Basic fish sauce",
+            "Fancy fish sauce",
+            "Special fish sauce",
+            "Chopped Fish"
+          ]
+        }
+      ]
+    ]
+  },
+
+  {
+    "name": "Farming products",
+    "size": 5,
+    "ui_path": [627, 757],
+    "tiers_per_index": [[6, 7, 8], [4], [4, 6, 8], [3], [3, 4, 5, 6, 7, 8]]
+  },
+  {
+    "name": "Pasture",
+    "size": 4,
+    "ui_path": [627, 706],
+    "tiers_per_index": [
+      [3],
+      [
+        {
+          "tier": 3,
+          "names": ["chicken"]
+        },
+        {
+          "tier": 4,
+          "names": ["goat"]
+        },
+        {
+          "tier": 5,
+          "names": ["Goose"]
+        },
+        {
+          "tier": 6,
+          "names": ["Sheep"]
+        },
+        {
+          "tier": 7,
+          "names": ["Pig"]
+        },
+        {
+          "tier": 8,
+          "names": ["Cow"]
+        }
+      ],
+      [3, 5],
+      [4, 6, 8]
+    ]
+  },
+  {
+    "name": "Plants",
+    "size": 8,
+    "ui_path": [625, 650, 700]
+  },
+  {
+    "name": "Agaric stuff",
+    "size": 7,
+    "ui_path": [623, 672, 734]
+  },
+  {
+    "name": "Avalonian energy stuff",
+    "size": 3,
+    "ui_path": [571, 650]
+  },
+#   {
+#     "name": "Raw ressources",
+#     "size": 5,
+#     "ui_path": [564, 597],
+#     "tiers_per_index": [
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8]
+#     ]
+#   },
+#   {
+#     "name": "Refined ressources",
+#     "size": 5,
+#     "ui_path": [564, 624],
+#     "tiers_per_index": [
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8],
+#       [2, 3, 4, 5, 6, 7, 8]
+#     ]
+#   }
 ]
+
 
 # === Command-line arguments ===
 if len(sys.argv) < 3:
