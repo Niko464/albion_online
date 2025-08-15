@@ -35,7 +35,13 @@ export const calculateRecipeProfit = (
   }
   const sellPrice = marketData.price;
   const marketTax = 0.065; // 6.5%
-  const profit = sellPrice * recipe.quantity * (1 - marketTax) - recipeCost;
+
+  // Some recipes (e.g., Butcher/meat recipes) generate extra output instead of returning ingredients.
+  const returnsInExtraOutput = recipe.specializationBranchName === "Butcher";
+  const returnRate = withFocus ? 0.435 : 0.152;
+  const outputMultiplier = returnsInExtraOutput ? 1 + returnRate : 1;
+
+  const profit = sellPrice * recipe.quantity * outputMultiplier * (1 - marketTax) - recipeCost;
   const percentage = recipeCost > 0 ? (profit / recipeCost) * 100 : 0;
   return {
     profit,

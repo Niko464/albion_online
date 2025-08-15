@@ -8,6 +8,13 @@ export const getMarketData = (
   useInstantSell: boolean,
   selectedCity: string
 ): MarketData | null => {
+  // Support manual price selections formatted as "manual:<price>"
+  if (selectedCity?.startsWith("manual:")) {
+    const manualPrice = Number(selectedCity.split(":")[1]);
+    if (!isNaN(manualPrice) && manualPrice > 0) {
+      return { locationName: "Manual", price: manualPrice, minutesAgo: 0 };
+    }
+  }
   const itemData = priceData?.prices.find((el) => el.itemId === itemId);
   const market = itemData?.markets.find((m) => m.locationName === selectedCity);
   if (

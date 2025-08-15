@@ -1,15 +1,14 @@
 import type { GetPricesResponse } from "@albion_online/common";
 
 type Market = GetPricesResponse["prices"][number]["markets"][number];
+
 /**
- * Finds the market with the best price for an item.
- * For ingredients, returns the market with the lowest offer price (cheapest to buy).
- * For recipes, returns the market with the highest offer price (best to sell).
- * Ties are resolved by selecting the market with the most recent data.
+ * Finds the market with the median offer price.
+ * Keeps the same structure as original min/max version for easy rollback.
  *
  * @param itemId - The ID of the item (e.g., "T1_CARROT" or "T1_MEAL_SOUP")
  * @param priceData - The price data containing market information
- * @param returnMaxPrice - Whether we try to maximise or minimise
+ * @param returnMaxPrice - Ignored in this version, kept for compatibility
  * @returns The best market object or null if no valid market is found
  */
 export function getBestMarket(
@@ -39,74 +38,46 @@ export function getBestMarket(
 }
 
 /**
- * Finds the market with the best price among valid markets.
- * For ingredients, selects the lowest offer price; for recipes, selects the highest offer price.
- * Resolves ties by choosing the market with the most recent order.
- *
- * @param markets - Array of markets with valid offer orders
- * @param isRecipe - Whether to look for the highest (recipes) or lowest (ingredients) offer price
- * @returns The market with the best price or null if no valid prices
+ * Finds the market with the median offer price among valid markets.
+ * Structure kept close to original.
  */
 function findMarketWithBestPrice(
   markets: Market[],
-  isRecipe: boolean
+  returnMaxPrice: boolean // kept but unused
 ): Market | null {
-  return markets.reduce((bestMarket: Market | null, currentMarket) => {
-    const currentPrice = getExtremePrice(currentMarket, isRecipe);
-    const bestPrice = bestMarket
-      ? getExtremePrice(bestMarket, isRecipe)
-      : isRecipe
-      ? -Infinity
-      : Infinity;
-
-    // If no best market yet, take current
-    if (!bestMarket) {
-      return currentMarket;
+  // Sort markets by median price
+  const sorted = [...markets].sort((a, b) => {
+    const priceA = getExtremePrice(a, false); // now returns median
+    const priceB = getExtremePrice(b, false);
+    if (priceA === priceB) {
+      return isMoreRecent(a, b) ? -1 : 1;
     }
+    return priceA - priceB;
+  });
 
-    // If prices are equal, compare timestamps
-    if (currentPrice === bestPrice) {
-      return isMoreRecent(currentMarket, bestMarket)
-        ? currentMarket
-        : bestMarket;
-    }
-
-    // Return the market with the better price (higher for recipes, lower for ingredients)
-    return isRecipe
-      ? currentPrice > bestPrice
-        ? currentMarket
-        : bestMarket
-      : currentPrice < bestPrice
-      ? currentMarket
-      : bestMarket;
-  }, null);
+  // Pick median market
+  const medianIndex = Math.floor((sorted.length - 1) / 2);
+  return sorted[medianIndex] || null;
 }
 
 /**
- * Gets the extreme price from a market's offer orders.
- * For ingredients, returns the minimum offer price (cheapest to buy).
- * For recipes, returns the maximum offer price (best to sell).
- *
- * @param market - The market to analyze
- * @param isRecipe - Whether to find the maximum (recipes) or minimum (ingredients) offer price
- * @returns The extreme price or Infinity/-Infinity if no orders exist
+ * Gets the median offer price from a market's offer orders.
+ * Param kept as 'isRecipe' for compatibility.
  */
 function getExtremePrice(market: Market, isRecipe: boolean): number {
   const orders = market.offerOrders;
   if (!orders?.length) {
-    return isRecipe ? -Infinity : Infinity;
+    return Infinity;
   }
-  return isRecipe
-    ? Math.max(...orders.map((order) => order.price))
-    : Math.min(...orders.map((order) => order.price));
+  const prices = orders.map((order) => order.price).sort((a, b) => a - b);
+  const mid = Math.floor(prices.length / 2);
+  return prices.length % 2 === 0
+    ? (prices[mid - 1] + prices[mid]) / 2
+    : prices[mid];
 }
 
 /**
  * Compares two markets to determine which has the more recent offer order.
- *
- * @param marketA - First market to compare
- * @param marketB - Second market to compare
- * @returns True if marketA has a more recent offer order than marketB
  */
 function isMoreRecent(marketA: Market, marketB: Market): boolean {
   const timeA = marketA.offerOrders[0]?.receivedAt

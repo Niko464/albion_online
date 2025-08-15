@@ -50,13 +50,13 @@ const playerSpec: PlayerSpecializationStats = {
   specializations: {
     Soup: 29,
     Salad: 4,
-    Pie: 42,
+    Pie: 48,
     Roast: 18,
     Omelette: 2,
     Stew: 40,
     Sandwich: 6,
     Ingredient: 8,
-    Butcher: 45,
+    Butcher: 48,
   },
   // specializations: {
   //   Soup: 100,

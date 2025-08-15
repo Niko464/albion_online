@@ -108,7 +108,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {
@@ -120,7 +120,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {
@@ -132,7 +132,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {
@@ -144,7 +144,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {
@@ -156,7 +156,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {
@@ -168,7 +168,7 @@ export const allCookingRecipes: Recipe[] = [
     }],
     itemValue: 40,
     fame: 20,
-    focus: 38,
+    focus: 684,
     specializationBranchName: 'Butcher'
   },
   {

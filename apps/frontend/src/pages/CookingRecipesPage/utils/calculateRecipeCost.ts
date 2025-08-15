@@ -20,6 +20,7 @@ export const calculateRecipeCost = (
   pricePer100Nutrition: number,
   usingFocus: boolean
 ) => {
+  const returnsInExtraOutput = recipe.specializationBranchName === "Butcher";
   // NOTE: tier 2 or less has no nutrition cost
   const nutritionCost =
     recipe.itemValue && recipe.tier > 2
@@ -54,10 +55,11 @@ export const calculateRecipeCost = (
   }
 
   const returnRate = usingFocus ? 0.435 : 0.152;
-  const recipeCost =
-    nutritionCost +
-    blacklistedIngredientsCost +
-    returnableIngredientsCost * (1 - returnRate);
+  const recipeCost = returnsInExtraOutput
+    ? nutritionCost + blacklistedIngredientsCost + returnableIngredientsCost
+    : nutritionCost +
+      blacklistedIngredientsCost +
+      returnableIngredientsCost * (1 - returnRate);
   return {
     totalCost: recipeCost,
     recipeCostDetails: {
