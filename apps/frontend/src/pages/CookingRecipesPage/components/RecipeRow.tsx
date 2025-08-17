@@ -7,13 +7,13 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { renderMarketSelect } from "./renderMarketSelect";
 import { flexRender } from "@tanstack/react-table";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "./renderItemImage";
 import type { ColumnDef } from "@tanstack/react-table";
 import { cn } from "@/utils/utils";
 import type { CitySelectionsType } from "../CookingRecipesPage";
+import { MarketSelect } from "./renderMarketSelect";
 
 interface RecipeRowProps {
   recipe: Recipe;
@@ -124,15 +124,16 @@ export const RecipeRow = memo(
                             ingredient.itemId
                         )}
                       </div>
-                      {renderMarketSelect(
-                        ingredient.itemId,
-                        priceData,
-                        selections,
-                        false,
-                        handleSelectionChange,
-                        "Select market",
-                        "w-40"
-                      )}
+                      <MarketSelect
+                        itemId={ingredient.itemId}
+                        priceData={priceData}
+                        selections={selections}
+                        useInstantSell={false}
+                        handleSelectionChange={handleSelectionChange}
+                        placeholder="Select market"
+                        widthClass="w-40"
+                      />
+                     
                     </div>
                   );
                 } catch (error) {

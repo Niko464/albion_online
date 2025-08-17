@@ -2,13 +2,13 @@ import { createColumnHelper, type ColumnDef } from "@tanstack/react-table";
 import type { GetPricesResponse } from "@albion_online/common";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "../components/renderItemImage";
-import { renderMarketSelect } from "../components/renderMarketSelect";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { CitySelectionsType } from "../CookingRecipesPage";
+import { MarketSelect } from "../components/renderMarketSelect";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
@@ -222,15 +222,17 @@ export const useRecipeColumns = (
         if (!priceData) {
           return null;
         }
-        return renderMarketSelect(
-          row.original.recipe.recipeId,
-          priceData,
-          selections,
-          useInstantSell,
-          handleSelectionChange,
-          "Select sell city",
-          "w-full max-w-[200px]"
-        );
+        return (
+          <MarketSelect
+            itemId={row.original.recipe.recipeId}
+            priceData={priceData}
+            selections={selections}
+            useInstantSell={useInstantSell}
+            handleSelectionChange={handleSelectionChange}
+            placeholder="Select sell city"
+            widthClass="w-full max-w-[200px]"
+          />
+        )
       },
       size: 200,
       meta: { align: "left" },
