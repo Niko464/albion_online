@@ -43,5 +43,5 @@ for item in items:
     recipes.append(recipe)
 
 # Write recipes to recipes.json
-with open('recipes.json', 'w') as file:
+with open('equipment_recipes.json', 'w') as file:
     json.dump(recipes, file, indent=2)

@@ -53,25 +53,23 @@ properties_to_remove = [
     "-physicalarmor",
     "-facestate",
     "-skincount"
-    "enchantments"
 ]
 
-# Extract weapons from ["items"]["equipmentitem"] that have craftingrequirements
-equipment_items = data.get("items", {}).get("equipmentitem", [])
-craftable_weapons = [
+equipment_items = data.get("items", {}).get("consumableitem", [])
+craftable_items = [
     item for item in equipment_items
-    if item.get("craftingrequirements") is not None
+    if item.get("craftingrequirements") is not None and item.get("-craftingcategory") == "food"
 ]
 
-# Remove specified properties from each weapon
-filtered_weapons = []
-for item in craftable_weapons:
+# Remove specified properties from each item
+filtered_items = []
+for item in craftable_items:
     # Create a copy to avoid modifying the original item
     filtered_item = copy.deepcopy(item)
     for prop in properties_to_remove:
         filtered_item.pop(prop, None)  # Remove property if it exists
-    filtered_weapons.append(filtered_item)
+    filtered_items.append(filtered_item)
 
 # Write the filtered weapons to parsed_items.json
 with open('parsed_items.json', 'w') as file:
-    json.dump(filtered_weapons, file, indent=2)
+    json.dump(filtered_items, file, indent=2)

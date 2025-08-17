@@ -24,88 +24,104 @@ interface MarketSelectProps {
   widthClass?: string;
 }
 
-export const MarketSelect = memo(({
-  itemId,
-  priceData,
-  selections,
-  useInstantSell,
-  handleSelectionChange,
-  placeholder,
-  widthClass = "w-full",
-}: MarketSelectProps) => {
-  const markets = useMemo(() => {
-    const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+export const MarketSelect = memo(
+  ({
+    itemId,
+    priceData,
+    selections,
+    useInstantSell,
+    handleSelectionChange,
+    placeholder,
+    widthClass = "w-full",
+  }: MarketSelectProps) => {
+    const markets = useMemo(() => {
+      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
+      return (
+        itemData?.markets
+          .filter((market) =>
+            useInstantSell
+              ? market.requestOrders?.length
+              : market.offerOrders?.length
+          )
+          .map((market) => ({
+            locationName: market.locationName,
+            price: useInstantSell
+              ? Math.max(
+                  ...(market.requestOrders?.map((order) => order.price) || [0])
+                )
+              : Math.min(
+                  ...(market.offerOrders?.map((order) => order.price) || [0])
+                ),
+            minutesAgo: getMinutesAgo(
+              (useInstantSell
+                ? market.requestOrders?.[0]
+                : market.offerOrders?.[0]
+              )?.receivedAt
+            ),
+          }))
+          .filter((market) => market.price && market.minutesAgo !== undefined)
+          .sort((a, b) =>
+            useInstantSell ? b.price - a.price : a.price - b.price
+          ) || []
+      );
+    }, [itemId, priceData, useInstantSell]);
+
+    const currentSelection = selections[itemId] || "";
+    const isManualSelection = currentSelection.startsWith("manual:");
+
+    if (!currentSelection) return null;
+
     return (
-      itemData?.markets
-        .filter((market) =>
-          useInstantSell ? market.requestOrders?.length : market.offerOrders?.length
-        )
-        .map((market) => ({
-          locationName: market.locationName,
-          price: useInstantSell
-            ? Math.max(
-                ...(market.requestOrders?.map((order) => order.price) || [0])
-              )
-            : Math.min(
-                ...(market.offerOrders?.map((order) => order.price) || [0])
-              ),
-          minutesAgo: getMinutesAgo(
-            (useInstantSell ? market.requestOrders?.[0] : market.offerOrders?.[0])?.receivedAt
-          ),
-        }))
-        .filter((market) => market.price && market.minutesAgo !== undefined)
-        .sort((a, b) => (useInstantSell ? b.price - a.price : a.price - b.price)) || []
-    );
-  }, [itemId, priceData, useInstantSell]);
-
-  const currentSelection = selections[itemId] || "";
-  const isManualSelection = currentSelection.startsWith("manual:");
-
-  return (
-    <Select
-      value={currentSelection}
-      onValueChange={(value) => {
-        if (value === MANUAL_OPTION_VALUE) {
-          const manualPrice = window.prompt("Enter price in silver", "0");
-          if (manualPrice && !isNaN(Number(manualPrice)) && Number(manualPrice) > 0) {
-            handleSelectionChange(itemId, `manual:${manualPrice}`);
+      <Select
+        value={currentSelection}
+        onValueChange={(value) => {
+          if (value === MANUAL_OPTION_VALUE) {
+            const manualPrice = window.prompt("Enter price in silver", "0");
+            if (
+              manualPrice &&
+              !isNaN(Number(manualPrice)) &&
+              Number(manualPrice) > 0
+            ) {
+              handleSelectionChange(itemId, `manual:${manualPrice}`);
+            }
+            return;
           }
-          return;
-        }
-        handleSelectionChange(itemId, value);
-      }}
-    >
-      <SelectTrigger className={widthClass}>
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        {isManualSelection && (
-          <SelectItem value={currentSelection} key="manual-selected">
-            {Number(currentSelection.split(":")[1]).toLocaleString()} Silver (Manual)
-          </SelectItem>
-        )}
-        {markets.length ? (
-          markets.map((market) => (
-            <SelectItem
-              key={`${market.locationName}-${itemId}`}
-              value={market.locationName}
-            >
-              {market.price.toLocaleString()} Silver, {market.locationName}, {market.minutesAgo} min ago
+          handleSelectionChange(itemId, value);
+        }}
+      >
+        <SelectTrigger className={widthClass}>
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          {isManualSelection && (
+            <SelectItem value={currentSelection} key="manual-selected">
+              {Number(currentSelection.split(":")[1]).toLocaleString()} Silver
+              (Manual)
             </SelectItem>
-          ))
-        ) : (
-          <SelectItem value="" disabled>
-            No market data available
+          )}
+          {markets.length ? (
+            markets.map((market) => (
+              <SelectItem
+                key={`${market.locationName}-${itemId}`}
+                value={market.locationName}
+              >
+                {market.price.toLocaleString()} Silver, {market.locationName},{" "}
+                {market.minutesAgo} min ago
+              </SelectItem>
+            ))
+          ) : (
+            <SelectItem value="" disabled>
+              No market data available
+            </SelectItem>
+          )}
+          <SelectItem value={MANUAL_OPTION_VALUE} key="manual-enter">
+            Enter manual price...
           </SelectItem>
-        )}
-        <SelectItem value={MANUAL_OPTION_VALUE} key="manual-enter">
-          Enter manual price...
-        </SelectItem>
-      </SelectContent>
-    </Select>
-  );
-});
-
+        </SelectContent>
+      </Select>
+    );
+  }
+);
 
 /* Duplicate legacy block below commented out
 = priceData?.prices.find((el) => el.itemId === itemId);

@@ -19,7 +19,7 @@ export const getEffectiveFocusCost = (
   playerSpecStats: PlayerSpecializationStats | null,
 ): number => {
   if (!recipe.focus) return 0;
-  if (!playerSpecStats) return recipe.focus;
+  if (!playerSpecStats) return recipe.focus * recipe.quantity;
   const branchKeys = Object.keys(playerSpecStats.specializations);
 
   const specializationTotal = branchKeys.reduce((total, key) => {
@@ -29,5 +29,5 @@ export const getEffectiveFocusCost = (
     return total + (specializationLevel * specializationBonus);
   }, playerSpecStats.mastery * 0.3);
 
-  return recipe.focus * Math.pow(0.5, specializationTotal / 100);
+  return recipe.focus * recipe.quantity * Math.pow(0.5, specializationTotal / 100);
 };

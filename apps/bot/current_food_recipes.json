@@ -1,0 +1,907 @@
+[
+  {
+    "recipeId": "T3_FLOUR",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [{ "itemId": "T3_WHEAT", "quantity": 1 }],
+    "itemValue": 40,
+    "fame": 30,
+    "focus": 38,
+    "specializationBranchName": "Ingredient"
+  },
+  {
+    "recipeId": "T4_BUTTER",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [{ "itemId": "T4_MILK", "quantity": 1 }],
+    "itemValue": 40,
+    "fame": 30,
+    "focus": 38,
+    "specializationBranchName": "Ingredient"
+  },
+  {
+    "recipeId": "T6_BUTTER",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [{ "itemId": "T6_MILK", "quantity": 1 }],
+    "itemValue": 40,
+    "fame": 30,
+    "focus": 38,
+    "specializationBranchName": "Ingredient"
+  },
+  {
+    "recipeId": "T8_BUTTER",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [{ "itemId": "T8_MILK", "quantity": 1 }],
+    "itemValue": 40,
+    "fame": 30,
+    "focus": 38,
+    "specializationBranchName": "Ingredient"
+  },
+  {
+    "recipeId": "T3_MEAT",
+    "tier": 3,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T3_FARM_CHICKEN_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T4_MEAT",
+    "tier": 4,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T4_FARM_GOAT_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T5_MEAT",
+    "tier": 5,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T5_FARM_GOOSE_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T6_MEAT",
+    "tier": 6,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T6_FARM_SHEEP_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T7_MEAT",
+    "tier": 7,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T7_FARM_PIG_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T8_MEAT",
+    "tier": 8,
+    "quantity": 18,
+    "ingredients": [
+      {
+        "itemId": "T8_FARM_COW_GROWN",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 40,
+    "fame": 20,
+    "focus": 684,
+    "specializationBranchName": "Butcher"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP",
+    "tier": 1,
+    "quantity": 10,
+    "ingredients": [{ "itemId": "T1_CARROT", "quantity": 16 }],
+    "itemValue": 64,
+    "fame": 480,
+    "focus": 560,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP_FISH",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE", "quantity": 1 },
+      { "itemId": "T1_CARROT", "quantity": 2 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 77,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD",
+    "tier": 2,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T1_CARROT", "quantity": 8 },
+      { "itemId": "T2_BEAN", "quantity": 8 }
+    ],
+    "itemValue": 64,
+    "fame": 480,
+    "focus": 560,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD_FISH",
+    "tier": 2,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_SALTWATER_ALL_RARE", "quantity": 1 },
+      { "itemId": "T2_BEAN", "quantity": 1 },
+      {
+        "itemId": "T2_AGARIC",
+        "quantity": 1
+      }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 77,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [{ "itemId": "T3_WHEAT", "quantity": 48 }],
+    "itemValue": 192,
+    "fame": 1400,
+    "focus": 1680,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE", "quantity": 1 },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2
+      },
+      { "itemId": "T3_COMFREY", "quantity": 2 },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 2
+      }
+    ],
+    "itemValue": 260,
+    "fame": 120,
+    "focus": 231,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T3_WHEAT", "quantity": 4 },
+      { "itemId": "T3_MEAT", "quantity": 8 },
+      { "itemId": "T3_EGG", "quantity": 2 }
+    ],
+    "itemValue": 56,
+    "fame": 180,
+    "focus": 520,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1
+      },
+      { "itemId": "T3_COMFREY", "quantity": 1 },
+      { "itemId": "T3_EGG", "quantity": 1 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 77,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_AVALON",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4
+      },
+      { "itemId": "T3_MEAT", "quantity": 8 },
+      { "itemId": "T3_EGG", "quantity": 2 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 120,
+    "fame": 180,
+    "focus": 520,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T3_WHEAT", "quantity": 2 },
+      { "itemId": "T3_FLOUR", "quantity": 4 },
+      { "itemId": "T3_MEAT", "quantity": 8 }
+    ],
+    "itemValue": 56,
+    "fame": 180,
+    "focus": 530,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE", "quantity": 1 },
+      { "itemId": "T3_FLOUR", "quantity": 1 },
+      { "itemId": "T3_EGG", "quantity": 1 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 81,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T3_MEAT", "quantity": 8 },
+      { "itemId": "T2_BEAN", "quantity": 4 },
+      { "itemId": "T4_MILK", "quantity": 4 }
+    ],
+    "itemValue": 64,
+    "fame": 240,
+    "focus": 580,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_FRESHWATER_AVALON_RARE", "quantity": 1 },
+      { "itemId": "T3_COMFREY", "quantity": 1 },
+      { "itemId": "T4_MILK", "quantity": 1 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 77,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_TURNIP", "quantity": 24 },
+      { "itemId": "T3_WHEAT", "quantity": 24 }
+    ],
+    "itemValue": 192,
+    "fame": 1400,
+    "focus": 1680,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_SALTWATER_ALL_RARE", "quantity": 1 },
+      { "itemId": "T4_TURNIP", "quantity": 2 },
+      { "itemId": "T4_BURDOCK", "quantity": 2 },
+      { "itemId": "T4_MEAT", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 120,
+    "focus": 231,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_TURNIP", "quantity": 4 },
+      { "itemId": "T4_BREAD", "quantity": 4 },
+      { "itemId": "T4_MEAT", "quantity": 8 }
+    ],
+    "itemValue": 64,
+    "fame": 240,
+    "focus": 610,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_FRESHWATER_FOREST_RARE", "quantity": 1 },
+      { "itemId": "T4_TURNIP", "quantity": 1 },
+      { "itemId": "T4_BURDOCK", "quantity": 1 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 77,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_AVALON",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T1_CARROT", "quantity": 4 },
+      { "itemId": "T4_TURNIP", "quantity": 4 },
+      { "itemId": "T4_MEAT", "quantity": 8 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 128,
+    "fame": 240,
+    "focus": 580,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 4 },
+      { "itemId": "T4_MEAT", "quantity": 8 },
+      { "itemId": "T4_BUTTER", "quantity": 2 }
+    ],
+    "itemValue": 56,
+    "fame": 180,
+    "focus": 550,
+    "specializationBranchName": "Sandwich"
+  },
+
+  {
+    "recipeId": "T4_MEAL_SANDWICH_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE", "quantity": 1 },
+      { "itemId": "T4_TURNIP", "quantity": 1 },
+      { "itemId": "T4_BUTTER", "quantity": 1 }
+    ],
+    "itemValue": 90,
+    "fame": 60,
+    "focus": 81,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_AVALON",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 4 },
+      { "itemId": "T4_MEAT", "quantity": 8 },
+      { "itemId": "T4_BUTTER", "quantity": 2 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 120,
+    "fame": 180,
+    "focus": 550,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [{ "itemId": "T5_CABBAGE", "quantity": 144 }],
+    "itemValue": 576,
+    "fame": 4300,
+    "focus": 5040,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE", "quantity": 1 },
+      { "itemId": "T5_CABBAGE", "quantity": 6 },
+      { "itemId": "T5_TEASEL", "quantity": 6 },
+      { "itemId": "T5_MEAT", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 360,
+    "focus": 672,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T5_CABBAGE", "quantity": 12 },
+      { "itemId": "T5_MEAT", "quantity": 24 },
+      { "itemId": "T5_EGG", "quantity": 6 }
+    ],
+    "itemValue": 168,
+    "fame": 540,
+    "focus": 1550,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE", "quantity": 1 },
+      { "itemId": "T5_CABBAGE", "quantity": 2 },
+      { "itemId": "T5_TEASEL", "quantity": 2 },
+      { "itemId": "T5_EGG", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 180,
+    "focus": 225,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_AVALON",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T6_MILK", "quantity": 12 },
+      { "itemId": "T5_MEAT", "quantity": 24 },
+      { "itemId": "T5_EGG", "quantity": 6 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 360,
+    "fame": 540,
+    "focus": 1550,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T5_CABBAGE", "quantity": 6 },
+      { "itemId": "T3_FLOUR", "quantity": 12 },
+      { "itemId": "T5_MEAT", "quantity": 24 },
+      { "itemId": "T4_MILK", "quantity": 6 }
+    ],
+    "itemValue": 192,
+    "fame": 720,
+    "focus": 1800,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE", "quantity": 1 },
+      { "itemId": "T5_CABBAGE", "quantity": 2 },
+      { "itemId": "T5_TEASEL", "quantity": 2 },
+      { "itemId": "T5_EGG", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 180,
+    "focus": 225,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T5_MEAT", "quantity": 24 },
+      { "itemId": "T5_CABBAGE", "quantity": 12 },
+      { "itemId": "T6_MILK", "quantity": 12 }
+    ],
+    "itemValue": 192,
+    "fame": 720,
+    "focus": 1760,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_AVALON_RARE", "quantity": 1 },
+      { "itemId": "T5_CABBAGE", "quantity": 2 },
+      { "itemId": "T5_TEASEL", "quantity": 2 },
+      { "itemId": "T6_MILK", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 180,
+    "focus": 225,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T6_POTATO", "quantity": 72 },
+      { "itemId": "T5_CABBAGE", "quantity": 72 }
+    ],
+    "itemValue": 576,
+    "fame": 4300,
+    "focus": 5040,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_SALTWATER_ALL_RARE", "quantity": 1 },
+      { "itemId": "T6_POTATO", "quantity": 6 },
+      { "itemId": "T6_FOXGLOVE", "quantity": 6 },
+      { "itemId": "T6_MEAT", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 360,
+    "focus": 672,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T6_POTATO", "quantity": 12 },
+      { "itemId": "T4_BREAD", "quantity": 12 },
+      { "itemId": "T6_MEAT", "quantity": 24 }
+    ],
+    "itemValue": 192,
+    "fame": 720,
+    "focus": 1840,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_FOREST_RARE", "quantity": 1 },
+      { "itemId": "T6_POTATO", "quantity": 2 },
+      { "itemId": "T6_FOXGLOVE", "quantity": 2 },
+      { "itemId": "T6_MILK", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 180,
+    "focus": 225,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_AVALON",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T5_CABBAGE", "quantity": 12 },
+      { "itemId": "T6_POTATO", "quantity": 12 },
+      { "itemId": "T6_MEAT", "quantity": 24 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 384,
+    "fame": 120,
+    "focus": 1760,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 12 },
+      { "itemId": "T6_MEAT", "quantity": 24 },
+      { "itemId": "T6_BUTTER", "quantity": 6 }
+    ],
+    "itemValue": 168,
+    "fame": 540,
+    "focus": 1650,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE", "quantity": 1 },
+      { "itemId": "T6_POTATO", "quantity": 2 },
+      { "itemId": "T6_FOXGLOVE", "quantity": 2 },
+      { "itemId": "T6_BUTTER", "quantity": 2 }
+    ],
+    "itemValue": 260,
+    "fame": 180,
+    "focus": 231,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_AVALON",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 12 },
+      { "itemId": "T6_MEAT", "quantity": 24 },
+      { "itemId": "T6_BUTTER", "quantity": 6 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 360,
+    "fame": 540,
+    "focus": 1650,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T7_CORN", "quantity": 36 },
+      { "itemId": "T7_MEAT", "quantity": 72 },
+      { "itemId": "T5_EGG", "quantity": 18 }
+    ],
+    "itemValue": 504,
+    "fame": 1600,
+    "focus": 4640,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE", "quantity": 1 },
+      { "itemId": "T7_CORN", "quantity": 6 },
+      { "itemId": "T7_MULLEIN", "quantity": 6 },
+      { "itemId": "T7_MEAT", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 360,
+    "focus": 672,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_AVALON",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T8_MILK", "quantity": 36 },
+      { "itemId": "T7_MEAT", "quantity": 72 },
+      { "itemId": "T5_EGG", "quantity": 18 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1080,
+    "fame": 1600,
+    "focus": 4640,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T7_CORN", "quantity": 18 },
+      { "itemId": "T3_FLOUR", "quantity": 36 },
+      { "itemId": "T7_MEAT", "quantity": 72 },
+      { "itemId": "T6_MILK", "quantity": 18 }
+    ],
+    "itemValue": 576,
+    "fame": 2200,
+    "focus": 5400,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE", "quantity": 1 },
+      { "itemId": "T7_CORN", "quantity": 6 },
+      { "itemId": "T7_MULLEIN", "quantity": 6 },
+      { "itemId": "T7_MEAT", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 360,
+    "focus": 6720,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T7_MEAT", "quantity": 72 },
+      { "itemId": "T7_CORN", "quantity": 36 },
+      { "itemId": "T8_MILK", "quantity": 36 }
+    ],
+    "itemValue": 576,
+    "fame": 2200,
+    "focus": 5280,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_AVALON_RARE", "quantity": 1 },
+      { "itemId": "T7_CORN", "quantity": 6 },
+      { "itemId": "T7_MULLEIN", "quantity": 6 },
+      { "itemId": "T8_MILK", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 540,
+    "focus": 652,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T8_PUMPKIN", "quantity": 36 },
+      { "itemId": "T4_BREAD", "quantity": 36 },
+      { "itemId": "T8_MEAT", "quantity": 72 }
+    ],
+    "itemValue": 576,
+    "fame": 2200,
+    "focus": 5510,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_FISH",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_FOREST_RARE", "quantity": 1 },
+      { "itemId": "T8_PUMPKIN", "quantity": 6 },
+      { "itemId": "T8_YARROW", "quantity": 6 },
+      { "itemId": "T8_MILK", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 540,
+    "focus": 652,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_AVALON",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T7_CORN", "quantity": 36 },
+      { "itemId": "T8_PUMPKIN", "quantity": 36 },
+      { "itemId": "T8_MEAT", "quantity": 72 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1152,
+    "fame": 2200,
+    "focus": 5280,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 36 },
+      { "itemId": "T8_MEAT", "quantity": 72 },
+      { "itemId": "T8_BUTTER", "quantity": 18 }
+    ],
+    "itemValue": 504,
+    "fame": 1600,
+    "focus": 4940,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_FISH",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      { "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE", "quantity": 1 },
+      { "itemId": "T8_PUMPKIN", "quantity": 6 },
+      { "itemId": "T8_YARROW", "quantity": 6 },
+      { "itemId": "T8_BUTTER", "quantity": 6 }
+    ],
+    "itemValue": 750,
+    "fame": 540,
+    "focus": 672,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_AVALON",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      { "itemId": "T4_BREAD", "quantity": 36 },
+      { "itemId": "T8_MEAT", "quantity": 72 },
+      { "itemId": "T8_BUTTER", "quantity": 18 },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1080,
+    "fame": 1600,
+    "focus": 4940,
+    "specializationBranchName": "Sandwich"
+  }
+]

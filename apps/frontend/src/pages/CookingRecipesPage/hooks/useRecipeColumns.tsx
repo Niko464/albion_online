@@ -189,7 +189,7 @@ export const useRecipeColumns = (
             </TooltipTrigger>
             <TooltipContent className="flex flex-col">
               <span>
-                Base focus cost: {row.original.recipe.focus?.toFixed(2)}
+                Base focus cost: {(row.original.recipe.focus || 0 * row.original.recipe.quantity)?.toFixed(2)}
               </span>
               <span>
                 Spec focus cost:{" "}

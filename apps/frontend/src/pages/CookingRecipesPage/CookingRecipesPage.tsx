@@ -111,9 +111,9 @@ export function CookingRecipesPage() {
   }, [allIds]);
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
-    // "Martlock",
-    // "Bridgewatch",
-    // "Lymhurst",
+    "Martlock",
+    "Bridgewatch",
+    "Lymhurst",
     `FortSterling`,
     "Thetford",
   ]);
@@ -185,7 +185,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        900,
+        1000,
         false
       );
       const withFocusRecipeStats = calculateRecipeProfit(
@@ -194,7 +194,7 @@ export function CookingRecipesPage() {
         selections,
         useInstantSell,
         // TODO: not make this hardcoded
-        900,
+        1000,
         true
       );
       const oldestAge = getOldestComponentAge(
@@ -219,11 +219,11 @@ export function CookingRecipesPage() {
         false
       );
 
-      if (!cheapestMarketPrice) {
-        throw new Error(
-          `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
-        );
-      }
+      // if (!cheapestMarketPrice) {
+      //   throw new Error(
+      //     `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
+      //   );
+      // }
       const famePerSilverInvestedSellCity =
         cheapestMarketPrice?.locationName || "Non existing";
 

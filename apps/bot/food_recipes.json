@@ -1,0 +1,6403 @@
+[
+  {
+    "recipeId": "T1_MEAL_GRILLEDFISH",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T1_FISHCHOPS",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": null,
+    "focus": 15,
+    "fame": null,
+    "specializationBranchName": null
+  },
+  {
+    "recipeId": "T1_MEAL_SEAWEEDSALAD",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T1_SEAWEED",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": null,
+    "focus": 4,
+    "fame": null,
+    "specializationBranchName": null
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP",
+    "tier": 1,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 16,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 56,
+    "fame": 480,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP@1",
+    "tier": 1,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 16,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 78,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP@2",
+    "tier": 1,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 16,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 123,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP@3",
+    "tier": 1,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 16,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 256,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 48,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 168,
+    "fame": 1400,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP@1",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 48,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 235,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP@2",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 48,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 368,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP@3",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 48,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 769,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 144,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 504,
+    "fame": 4300,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP@1",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 144,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 704,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP@2",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 144,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 1105,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP@3",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 144,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 2306,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP_FISH",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 77,
+    "fame": 60,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP_FISH@1",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 144,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP_FISH@2",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 278,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T1_MEAL_SOUP_FISH@3",
+    "tier": 1,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 678,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 231,
+    "fame": 120,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP_FISH@1",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 432,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP_FISH@2",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 832,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T3_MEAL_SOUP_FISH@3",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2033,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 672,
+    "fame": 360,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP_FISH@1",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1272,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP_FISH@2",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2473,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T5_MEAL_SOUP_FISH@3",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6076,
+    "fame": null,
+    "specializationBranchName": "Soup"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD",
+    "tier": 2,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 8,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 56,
+    "fame": 480,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD@1",
+    "tier": 2,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 78,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD@2",
+    "tier": 2,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 123,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD@3",
+    "tier": 2,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 256,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 24,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 168,
+    "fame": 1400,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD@1",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 235,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD@2",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 368,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD@3",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 769,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 72,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 504,
+    "fame": 4300,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD@1",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 704,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD@2",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 1105,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD@3",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 2306,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD_FISH",
+    "tier": 2,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 77,
+    "fame": 60,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD_FISH@1",
+    "tier": 2,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 144,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD_FISH@2",
+    "tier": 2,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 278,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T2_MEAL_SALAD_FISH@3",
+    "tier": 2,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 678,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 231,
+    "fame": 120,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD_FISH@1",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 432,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD_FISH@2",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 832,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T4_MEAL_SALAD_FISH@3",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2033,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 672,
+    "fame": 360,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD_FISH@1",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1272,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD_FISH@2",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2473,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T6_MEAL_SALAD_FISH@3",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6076,
+    "fame": null,
+    "specializationBranchName": "Salad"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 53,
+    "fame": 180,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE@1",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 75,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE@2",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 120,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE@3",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 253,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 180,
+    "fame": 720,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE@1",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 246,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE@2",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 380,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE@3",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 780,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 18,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 540,
+    "fame": 2200,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE@1",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 739,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE@2",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 1140,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE@3",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 2341,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 81,
+    "fame": 60,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE_FISH@1",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 147,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE_FISH@2",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 281,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_PIE_FISH@3",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 681,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 225,
+    "fame": 180,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE_FISH@1",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 425,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE_FISH@2",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 825,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T5_MEAL_PIE_FISH@3",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2026,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 672,
+    "fame": 360,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE_FISH@1",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1272,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE_FISH@2",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2473,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T7_MEAL_PIE_FISH@3",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6076,
+    "fame": null,
+    "specializationBranchName": "Pie"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 52,
+    "fame": 180,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE@1",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 74,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE@2",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 118,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE@3",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_WHEAT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 252,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 155,
+    "fame": 540,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE@1",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 222,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE@2",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 355,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE@3",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 755,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 464,
+    "fame": 1600,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE@1",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 665,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE@2",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 1065,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE@3",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 2266,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 77,
+    "fame": 60,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_FISH@1",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 144,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_FISH@2",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 278,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_FISH@3",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 678,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 225,
+    "fame": 180,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_FISH@1",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 425,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_FISH@2",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 825,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_FISH@3",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2026,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 672,
+    "fame": 360,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_FISH@1",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1272,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_FISH@2",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2473,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_FISH@3",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6076,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_AVALON",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 120,
+    "focus": 52,
+    "fame": 180,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_AVALON@1",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 74,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_AVALON@2",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 118,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T3_MEAL_OMELETTE_AVALON@3",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_EGG",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 252,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_AVALON",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 360,
+    "focus": 155,
+    "fame": 540,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_AVALON@1",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 222,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_AVALON@2",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 355,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T5_MEAL_OMELETTE_AVALON@3",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 755,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_AVALON",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 464,
+    "fame": 1600,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_AVALON@1",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 665,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_AVALON@2",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 1065,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T7_MEAL_OMELETTE_AVALON@3",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_EGG",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 2266,
+    "fame": null,
+    "specializationBranchName": "Omelette"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 61,
+    "fame": 240,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW@1",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 84,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW@2",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 128,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW@3",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 262,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 184,
+    "fame": 720,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW@1",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 251,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW@2",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 384,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW@3",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 785,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 551,
+    "fame": 2200,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW@1",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 752,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW@2",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 1152,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW@3",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 2353,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 77,
+    "fame": 60,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_FISH@1",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 144,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_FISH@2",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 278,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_FISH@3",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 678,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 225,
+    "fame": 180,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_FISH@1",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 425,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_FISH@2",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 825,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_FISH@3",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2026,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_FISH",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 652,
+    "fame": 540,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_FISH@1",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1253,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_FISH@2",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2454,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_FISH@3",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6056,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_AVALON",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 128,
+    "focus": 58,
+    "fame": 240,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_AVALON@1",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 128,
+    "focus": 81,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_AVALON@2",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 128,
+    "focus": 125,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_STEW_AVALON@3",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T1_CARROT",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 128,
+    "focus": 259,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_AVALON",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 384,
+    "focus": 176,
+    "fame": 120,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_AVALON@1",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 384,
+    "focus": 243,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_AVALON@2",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 384,
+    "focus": 376,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T6_MEAL_STEW_AVALON@3",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 384,
+    "focus": 777,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_AVALON",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1152,
+    "focus": 528,
+    "fame": 2200,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_AVALON@1",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1152,
+    "focus": 728,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_AVALON@2",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1152,
+    "focus": 1128,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T8_MEAL_STEW_AVALON@3",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1152,
+    "focus": 2329,
+    "fame": null,
+    "specializationBranchName": "Stew"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 55,
+    "fame": 180,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH@1",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 77,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH@2",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 122,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH@3",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 56,
+    "focus": 255,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 165,
+    "fame": 540,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH@1",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 231,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH@2",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 365,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH@3",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 168,
+    "focus": 765,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 494,
+    "fame": 1600,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH@1",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 694,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH@2",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 1094,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH@3",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 504,
+    "focus": 2295,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_FISH",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 81,
+    "fame": 60,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_FISH@1",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 147,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_FISH@2",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 281,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_FISH@3",
+    "tier": 4,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 681,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_FISH",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 231,
+    "fame": 180,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_FISH@1",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 432,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_FISH@2",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 832,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_FISH@3",
+    "tier": 6,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_POTATO",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2033,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_FISH",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 672,
+    "fame": 540,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_FISH@1",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1272,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_FISH@2",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2473,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_FISH@3",
+    "tier": 8,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_YARROW",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6076,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_AVALON",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      }
+    ],
+    "itemValue": 120,
+    "focus": 55,
+    "fame": 180,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_AVALON@1",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 77,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_AVALON@2",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 122,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T4_MEAL_SANDWICH_AVALON@3",
+    "tier": 4,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 10,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 120,
+    "focus": 255,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_AVALON",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      }
+    ],
+    "itemValue": 360,
+    "focus": 165,
+    "fame": 540,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_AVALON@1",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 231,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_AVALON@2",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 365,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T6_MEAL_SANDWICH_AVALON@3",
+    "tier": 6,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 30,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 360,
+    "focus": 765,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_AVALON",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 494,
+    "fame": 1600,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_AVALON@1",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 694,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_AVALON@2",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 1094,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T8_MEAL_SANDWICH_AVALON@3",
+    "tier": 8,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T4_BREAD",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "quantity": 18,
+        "returnable": true
+      },
+      {
+        "itemId": "QUESTITEM_TOKEN_AVALON",
+        "quantity": 90,
+        "returnable": false
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 1080,
+    "focus": 2295,
+    "fame": null,
+    "specializationBranchName": "Sandwich"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 58,
+    "fame": 240,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST@1",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 81,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST@2",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 125,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST@3",
+    "tier": 3,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T3_MEAT",
+        "quantity": 8,
+        "returnable": true
+      },
+      {
+        "itemId": "T2_BEAN",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 4,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 10,
+        "returnable": true
+      }
+    ],
+    "itemValue": 64,
+    "focus": 259,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 176,
+    "fame": 720,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST@1",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 243,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST@2",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 376,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST@3",
+    "tier": 5,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T5_MEAT",
+        "quantity": 24,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 12,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 30,
+        "returnable": true
+      }
+    ],
+    "itemValue": 192,
+    "focus": 777,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 528,
+    "fame": 2200,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST@1",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 728,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST@2",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 1128,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST@3",
+    "tier": 7,
+    "quantity": 10,
+    "ingredients": [
+      {
+        "itemId": "T7_MEAT",
+        "quantity": 72,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 36,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 90,
+        "returnable": true
+      }
+    ],
+    "itemValue": 576,
+    "focus": 2329,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST_FISH",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 1,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 77,
+    "fame": 60,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST_FISH@1",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 144,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST_FISH@2",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 278,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T3_MEAL_ROAST_FISH@3",
+    "tier": 3,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T4_MILK",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 3,
+        "returnable": true
+      }
+    ],
+    "itemValue": 90,
+    "focus": 678,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST_FISH",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 225,
+    "fame": 180,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST_FISH@1",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 425,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST_FISH@2",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 825,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T5_MEAL_ROAST_FISH@3",
+    "tier": 5,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T6_MILK",
+        "quantity": 2,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 9,
+        "returnable": true
+      }
+    ],
+    "itemValue": 260,
+    "focus": 2026,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST_FISH",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 652,
+    "fame": 540,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST_FISH@1",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 1253,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST_FISH@2",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 2454,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  },
+  {
+    "recipeId": "T7_MEAL_ROAST_FISH@3",
+    "tier": 7,
+    "quantity": 1,
+    "ingredients": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "quantity": 1,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_CORN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T8_MILK",
+        "quantity": 6,
+        "returnable": true
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "quantity": 27,
+        "returnable": true
+      }
+    ],
+    "itemValue": 750,
+    "focus": 6056,
+    "fame": null,
+    "specializationBranchName": "Roast"
+  }
+]

@@ -12,12 +12,16 @@ import sys
 POS_NAME_FIELD = (645, 270)
 POS_CATEGORY_FIELD = (815, 271)
 POS_TIER_FIELD = (955, 270)
+POS_ENCHANTMENT_FIELD = (1095, 270)
 
 # === OCR Coordinates ===
 OCR_REGION_1_TOP_LEFT = (665, 387)  # Point C (x, y)
 OCR_REGION_1_BOTTOM_RIGHT = (896, 472)  # Point D (x, y)
 OCR_REGION_2_TOP_LEFT = (1066, 389)  # Point E (x, y)
 OCR_REGION_2_BOTTOM_RIGHT = (1217, 471)  # Point F (x, y)
+
+OCR_NO_OFFERS_TOP_LEFT = (855, 455)
+OCR_NO_OFFERS_BOTTOM_RIGHT = (1040, 505)
 
 UI_ELEM_WIDTH = 135
 UI_ELEM_HEIGHT = 27
@@ -33,64 +37,66 @@ watch_list = [
     "ui_path": [510, 545],
     "tiers_per_index": [
       [
-        { "tier": 1, "names": ["Carrot soup", "Greenmoor"] },
+        { "tier": 1, "names": ["Carrot soup", "Greenmoor"], "enchantments": [0, 1, 2, 3] },
         {
           "tier": 3,
-          "names": ["Wheat soup", "Murkwater Clam"]
+          "names": ["Wheat soup", "Murkwater Clam"], "enchantments": [0, 1, 2, 3]
         },
-        { "tier": 5, "names": ["Cabbage soup", "Blackbog Clam Soup"] }
+        { "tier": 5, "names": ["Cabbage soup", "Blackbog Clam Soup"], "enchantments": [0, 1, 2, 3] }
       ],
       [
-        1,
+        {
+          "tier": 1, "names": ["Seaweed salad"]
+        },
         {
           "tier": 2,
-          "names": ["Bean salad", "Shallowshore Squid"]
+          "names": ["Bean salad", "Shallowshore Squid"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 4,
-          "names": ["Turnip Salad", "Midwater Octopus Salad"]
+          "names": ["Turnip Salad", "Midwater Octopus Salad"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 6,
-          "names": ["Potato salad", "Deepwater Kraken"]
+          "names": ["Potato salad", "Deepwater Kraken"], "enchantments": [0, 1, 2, 3]
         }
       ],
       [
         {
           "tier": 3,
-          "names": ["Chicken pie", "Upland Coldeye"]
+          "names": ["Chicken pie", "Upland Coldeye"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 5,
-          "names": ["Goose pie", "Mountain Blindeye"]
+          "names": ["Goose pie", "Mountain Blindeye"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 7,
-          "names": ["Pork pie", "Frostpeak Deadeye Pie"]
+          "names": ["Pork pie", "Frostpeak Deadeye Pie"], "enchantments": [0, 1, 2, 3]
         }
       ],
       [
         {
           "tier": 3,
-          "names": ["Roast chicken", "Roasted Whitefog"]
+          "names": ["Roast chicken", "Roasted Whitefog"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 5,
-          "names": ["Roast Goose", "Roasted Clearhaze"]
+          "names": ["Roast Goose", "Roasted Clearhaze"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 7,
-          "names": ["Roast Pork", "Roasted Puremist Snapper"]
+          "names": ["Roast Pork", "Roasted Puremist Snapper"], "enchantments": [0, 1, 2, 3]
         }
       ],
       [
         {
           "tier": 3,
-          "names": ["Chicken", "Lowriver Crab", "Avalonian Chicken Omelette"]
+          "names": ["Chicken", "Lowriver Crab", "Avalonian Chicken Omelette"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 5,
-          "names": ["Goose omelette", "Drybrook Crab", "Avalonian Goose"]
+          "names": ["Goose omelette", "Drybrook Crab", "Avalonian Goose"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 7,
@@ -98,13 +104,13 @@ watch_list = [
             "Pork Omelette",
             "Dusthole Crab Omelette",
             "Avalonian Pork Omelette"
-          ]
+          ], "enchantments": [0, 1, 2, 3]
         }
       ],
       [
         {
           "tier": 4,
-          "names": ["Goat stew", "Greenriver Eel", "Avalonian Goat"]
+          "names": ["Goat stew", "Greenriver Eel", "Avalonian Goat"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 6,
@@ -112,17 +118,17 @@ watch_list = [
             "Mutton Stew",
             "Redspring Eel Stew",
             "Avalonian Mutton Stew"
-          ]
+          ], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 8,
-          "names": ["Beef Stew", "Deadwater Eel Stew", "Avalonian Beef Stew"]
+          "names": ["Beef Stew", "Deadwater Eel Stew", "Avalonian Beef Stew"], "enchantments": [0, 1, 2, 3]
         }
       ],
       [
         {
           "tier": 4,
-          "names": ["Goat sandwich", "Stonestream Lurcher", "Avalonian Goat"]
+          "names": ["Goat sandwich", "Stonestream Lurcher", "Avalonian Goat"], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 6,
@@ -130,7 +136,7 @@ watch_list = [
             "Mutton Sandwich",
             "Rushwater Lurcher Sandwich",
             "Avalonian Mutton Sandwich"
-          ]
+          ], "enchantments": [0, 1, 2, 3]
         },
         {
           "tier": 8,
@@ -138,10 +144,13 @@ watch_list = [
             "Beef Sandwich",
             "Thunderfall Lurcher Sandwich",
             "Avalonian Beef Sandwich"
-          ]
+          ], "enchantments": [0, 1, 2, 3]
         }
       ],
-      [1]
+      [{
+        "tier": 4,
+        "names": ["Chocolate"]
+      }]
     ]
   },
   {
@@ -149,7 +158,12 @@ watch_list = [
     "size": 3,
     "ui_path": [571, 703],
     "tiers_per_index": [
-      [3],
+      [
+        {
+          "tier": 3,
+          "names": ["Albion Perch"]
+        }
+      ],
       [
         {
           "tier": 3,
@@ -195,14 +209,17 @@ watch_list = [
     "name": "Farming products",
     "size": 5,
     "ui_path": [627, 757],
-    "tiers_per_index": [[6, 7, 8], [4], [4, 6, 8], [3], [3, 4, 5, 6, 7, 8]]
+    "tiers_per_index": [[{"tier": 6, "names": ["Potato Schnapps"]}, {"tier": 7, "names": ["Corn Hooch"]}, {"tier": 8, "names": ["Pumpkin Moonshine"]}], [{"tier": 4, "names": ["Bread"]}], [{"tier": 4, "names": ["Goat's Butter"]}, {"tier": 6, "names": ["Sheep's Butter"]}, {"tier": 8, "names": ["Cow's Butter"]}], [{"tier": 3, "names": ["Flour"]}], [{"tier": 3, "names": ["Raw Chicken"]}, {"tier": 4, "names": ["Raw Goat"]}, {"tier": 5, "names": ["Raw Goose"]}, {"tier": 6, "names": ["Raw Mutton"]}, {"tier": 7, "names": ["Raw Pork"]}, {"tier": 8, "names": ["Raw Cow"]}]]
   },
   {
     "name": "Pasture",
     "size": 4,
     "ui_path": [627, 706],
     "tiers_per_index": [
-      [3],
+      [{
+        "tier": 3,
+        "names": ["Baby Chickens"]
+      }],
       [
         {
           "tier": 3,
@@ -229,8 +246,8 @@ watch_list = [
           "names": ["Cow"]
         }
       ],
-      [3, 5],
-      [4, 6, 8]
+      [{"tier": 3, "names": ["Hen Eggs"]}, {"tier": 5, "names": ["Goose Eggs"]}],
+      [{"tier": 4, "names": ["Goat's Milk"]}, {"tier": 6, "names": ["Sheep's Milk"]}, {"tier": 8, "names": ["Cow's Milk"]}]
     ]
   },
   {
@@ -287,7 +304,7 @@ LOCATION_NAME = sys.argv[2]
 # === Load item data for ID lookup ===
 def load_item_data():
     try:
-        with open('parsed_old_items.json', 'r', encoding='utf-8') as f:
+        with open('parsed_translations.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
         print(f"Failed to load item data: {e}")
@@ -295,12 +312,26 @@ def load_item_data():
 
 
 # === Find itemId by English name ===
-def get_item_id_by_name(item_name, items_data):
+def get_item_id_by_name(item_name, enchantment_level, items_data):
     for item in items_data:
-        if item["LocalizedName"] == item_name:
+        if item["LocalizedName"] == item_name and (enchantment_level == 0 or f"@{enchantment_level}" in item["UniqueName"]):
             return item["UniqueName"]
-    print(f"Warning: No itemId found for item name {item_name}")
+    print(f"Warning: No itemId found for item name {item_name} and enchantment level {enchantment_level}")
     return None
+
+def checkIfNoOffersFound():
+    try:
+        # Take a screenshot of the "No offers found" region
+        no_offers_screenshot = pyautogui.screenshot(region=(OCR_NO_OFFERS_TOP_LEFT[0], OCR_NO_OFFERS_TOP_LEFT[1], 
+                                                            OCR_NO_OFFERS_BOTTOM_RIGHT[0] - OCR_NO_OFFERS_TOP_LEFT[0], 
+                                                            OCR_NO_OFFERS_BOTTOM_RIGHT[1] - OCR_NO_OFFERS_TOP_LEFT[1]))
+        # Perform OCR on the screenshot
+        text = pytesseract.image_to_string(no_offers_screenshot, config='--psm 6').strip()
+        return "no offers found" in text.lower()
+    except Exception as e:
+        print(f"Error checking for 'No offers found': {e}")
+        return False
+  
 
 # === Screenshot and OCR Function ===
 def take_screenshot_and_detect_price():
@@ -345,33 +376,38 @@ def take_screenshot_and_detect_price():
         print(f"Error in screenshot/OCR: {e}")
         return None, None
 
-def getItemData(lastItemName, items_data, toSend):
-    time.sleep(0.3)
+def getItemData(lastItemName, lastItemPrice, items_data, enchantmentLvl, toSend):
+    time.sleep(0.5)
     itemName, price = take_screenshot_and_detect_price()
     
     if itemName is None or price is None:
         print("OCR failed, skipping item.")
-        return lastItemName  # Return last known name to maintain loop behavior
+        return lastItemName, lastItemPrice  # Return last known name to maintain loop behavior
 
     retry_count = 0
-    max_retries = 10
+    max_retries = 5
 
-    while (itemName == lastItemName or not itemName or not price or itemName.strip() == "" or price.strip() == ""):
-        print(f"Still seeing the last item, waiting and retrying... (last: {lastItemName} current: {itemName})")
+    while ((itemName == lastItemName and price == lastItemPrice) or not itemName or not price or itemName.strip() == "" or price.strip() == ""):
+        print(f"Still seeing the last item, waiting and retrying... (last: {lastItemName, lastItemPrice} current: {itemName, price})")
         time.sleep(0.2)
         itemName, price = take_screenshot_and_detect_price()
-        retry_count += 1
 
         if itemName is None or price is None:
             print("OCR failed on retry, skipping item.")
-            return lastItemName
+            return lastItemName, lastItemPrice
+
+        if retry_count == 1 and checkIfNoOffersFound():
+            print(f'No offers found')
+            return lastItemName, lastItemPrice
 
         if retry_count >= max_retries:
             print(f"Exceeded maximum retries ({max_retries}), skipping item.")
-            return lastItemName
+            return lastItemName, lastItemPrice
+        retry_count += 1
+        
 
     print(itemName, price)
-    itemId = get_item_id_by_name(itemName, items_data)
+    itemId = get_item_id_by_name(itemName, enchantmentLvl, items_data)
     
     if itemId:
         try:
@@ -383,7 +419,7 @@ def getItemData(lastItemName, items_data, toSend):
         except ValueError:
             print(f"Invalid price value: {price}, skipping.")
     
-    return itemName
+    return itemName, price
 
 
 # === Automation Logic ===
@@ -393,6 +429,7 @@ def start_watching_prices(watch_list):
         print('Starting to watch:', item['name'])
         toSend = []
         lastItemName = None
+        lastItemPrice = None
         for idx in range(item['size']):
             if not running:
                 break
@@ -423,39 +460,48 @@ def start_watching_prices(watch_list):
                     tier_info = tiers_per_index[idx][tierIdx]
 
                     # Determine if this tier entry includes names (dict) or is a direct tier number (int)
-                    if isinstance(tier_info, dict):
-                        tier_number = tier_info["tier"]
-                        item_names = tier_info["names"]
+                    # if isinstance(tier_info, dict):
+                    tier_number = tier_info["tier"]
+                    item_names = tier_info["names"]
 
-                        # Select the tier
-                        pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1] + UI_ELEM_HEIGHT * (tier_number + 1))
+                    # Select the tier
+                    pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1] + UI_ELEM_HEIGHT * (tier_number + 1))
+                    pyautogui.click()
+
+                    for name in item_names:
+                        if not running:
+                            break
+                        # Click into name field
+                        pyautogui.moveTo(POS_NAME_FIELD)
                         pyautogui.click()
+                        pyautogui.hotkey('ctrl', 'a')  # Select all
+                        pyautogui.press('backspace')  # Clear it
+                        pyautogui.write(name)
+                        pyautogui.press('enter')  # Trigger search
 
-                        for name in item_names:
-                            if not running:
-                                break
-                            # Click into name field
-                            pyautogui.moveTo(POS_NAME_FIELD)
+                        enchantments = tier_info["enchantments"] if "enchantments" in tier_info else [0]
+                        for enchantmentLevel in enchantments:
+                            # Click the enchantment box
+                            pyautogui.moveTo(POS_ENCHANTMENT_FIELD[0], POS_ENCHANTMENT_FIELD[1])
                             pyautogui.click()
-                            pyautogui.hotkey('ctrl', 'a')  # Select all
-                            pyautogui.press('backspace')  # Clear it
-                            pyautogui.write(name)
-                            pyautogui.press('enter')  # Trigger search
-                            lastItemName = getItemData(lastItemName, items_data, toSend)
+                            # Select the correct enchantment
+                            pyautogui.moveTo(POS_ENCHANTMENT_FIELD[0], POS_ENCHANTMENT_FIELD[1] + UI_ELEM_HEIGHT * (enchantmentLevel + 2))
+                            pyautogui.click()
+                            lastItemName, lastItemPrice = getItemData(lastItemName, lastItemPrice, items_data, enchantmentLevel, toSend)
 
 
-                    elif isinstance(tier_info, int):
-                        # Just select the tier and proceed (no name typing)
-                        pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1] + UI_ELEM_HEIGHT * (tier_info + 1))
-                        pyautogui.click()
-                        lastItemName = getItemData(lastItemName, items_data, toSend)
+                    # elif isinstance(tier_info, int):
+                    #     # Just select the tier and proceed (no name typing)
+                    #     pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1] + UI_ELEM_HEIGHT * (tier_info + 1))
+                    #     pyautogui.click()
+                    #     lastItemName = getItemData(lastItemName, items_data, toSend)
             else:
                 pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1])
                 pyautogui.click()
                 # Select "All Tiers" option
                 pyautogui.moveTo(POS_TIER_FIELD[0], POS_TIER_FIELD[1] + UI_ELEM_HEIGHT * 1)
                 pyautogui.click()
-                lastItemName = getItemData(lastItemName, items_data, toSend)
+                lastItemName, lastItemPrice = getItemData(lastItemName, lastItemPrice, items_data, 0, toSend)
             
 
         # Send toSend list to the server
