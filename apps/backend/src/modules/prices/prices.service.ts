@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { GetPricesDto, GetPricesResponse } from '@albion_online/common';
+import {
+  GetPricesDto,
+  GetPricesResponse,
+  GetSoldHistoryResponse,
+} from '@albion_online/common';
 import { ABDMarketOrderMessage } from '@/utils/zod/ABDMarketOrderSchema';
 import { getLocationName } from '@/utils/getLocationName';
 
@@ -9,6 +13,8 @@ import axios from 'axios';
 import { ABD_ENDPOINT } from '@albion_online/common';
 import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
 import { OCRPriceUpdate } from '@/utils/zod/OCRPriceUpdateSchema';
+import { ABDGetHistoryResponse } from '@/utils/zod/ABDGetHistorySchema';
+import { calculateMarketStats } from '@/utils/weightedAverage';
 
 @Injectable()
 export class PricesService {
@@ -345,5 +351,43 @@ export class PricesService {
         },
       });
     }
+  }
+
+  async averageSoldPerDay(dto: GetPricesDto): Promise<GetSoldHistoryResponse> {
+    const itemParam = dto.itemIds.join(',');
+    const cityParam = dto.cities.join(',');
+    const abdHistory = await axios.get<ABDGetHistoryResponse>(
+      `${ABD_ENDPOINT}/api/v2/stats/history/${itemParam}?locations=${cityParam}&qualities=1&time-scale=24`,
+    );
+
+    const result: GetSoldHistoryResponse = {
+      histories: [],
+    };
+    for (const itemId of dto.itemIds) {
+      const historyItems = abdHistory.data.filter(
+        (el) => el.item_id === itemId,
+      );
+      const newHistoryItem: GetSoldHistoryResponse['histories'][number] = {
+        itemId,
+        markets: [],
+      };
+      for (const city of dto.cities) {
+        const priceData = historyItems.find((el) => el.location === city);
+
+        if (!priceData) {
+          continue;
+        }
+        const { avgItemCount, weightedAvgPrice, weightedStdDev } =
+          calculateMarketStats(priceData.data);
+        newHistoryItem.markets.push({
+          location: city,
+          avgAmount: avgItemCount,
+          avgPrice: weightedAvgPrice,
+          stdDev: weightedStdDev,
+        });
+      }
+      result.histories.push(newHistoryItem);
+    }
+    return result;
   }
 }

@@ -1,5 +1,5 @@
 import type { RecipeCostDetails } from "@/pages/CookingRecipesPage/utils/calculateRecipeCost";
-import type { Recipe } from "@albion_online/common";
+import type { GetSoldHistoryResponse, Recipe } from "@albion_online/common";
 
 export interface MarketData {
   locationName: string;
@@ -17,6 +17,7 @@ export type RecipeStats = {
 // ---------------- TanStack Table Setup ----------------
 export type RecipeRowData = {
   recipe: Recipe;
+  sellCityMarketStats?: GetSoldHistoryResponse['histories'][number]['markets'][number];
   withFocusRecipeStats: RecipeStats;
   withoutFocusRecipeStats: RecipeStats;
   focusCostWithSpecialization: number;

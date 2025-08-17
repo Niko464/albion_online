@@ -44,6 +44,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useQuantitySoldHistory } from "@/hooks/useQuantitySoldHistory";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
@@ -110,17 +111,21 @@ export function CookingRecipesPage() {
   }, [allIds]);
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
-    "Martlock",
-    "Bridgewatch",
-    "Lymhurst",
-    "FortSterling",
+    // "Martlock",
+    // "Bridgewatch",
+    // "Lymhurst",
+    `FortSterling`,
     "Thetford",
   ]);
   const {
     data: priceData,
-    isLoading,
+    isLoading: isLoadingPriceData,
     error,
   } = useCustomPrices(allIds, selectedCities);
+  const { data: soldHistoryData, isLoading: isLoadingSoldHistory } =
+    useQuantitySoldHistory(recipeIds, selectedCities);
+
+  const isLoading = isLoadingPriceData || isLoadingSoldHistory;
 
   const [selections, setSelections] = useState<CitySelectionsType>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
@@ -172,7 +177,7 @@ export function CookingRecipesPage() {
   }, []);
 
   const data: RecipeRowData[] = useMemo(() => {
-    if (!priceData || !missingPriceDataItemIds) return [];
+    if (!priceData || !soldHistoryData || !missingPriceDataItemIds) return [];
     return allCookingRecipes.map((recipe) => {
       const withoutFocusRecipeStats = calculateRecipeProfit(
         recipe,
@@ -219,7 +224,8 @@ export function CookingRecipesPage() {
           `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
         );
       }
-      const famePerSilverInvestedSellCity = cheapestMarketPrice?.locationName || 'Non existing';
+      const famePerSilverInvestedSellCity =
+        cheapestMarketPrice?.locationName || "Non existing";
 
       // TODO: I am trying to maximize fame, I need to make a list
       const famePerSilverInvested = recipe.fame
@@ -227,8 +233,18 @@ export function CookingRecipesPage() {
           ((cheapestMarketPrice?.offerOrders[0].price || 1) * recipe.quantity)
         : 0;
 
+      const selectedCity = selections[recipe.recipeId];
+      const selectedCityMarketStats = soldHistoryData.histories
+        .find((el) => el.itemId === recipe.recipeId)
+        ?.markets.find((el) => el.location === selectedCity);
+
+      // if (!selectedCityMarketStats) {
+      //   throw new Error("No market stats for selected sell city");
+      // }
+
       return {
         recipe,
+        sellCityMarketStats: selectedCityMarketStats,
         withFocusRecipeStats,
         withoutFocusRecipeStats,
         oldestAge,
@@ -243,7 +259,13 @@ export function CookingRecipesPage() {
         famePerSilverInvestedSellCity,
       } satisfies RecipeRowData;
     });
-  }, [priceData, missingPriceDataItemIds, selections, useInstantSell]);
+  }, [
+    priceData,
+    soldHistoryData,
+    missingPriceDataItemIds,
+    selections,
+    useInstantSell,
+  ]);
 
   const filteredData = useMemo(() => {
     return data.filter((row) => {
@@ -258,6 +280,7 @@ export function CookingRecipesPage() {
   const columns = useRecipeColumns(
     itemTranslations,
     priceData,
+    soldHistoryData,
     selections,
     useInstantSell,
     handleSelectionChange

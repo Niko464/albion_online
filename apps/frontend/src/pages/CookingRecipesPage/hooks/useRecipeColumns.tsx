@@ -1,5 +1,8 @@
 import { createColumnHelper, type ColumnDef } from "@tanstack/react-table";
-import type { GetPricesResponse } from "@albion_online/common";
+import type {
+  GetPricesResponse,
+  GetSoldHistoryResponse,
+} from "@albion_online/common";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "../components/renderItemImage";
 import {
@@ -15,6 +18,7 @@ const columnHelper = createColumnHelper<RecipeRowData>();
 export const useRecipeColumns = (
   itemTranslations: Record<string, string>,
   priceData: GetPricesResponse | undefined,
+  soldHistoryData: GetSoldHistoryResponse | undefined,
   selections: CitySelectionsType,
   useInstantSell: boolean,
   handleSelectionChange: (itemId: string, value: string) => void
@@ -121,19 +125,21 @@ export const useRecipeColumns = (
       size: 120,
       meta: { align: "left" },
     }),
-    columnHelper.accessor("withoutFocusRecipeStats.profit", {
-      header: "Profit (Silver)",
-      cell: ({ row }) => {
-        const profit = row.original.withoutFocusRecipeStats.profit;
-        return (
-          <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
-            {profit.toLocaleString()}
-          </span>
-        );
-      },
-      size: 150,
-      meta: { align: "left" },
-    }),
+
+    // columnHelper.accessor("withoutFocusRecipeStats.profit", {
+    //   header: "Profit (Silver)",
+    //   cell: ({ row }) => {
+    //     const profit = row.original.withoutFocusRecipeStats.profit;
+    //     return (
+    //       <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
+    //         {profit.toLocaleString()}
+    //       </span>
+    //     );
+    //   },
+    //   size: 150,
+    //   meta: { align: "left" },
+    // }),
+
     // columnHelper.accessor("withFocusRecipeStats.recipeCost", {
     //   header: "Recipe Cost (with focus)",
     //   cell: ({ row }) =>
@@ -144,31 +150,33 @@ export const useRecipeColumns = (
     //   meta: { align: "left" },
     // }),
 
-    columnHelper.accessor("withFocusRecipeStats.profit", {
-      header: "Profit (with focus)",
-      cell: ({ row }) => {
-        const profit = row.original.withFocusRecipeStats.profit;
-        return (
-          <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
-            {profit.toLocaleString()}
-          </span>
-        );
-      },
-      size: 150,
-      meta: { align: "left" },
-    }),
-    columnHelper.accessor("silverPerFocusWithoutSpecialization", {
-      header: "Base Silver/focus",
-      cell: ({ row }) => {
-        return (
-          <span>
-            {row.original.silverPerFocusWithoutSpecialization.toFixed(2)}
-          </span>
-        );
-      },
-      size: 120,
-      meta: { align: "left" },
-    }),
+    // columnHelper.accessor("withFocusRecipeStats.profit", {
+    //   header: "Profit (with focus)",
+    //   cell: ({ row }) => {
+    //     const profit = row.original.withFocusRecipeStats.profit;
+    //     return (
+    //       <span className={profit > 0 ? "text-green-600" : "text-red-600"}>
+    //         {profit.toLocaleString()}
+    //       </span>
+    //     );
+    //   },
+    //   size: 150,
+    //   meta: { align: "left" },
+    // }),
+
+    // columnHelper.accessor("silverPerFocusWithoutSpecialization", {
+    //   header: "Base Silver/focus",
+    //   cell: ({ row }) => {
+    //     return (
+    //       <span>
+    //         {row.original.silverPerFocusWithoutSpecialization.toFixed(2)}
+    //       </span>
+    //     );
+    //   },
+    //   size: 120,
+    //   meta: { align: "left" },
+    // }),
+
     columnHelper.accessor("silverPerFocusWithSpecialization", {
       header: "Silver/focus (with spec)",
       cell: ({ row }) => {
@@ -207,14 +215,16 @@ export const useRecipeColumns = (
       size: 150,
       meta: { align: "left" },
     }),
-    columnHelper.accessor("recipe.fame", {
-      header: "Fame",
-      cell: ({ row }) => {
-        return <span>{row.original.recipe.fame?.toLocaleString()}</span>;
-      },
-      size: 100,
-      meta: { align: "left" },
-    }),
+
+    // columnHelper.accessor("recipe.fame", {
+    //   header: "Fame",
+    //   cell: ({ row }) => {
+    //     return <span>{row.original.recipe.fame?.toLocaleString()}</span>;
+    //   },
+    //   size: 100,
+    //   meta: { align: "left" },
+    // }),
+
     columnHelper.display({
       id: "sellCity",
       header: "Sell City",
@@ -232,7 +242,27 @@ export const useRecipeColumns = (
             placeholder="Select sell city"
             widthClass="w-full max-w-[200px]"
           />
-        )
+        );
+      },
+      size: 200,
+      meta: { align: "left" },
+    }),
+    columnHelper.accessor("sellCityMarketStats.avgAmount", {
+      header: "Avg sold Sell City",
+      cell: ({ row }) => {
+        return (
+          <div className="flex flex-col">
+            <span>
+              Amt:{" "}
+              {Math.round(row.original.sellCityMarketStats?.avgAmount || 0)}
+            </span>
+            <span>
+              Price:{" "}
+              {Math.round(row.original.sellCityMarketStats?.avgPrice || 0)}
+            </span>
+            {/* <span>Std dev: {Math.round(row.original.sellCityMarketStats?.stdDev || 0)}</span> */}
+          </div>
+        );
       },
       size: 200,
       meta: { align: "left" },
