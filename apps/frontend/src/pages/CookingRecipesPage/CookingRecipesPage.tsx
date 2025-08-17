@@ -54,7 +54,7 @@ const playerSpec: PlayerSpecializationStats = {
     Roast: 18,
     Omelette: 2,
     Stew: 40,
-    Sandwich: 6,
+    Sandwich: 25,
     Ingredient: 8,
     Butcher: 48,
   },

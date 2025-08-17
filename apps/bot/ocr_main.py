@@ -287,7 +287,7 @@ LOCATION_NAME = sys.argv[2]
 # === Load item data for ID lookup ===
 def load_item_data():
     try:
-        with open('parsed_items.json', 'r', encoding='utf-8') as f:
+        with open('parsed_old_items.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
         print(f"Failed to load item data: {e}")

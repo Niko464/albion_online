@@ -2,18 +2,18 @@ import json
 
 # Read the input JSON file with UTF-8 encoding
 try:
-    with open('items.json', 'r', encoding='utf-8') as file:
+    with open('old_items.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
 except json.JSONDecodeError as e:
     print(f"Error decoding JSON: {e}")
     exit(1)
 except FileNotFoundError:
-    print("Error: items.json file not found")
+    print("Error: old_items.json file not found")
     exit(1)
 
 # Validate that data is a list
 if not isinstance(data, list):
-    print(f"Error: Expected a list in items.json, got {type(data)}")
+    print(f"Error: Expected a list in old_items.json, got {type(data)}")
     exit(1)
 
 # Process the data, skipping invalid items
@@ -46,8 +46,8 @@ for index, item in enumerate(data):
 
 # Write the parsed data to a new JSON file with UTF-8 encoding
 try:
-    with open('parsed_items.json', 'w', encoding='utf-8') as file:
+    with open('parsed_old_items.json', 'w', encoding='utf-8') as file:
         json.dump(parsed_data, file, indent=2, ensure_ascii=False)
-    print(f"Successfully wrote {len(parsed_data)} items to parsed_items.json")
+    print(f"Successfully wrote {len(parsed_data)} items to parsed_old_items.json")
 except Exception as e:
     print(f"Error writing to file: {e}")

@@ -1,8 +1,4 @@
-import {
-  returnRateBlackList,
-  type GetPricesResponse,
-  type Recipe,
-} from "@albion_online/common";
+import { type GetPricesResponse, type Recipe } from "@albion_online/common";
 import { getMarketData } from "./getMarketData";
 import type { CitySelectionsType } from "../CookingRecipesPage";
 
@@ -47,10 +43,12 @@ export const calculateRecipeCost = (
     //   );
     // }
 
-    if (returnRateBlackList.includes(ingredient.itemId)) {
-      blacklistedIngredientsCost += (marketData?.price || 0) * ingredient.quantity;
+    if (ingredient?.returnable === false) {
+      blacklistedIngredientsCost +=
+        (marketData?.price || 0) * ingredient.quantity;
     } else {
-      returnableIngredientsCost += (marketData?.price || 0) * ingredient.quantity;
+      returnableIngredientsCost +=
+        (marketData?.price || 0) * ingredient.quantity;
     }
   }
 

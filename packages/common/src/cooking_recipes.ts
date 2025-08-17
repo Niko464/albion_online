@@ -1,7 +1,5 @@
 import { Recipe } from "./types";
 
-export const returnRateBlackList = ["QUESTITEM_TOKEN_AVALON"];
-
 export const allCookingRecipes: Recipe[] = [
   // {
   //   recipeId: "T1_MEAL_GRILLEDFISH",
@@ -289,7 +287,7 @@ export const allCookingRecipes: Recipe[] = [
   {
     recipeId: "T3_MEAL_OMELETTE_AVALON",
     tier: 3,
-    quantity: 1,
+    quantity: 10,
     ingredients: [
       {
         itemId: "T4_MILK",
@@ -297,11 +295,11 @@ export const allCookingRecipes: Recipe[] = [
       },
       { itemId: "T3_MEAT", quantity: 8 },
       { itemId: "T3_EGG", quantity: 2 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10, returnable: false },
     ],
     itemValue: 120,
     fame: 180,
-    focus: 52,
+    focus: 520,
     specializationBranchName: "Omelette",
   },
   {
@@ -424,7 +422,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T1_CARROT", quantity: 4 },
       { itemId: "T4_TURNIP", quantity: 4 },
       { itemId: "T4_MEAT", quantity: 8 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10, returnable: false },
     ],
     itemValue: 128,
     fame: 240,
@@ -463,16 +461,16 @@ export const allCookingRecipes: Recipe[] = [
   {
     recipeId: "T4_MEAL_SANDWICH_AVALON",
     tier: 4,
-    quantity: 1,
+    quantity: 10,
     ingredients: [
       { itemId: "T4_BREAD", quantity: 4 },
       { itemId: "T4_MEAT", quantity: 8 },
       { itemId: "T4_BUTTER", quantity: 2 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 10, returnable: false },
     ],
     itemValue: 120,
     fame: 180,
-    focus: 55,
+    focus: 550,
     specializationBranchName: "Sandwich",
   },
   {
@@ -537,7 +535,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T6_MILK", quantity: 12 },
       { itemId: "T5_MEAT", quantity: 24 },
       { itemId: "T5_EGG", quantity: 6 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30, returnable: false },
     ],
     itemValue: 360,
     fame: 540,
@@ -668,7 +666,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T5_CABBAGE", quantity: 12 },
       { itemId: "T6_POTATO", quantity: 12 },
       { itemId: "T6_MEAT", quantity: 24 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30, returnable: false },
     ],
     itemValue: 384,
     fame: 120,
@@ -707,16 +705,16 @@ export const allCookingRecipes: Recipe[] = [
   {
     recipeId: "T6_MEAL_SANDWICH_AVALON",
     tier: 6,
-    quantity: 1,
+    quantity: 10,
     ingredients: [
       { itemId: "T4_BREAD", quantity: 12 },
       { itemId: "T6_MEAT", quantity: 24 },
       { itemId: "T6_BUTTER", quantity: 6 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 30, returnable: false },
     ],
     itemValue: 360,
     fame: 540,
-    focus: 165,
+    focus: 1650,
     specializationBranchName: "Sandwich",
   },
   {
@@ -756,7 +754,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T8_MILK", quantity: 36 },
       { itemId: "T7_MEAT", quantity: 72 },
       { itemId: "T5_EGG", quantity: 18 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90, returnable: false },
     ],
     itemValue: 1080,
     fame: 1600,
@@ -859,7 +857,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T7_CORN", quantity: 36 },
       { itemId: "T8_PUMPKIN", quantity: 36 },
       { itemId: "T8_MEAT", quantity: 72 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90, returnable: false },
     ],
     itemValue: 1152,
     fame: 2200,
@@ -903,7 +901,7 @@ export const allCookingRecipes: Recipe[] = [
       { itemId: "T4_BREAD", quantity: 36 },
       { itemId: "T8_MEAT", quantity: 72 },
       { itemId: "T8_BUTTER", quantity: 18 },
-      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90 },
+      { itemId: "QUESTITEM_TOKEN_AVALON", quantity: 90, returnable: false },
     ],
     itemValue: 1080,
     fame: 1600,
