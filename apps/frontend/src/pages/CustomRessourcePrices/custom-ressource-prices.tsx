@@ -10,7 +10,7 @@ import {
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
-import type { GetPricesResponse } from "@albion_online/common";
+import { allCities, type GetPricesResponse } from "@albion_online/common";
 import { useItemTiers } from "@/hooks/useItemTiers";
 import { Tag } from "./Tag";
 import { useState } from "react";
@@ -23,7 +23,7 @@ export default function CustomResourcePricesPage() {
     GetPricesResponse["prices"][number]["markets"][number] | null
   >(null);
 
- const { data, isLoading, error } = useCustomPrices(itemIds)
+  const { data, isLoading, error } = useCustomPrices(itemIds, allCities);
 
   if (error)
     return <div className="p-4 text-destructive">Error fetching prices</div>;
@@ -138,7 +138,10 @@ export default function CustomResourcePricesPage() {
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <h3 className="text-lg font-medium mb-2">Offer Orders ({selectedMarketData.offerOrders.length} orders)</h3>
+                    <h3 className="text-lg font-medium mb-2">
+                      Offer Orders ({selectedMarketData.offerOrders.length}{" "}
+                      orders)
+                    </h3>
                     <Table>
                       <TableHeader>
                         <TableRow>
@@ -169,7 +172,10 @@ export default function CustomResourcePricesPage() {
                     </Table>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium mb-2">Request Orders ({selectedMarketData.requestOrders.length} orders)</h3>
+                    <h3 className="text-lg font-medium mb-2">
+                      Request Orders ({selectedMarketData.requestOrders.length}{" "}
+                      orders)
+                    </h3>
                     <Table>
                       <TableHeader>
                         <TableRow>

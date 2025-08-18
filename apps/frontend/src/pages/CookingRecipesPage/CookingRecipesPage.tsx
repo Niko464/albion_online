@@ -29,7 +29,6 @@ import {
   useReactTable,
   type SortingState,
 } from "@tanstack/react-table";
-import itemTranslationsJSON from "./parsed_items.json";
 
 // -------------------- Utility functions (memoized calculations) --------------------
 import { useRecipeColumns } from "./hooks/useRecipeColumns";
@@ -45,6 +44,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useQuantitySoldHistory } from "@/hooks/useQuantitySoldHistory";
+import { useItemTranslations } from "@/hooks/useItemTranslations";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
@@ -96,20 +96,6 @@ export function CookingRecipesPage() {
     return [...new Set([...ingredientIds, ...recipeIds])];
   }, [ingredientIds, recipeIds]);
 
-  const itemTranslations = useMemo(() => {
-    return allIds.reduce((acc, id) => {
-      const foundItem = itemTranslationsJSON.find(
-        (item) => item.UniqueName === id
-      );
-      if (foundItem) {
-        acc[id] = foundItem.LocalizedName;
-      } else {
-        acc[id] = id;
-      }
-      return acc;
-    }, {} as Record<string, string>);
-  }, [allIds]);
-
   const [selectedCities, setSelectedCities] = useState<string[]>([
     "Martlock",
     "Bridgewatch",
@@ -122,6 +108,7 @@ export function CookingRecipesPage() {
     isLoading: isLoadingPriceData,
     error,
   } = useCustomPrices(allIds, selectedCities);
+  const itemTranslations = useItemTranslations(allIds);
   const { data: soldHistoryData, isLoading: isLoadingSoldHistory } =
     useQuantitySoldHistory(recipeIds, selectedCities);
 

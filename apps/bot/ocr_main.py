@@ -31,6 +31,30 @@ running = False
 
 
 watch_list = [
+    {
+    "name": "Raw ressources",
+    "size": 5,
+    "ui_path": [564, 597],
+    "tiers_per_index": [
+      [{"tier": 2, "names": ["Cotton"]}, {"tier": 3, "names": ["Flax"]}, {"tier": 4, "names": ["Hemp"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Skyflower"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Amberleaf Cotton"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Sunflax"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Ghost Hemp"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Hide"]}, {"tier": 3, "names": ["Hide"]}, {"tier": 4, "names": ["Hide"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Hide"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Hide"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Hide"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Hide"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Ore"]}, {"tier": 3, "names": ["Ore"]}, {"tier": 4, "names": ["Ore"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Ore"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Ore"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Ore"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Ore"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Limestone"]}, {"tier": 3, "names": ["Sandstone"]}, {"tier": 4, "names": ["Travertine"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Granite"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Slate"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Basalt"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Marble"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Log"]}, {"tier": 3, "names": ["Log"]}, {"tier": 4, "names": ["Log"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Log"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Log"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Log"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Log"], "enchantments": [0, 1, 2, 3]}]
+    ]
+  },
+  {
+    "name": "Refined ressources",
+    "size": 5,
+    "ui_path": [564, 624],
+    "tiers_per_index": [
+      [{"tier": 2, "names": ["Cloth"]}, {"tier": 3, "names": ["Cloth"]}, {"tier": 4, "names": ["Cloth"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Cloth"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Cloth"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Cloth"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Cloth"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Leather"]}, {"tier": 3, "names": ["Leather"]}, {"tier": 4, "names": ["Leather"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Leather"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Leather"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Leather"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Leather"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Bar"]}, {"tier": 3, "names": ["Bar"]}, {"tier": 4, "names": ["Bar"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Bar"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Bar"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Bar"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Bar"], "enchantments": [0, 1, 2, 3]}],
+      [{"tier": 2, "names": ["Block"]}, {"tier": 3, "names": ["Block"]}, {"tier": 4, "names": ["Block"]}, {"tier": 5, "names": ["Block"]}, {"tier": 6, "names": ["Block"]}, {"tier": 7, "names": ["Block"]}, {"tier": 8, "names": ["Block"]}],
+      [{"tier": 2, "names": ["Plank"]}, {"tier": 3, "names": ["Plank"]}, {"tier": 4, "names": ["Plank"], "enchantments": [0, 1, 2, 3]}, {"tier": 5, "names": ["Plank"], "enchantments": [0, 1, 2, 3]}, {"tier": 6, "names": ["Plank"], "enchantments": [0, 1, 2, 3]}, {"tier": 7, "names": ["Plank"], "enchantments": [0, 1, 2, 3]}, {"tier": 8, "names": ["Plank"], "enchantments": [0, 1, 2, 3]}]
+    ]
+  },
   {
     "name": "Food",
     "size": 8,
@@ -265,30 +289,7 @@ watch_list = [
     "size": 3,
     "ui_path": [571, 650]
   },
-#   {
-#     "name": "Raw ressources",
-#     "size": 5,
-#     "ui_path": [564, 597],
-#     "tiers_per_index": [
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8]
-#     ]
-#   },
-#   {
-#     "name": "Refined ressources",
-#     "size": 5,
-#     "ui_path": [564, 624],
-#     "tiers_per_index": [
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8],
-#       [2, 3, 4, 5, 6, 7, 8]
-#     ]
-#   }
+
 ]
 
 

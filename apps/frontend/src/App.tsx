@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ResourcePricesPage from "./pages/ressource-price";
 import CustomResourcePricesPage from "./pages/CustomRessourcePrices/custom-ressource-prices";
 import { CookingRecipesPage } from "./pages/CookingRecipesPage/CookingRecipesPage";
+import PriceComparisonPage from "./pages/PriceComparison/PriceComparisonPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           element={<CustomResourcePricesPage />}
         />
         <Route path="/cooking/recipes" element={<CookingRecipesPage />} />
+        <Route path="/price-comparison" element={<PriceComparisonPage />} />
       </Routes>
     </BrowserRouter>
   );

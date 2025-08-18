@@ -81,6 +81,16 @@ const items = [
       },
     ],
   },
+  {
+    title: "Price diff",
+    icon: DollarSign,
+    children: [
+      {
+        title: "Price comparison",
+        children: [{ title: "All", url: "/price-comparison" }],
+      },
+    ],
+  },
 ];
 
 export function AppSidebar() {

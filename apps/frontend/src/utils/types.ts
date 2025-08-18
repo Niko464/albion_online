@@ -1,5 +1,5 @@
 import type { RecipeCostDetails } from "@/pages/CookingRecipesPage/utils/calculateRecipeCost";
-import type { GetSoldHistoryResponse, Recipe } from "@albion_online/common";
+import type { GetPricesResponse, GetSoldHistoryResponse, Recipe } from "@albion_online/common";
 
 export interface MarketData {
   locationName: string;
@@ -27,3 +27,8 @@ export type RecipeRowData = {
   famePerSilverInvested: number;
   famePerSilverInvestedSellCity: string;
 };
+
+export type PriceComparisonRowData = {
+  itemId: string;
+  priceData?: GetPricesResponse['prices'][number];
+}
