@@ -293,6 +293,8 @@ watch_list = [
 ]
 
 
+
+
 # === Command-line arguments ===
 if len(sys.argv) < 3:
     print("Error: Please provide the server URL and locationName as command-line arguments.")
@@ -378,7 +380,7 @@ def take_screenshot_and_detect_price():
         return None, None
 
 def getItemData(lastItemName, lastItemPrice, items_data, enchantmentLvl, toSend):
-    time.sleep(0.5)
+    time.sleep(0.05)
     itemName, price = take_screenshot_and_detect_price()
     
     if itemName is None or price is None:
@@ -390,7 +392,7 @@ def getItemData(lastItemName, lastItemPrice, items_data, enchantmentLvl, toSend)
 
     while ((itemName == lastItemName and price == lastItemPrice) or not itemName or not price or itemName.strip() == "" or price.strip() == ""):
         print(f"Still seeing the last item, waiting and retrying... (last: {lastItemName, lastItemPrice} current: {itemName, price})")
-        time.sleep(0.2)
+        time.sleep(0.02)
         itemName, price = take_screenshot_and_detect_price()
 
         if itemName is None or price is None:

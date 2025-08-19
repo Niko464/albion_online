@@ -1,0 +1,1768 @@
+[
+  {
+    "idx": 2,
+    "text": "Weapons",
+    "subcategories": [
+      {
+        "idx": 2,
+        "text": "Bow",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Bow",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Longbow",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Warbow",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Whispering Bow",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Wailing Bow",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Bow of Badon",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Mistpiercer",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Skystrider Bow",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "text": "Crossbow",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Crossbow",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Heavy Crossbow",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Light Crossbow",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "‘Weeping Repeater",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Boltcasters",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Siegebow",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Energy Shaper",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Arclight Blasters",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "text": "Axe",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Battleaxe",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Greataxe",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Halberd",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Carrioncaller",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Infernal Scythe",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Bear Paws",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Realmbreaker",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Crystal Reaper",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 5,
+        "text": "Dagger",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Dagger",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Dagger Pair",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Claws",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Bloodletter",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Demon Fang",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Deathgivers",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Bridled Fury",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Twin Slayers",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 6,
+        "text": "Hammer",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Hammer",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Hammer",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Polehammer",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Tombhammer",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Forge Hammers",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Grovekeeper",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Hand of Justice",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Truebolt Hammer",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 7,
+        "text": "War Gloves",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Brawler Gloves",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Battle Bracers",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Spiked Gauntlets",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Ursine Maulers",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Hellfire Hands",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Rovenstrike\nCestus",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Fists of Avalon",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Forcepulse\nBracers",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 8,
+        "text": "Mace",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Mace",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Heavy Mace",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Morning Star",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Bedrock Mace",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Incubus Mace",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Camlann Mace",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Oathkeepers",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Dreadstorm\nMonarch",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 9,
+        "text": "Quarterstaff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Quarterstaff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Iron-clad Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Double Blaced\nStaff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Black Monk Stave",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Soulscythe",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Staff of Balance",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Grailseeker",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Phantom\nTwinblade",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 10,
+        "text": "Spear",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Spear",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Pike",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Glaive",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Heron Spear",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Spirithunter",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Trinity Spear",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Daybreaker",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Rift Glaive",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 11,
+        "text": "Sword",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Broadsword",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Claymore",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Dual Swords",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Clarent Blade",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Carving Sword",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Galatine Pair",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Kingmaker",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Infinity Blade",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 12,
+        "text": "Arcane Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Arcane Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Arcane Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Enigmatic Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Witchwork Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Occult Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Malevolent Locus",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Evensong",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Astral Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 13,
+        "text": "Cursed Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Cursed Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Cursed Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Demonic Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Lifecurse Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Cursed Skull",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Damnation staff",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Shadowcaller",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Rotcaller Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 14,
+        "text": "Fire Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Fire Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Fire Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Infernal Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Wildfire Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Brimstone Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Blazing Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Dawnsong",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Flamewalker Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 15,
+        "text": "Frost Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Frost Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Frost Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Glacial staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Hoarfrost Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Icicle Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Permafrost Prism",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Chillhowl",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Arctic Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 16,
+        "text": "Holy Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Holy Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Holy Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Divine Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Lifetouch Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Fallen Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "[no text detected]",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Hallowfall",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Exalted Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 17,
+        "text": "Nature Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Nature Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Great Nature Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Wild staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Druidic staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Blight Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Rampant Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Ironroot Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Forgebark Staff",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 18,
+        "text": "Shapeshifter Staff",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Prowling Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Rootbound Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Primal Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Bloodmoon staff",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Hellspawn Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Earthrune Staff",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Lightcaller",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Stillgaze Staff",
+            "subcategories": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "text": "Chest Armor",
+    "subcategories": []
+  },
+  {
+    "idx": 4,
+    "text": "Head Armor",
+    "subcategories": []
+  },
+  {
+    "idx": 5,
+    "text": "Foot Armor",
+    "subcategories": []
+  },
+  {
+    "idx": 6,
+    "text": "Off-Hands",
+    "subcategories": []
+  },
+  {
+    "idx": 7,
+    "text": "Capes & Bags",
+    "subcategories": []
+  },
+  {
+    "idx": 8,
+    "text": "Mount",
+    "subcategories": []
+  },
+  {
+    "idx": 9,
+    "text": "Consumable",
+    "subcategories": [
+      {
+        "idx": 2,
+        "text": "Food",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Soups",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Salads",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Pies",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Roasts",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Omelettes",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Stews",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Sandwiches",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Grilled Fish",
+            "subcategories": []
+          },
+          {
+            "idx": 10,
+            "text": "Event",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "text": "Potions",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Heal",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Energy",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Gigantify",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Resistance",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Sticky",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Poison",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Invisibility",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Calming",
+            "subcategories": []
+          },
+          {
+            "idx": 10,
+            "text": "Cleansing",
+            "subcategories": []
+          },
+          {
+            "idx": 11,
+            "text": "Acid",
+            "subcategories": []
+          },
+          {
+            "idx": 12,
+            "text": "Berserk",
+            "subcategories": []
+          },
+          {
+            "idx": 13,
+            "text": "Hellfire",
+            "subcategories": []
+          },
+          {
+            "idx": 14,
+            "text": "Gathering",
+            "subcategories": []
+          },
+          {
+            "idx": 15,
+            "text": "Tornado",
+            "subcategories": []
+          },
+          {
+            "idx": 16,
+            "text": "Focus",
+            "subcategories": []
+          },
+          {
+            "idx": 17,
+            "text": "Event",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "text": "Tomes",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Tomes of Insight",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Fiber",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Hide",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Ore",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Stone",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Wood",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 5,
+        "text": "Other",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Repair Powder",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Fireworks",
+            "subcategories": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "text": "Gathering\nEquipment",
+    "subcategories": []
+  },
+  {
+    "idx": 11,
+    "text": "Crafting",
+    "subcategories": [
+      {
+        "idx": 2,
+        "text": "Resources",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Fiber",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Hide",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "ore",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Stone",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Wood",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "text": "Refined Resources |",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Cloth",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Leather",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Metal Bars",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Stone Block",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Planks",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "text": "Tokens",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Mount Upgrades",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Royal Sigil",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Other",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 5,
+        "text": "City Resources",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Beastheart",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Treeheart",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Mountainheart",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Rockheart",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Vineheart",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Shadowheart",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 6,
+        "text": "Fish",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Common",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Freshwater",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Salt Water",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 3,
+            "text": "Rare",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Eel",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Lurcher",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Deadeye",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Crabs",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Clams",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "‘Snapper",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Kraken",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 4,
+            "text": "Other",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 7,
+        "text": "Alchemy",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Shadow Claws",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "sylvian Root",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Spirit Paws",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Werewolf Fangs",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Imp's Horn",
+            "subcategories": []
+          },
+          {
+            "idx": 7,
+            "text": "Runestone Tooth",
+            "subcategories": []
+          },
+          {
+            "idx": 8,
+            "text": "Dawnfeather",
+            "subcategories": []
+          },
+          {
+            "idx": 9,
+            "text": "Remains",
+            "subcategories": []
+          },
+          {
+            "idx": 10,
+            "text": "Arcane Extract",
+            "subcategories": []
+          },
+          {
+            "idx": 11,
+            "text": "Essence",
+            "subcategories": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "text": "Artifact",
+    "subcategories": []
+  },
+  {
+    "idx": 13,
+    "text": "Farming",
+    "subcategories": [
+      {
+        "idx": 2,
+        "text": "[no text detected]",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Seeds",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Carrots",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Beans",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Wheat",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Turnip",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Cabbages",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "Potato",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Corn",
+                "subcategories": []
+              },
+              {
+                "idx": 9,
+                "text": "Pumpkin",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 3,
+            "text": "Plants",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Carrots",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Beans",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Wheat",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Turnip",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Cabbages",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "Potato",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Corn",
+                "subcategories": []
+              },
+              {
+                "idx": 9,
+                "text": "Pumpkin",
+                "subcategories": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "text": "Herb Garden",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Seeds",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Agaric",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Comfrey",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Burdock",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Teasel",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Foxglove",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "Mullein",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Yarrow",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 3,
+            "text": "Herbs",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Agaric",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Comfrey",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Burdock",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Teasel",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Foxglove",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "Mullein",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Yarrow",
+                "subcategories": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "text": "Pasture",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Baby Animals",
+            "subcategories": [
+              {
+                "idx": 2,
+                "text": "Chicken",
+                "subcategories": []
+              },
+              {
+                "idx": 3,
+                "text": "Goat",
+                "subcategories": []
+              },
+              {
+                "idx": 4,
+                "text": "Goose",
+                "subcategories": []
+              },
+              {
+                "idx": 5,
+                "text": "Sheep",
+                "subcategories": []
+              },
+              {
+                "idx": 6,
+                "text": "Pig",
+                "subcategories": []
+              },
+              {
+                "idx": 7,
+                "text": "Cow",
+                "subcategories": []
+              },
+              {
+                "idx": 8,
+                "text": "Horse",
+                "subcategories": []
+              },
+              {
+                "idx": 9,
+                "text": "[no text detected]",
+                "subcategories": []
+              },
+              {
+                "idx": 10,
+                "text": "Moose",
+                "subcategories": []
+              },
+              {
+                "idx": 11,
+                "text": "Stag/Moose",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 3,
+            "text": "Animal",
+            "subcategories": [
+              {
+                "idx": 1,
+                "text": "Stag/Moose",
+                "subcategories": []
+              },
+              {
+                "idx": 0,
+                "text": "Moose",
+                "subcategories": []
+              },
+              {
+                "idx": -1,
+                "text": "[no text detected]",
+                "subcategories": []
+              },
+              {
+                "idx": -2,
+                "text": "Horse",
+                "subcategories": []
+              },
+              {
+                "idx": -3,
+                "text": "Cow",
+                "subcategories": []
+              },
+              {
+                "idx": -4,
+                "text": "Pig",
+                "subcategories": []
+              },
+              {
+                "idx": -5,
+                "text": "Sheep",
+                "subcategories": []
+              },
+              {
+                "idx": -6,
+                "text": "Goose",
+                "subcategories": []
+              },
+              {
+                "idx": -7,
+                "text": "Goat",
+                "subcategories": []
+              },
+              {
+                "idx": -8,
+                "text": "Chicken",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 4,
+            "text": "Eggs",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Milk",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "idx": 5,
+        "text": "Kennel",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Baby Animals",
+            "subcategories": [
+              {
+                "idx": 1,
+                "text": "Horseeater",
+                "subcategories": []
+              },
+              {
+                "idx": 0,
+                "text": "Rams",
+                "subcategories": []
+              },
+              {
+                "idx": -1,
+                "text": "Rabbits",
+                "subcategories": []
+              },
+              {
+                "idx": -2,
+                "text": "owl",
+                "subcategories": []
+              },
+              {
+                "idx": -3,
+                "text": "Terrorbird",
+                "subcategories": []
+              },
+              {
+                "idx": -4,
+                "text": "‘Swamp Dragon",
+                "subcategories": []
+              },
+              {
+                "idx": -5,
+                "text": "Mammoth",
+                "subcategories": []
+              },
+              {
+                "idx": -6,
+                "text": "Direbear",
+                "subcategories": []
+              },
+              {
+                "idx": -7,
+                "text": "Direboar",
+                "subcategories": []
+              },
+              {
+                "idx": -8,
+                "text": "Direwolf",
+                "subcategories": []
+              },
+              {
+                "idx": -9,
+                "text": "Swiftclaw",
+                "subcategories": []
+              }
+            ]
+          },
+          {
+            "idx": 3,
+            "text": "Animal",
+            "subcategories": [
+              {
+                "idx": 1,
+                "text": "Horseeater",
+                "subcategories": []
+              },
+              {
+                "idx": 0,
+                "text": "Rams",
+                "subcategories": []
+              },
+              {
+                "idx": -1,
+                "text": "Rabbits",
+                "subcategories": []
+              },
+              {
+                "idx": -2,
+                "text": "ow!",
+                "subcategories": []
+              },
+              {
+                "idx": -3,
+                "text": "Terrorbird",
+                "subcategories": []
+              },
+              {
+                "idx": -4,
+                "text": "‘Swamp Dragon",
+                "subcategories": []
+              },
+              {
+                "idx": -5,
+                "text": "Mammoth",
+                "subcategories": []
+              },
+              {
+                "idx": -6,
+                "text": "Direbear",
+                "subcategories": []
+              },
+              {
+                "idx": -7,
+                "text": "Direboar",
+                "subcategories": []
+              },
+              {
+                "idx": -8,
+                "text": "Direwolf",
+                "subcategories": []
+              },
+              {
+                "idx": -9,
+                "text": "Swiftclaw",
+                "subcategories": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 6,
+        "text": "Farming Products",
+        "subcategories": [
+          {
+            "idx": 2,
+            "text": "Alcohol",
+            "subcategories": []
+          },
+          {
+            "idx": 3,
+            "text": "Bread",
+            "subcategories": []
+          },
+          {
+            "idx": 4,
+            "text": "Butter",
+            "subcategories": []
+          },
+          {
+            "idx": 5,
+            "text": "Flour",
+            "subcategories": []
+          },
+          {
+            "idx": 6,
+            "text": "Meat",
+            "subcategories": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "text": "Furniture",
+    "subcategories": []
+  },
+  {
+    "idx": 15,
+    "text": "Vanity",
+    "subcategories": []
+  },
+  {
+    "idx": 16,
+    "text": "Other",
+    "subcategories": []
+  }
+]
