@@ -1020,65 +1020,78 @@
   {
     "idx": 11,
     "text": "Crafting",
+    "id": "crafting",
     "subcategories": [
       {
         "idx": 2,
         "text": "Resources",
+        "id": "resources",
         "subcategories": [
           {
             "idx": 2,
             "text": "Fiber",
+            "id": "fiber",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "Hide",
+            "id": "hide",
             "subcategories": []
           },
           {
             "idx": 4,
             "text": "ore",
+            "id": "ore",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Stone",
+            "id": "rock",
             "subcategories": []
           },
           {
             "idx": 6,
             "text": "Wood",
+            "id": "wood",
             "subcategories": []
           }
         ]
       },
       {
         "idx": 3,
-        "text": "Refined Resources |",
+        "text": "Refined Resources",
+        "id": "refined_resources",
         "subcategories": [
           {
             "idx": 2,
+            "id": "cloth",
             "text": "Cloth",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "Leather",
+            "id": "leather",
             "subcategories": []
           },
           {
             "idx": 4,
             "text": "Metal Bars",
+            "id": "metalbars",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Stone Block",
+            "id": "stoneblock",
             "subcategories": []
           },
           {
             "idx": 6,
             "text": "Planks",
+            "id": "planks",
             "subcategories": []
           }
         ]
