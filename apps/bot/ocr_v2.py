@@ -8,6 +8,11 @@ import pytesseract
 import requests
 import sys
 import re
+import imagehash
+import hashlib
+import pyautogui
+import pytesseract
+from rapidfuzz import fuzz
 
 # === Coordinates ===
 POS_NAME_FIELD = (645, 270)
@@ -97,10 +102,6 @@ def checkIfNoOffersFound():
     except Exception as e:
         print(f"Error checking for 'No offers found': {e}")
         return False
-      
-import hashlib
-import pyautogui
-import pytesseract
 
 def take_screenshot_and_detect_price():
     try:
@@ -123,11 +124,10 @@ def take_screenshot_and_detect_price():
             REGION_0_BOTTOM_RIGHT[0] - left,
             REGION_0_BOTTOM_RIGHT[1] - top
         )
-        region0 = full_screenshot.crop(region0_crop_box)
+        # region0 = full_screenshot.crop(region0_crop_box)
 
         # Compute hash of region 0
-        region0_bytes = region0.tobytes()
-        region0_hash = hashlib.md5(region0_bytes).hexdigest()
+        region0_hash = imagehash.phash(full_screenshot)
 
         # --- Crop Region 1 (item name) ---
         name_crop_box = (
@@ -312,7 +312,17 @@ def get_item_enchantment(item_id):
         return int(match.group(1))
 
     return 0
-  
+
+
+def send_price_update(toSend, expectedText):
+    try:
+        response = requests.post(f"{SERVER_URL}/update-ocr-prices", json=toSend)
+        if response.status_code == 201:
+            print(f"Successfully sent data for {expectedText}: {toSend}")
+        else:
+            print(f"Failed to send data for {expectedText}. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"Error sending POST request for {expectedText}: {e}")
 
 def start_watching_prices(watch_list):
   global currentScreenHash
@@ -345,28 +355,48 @@ def start_watching_prices(watch_list):
     
     for quality in quality_indexes:
       selectQuality(quality)
+      pyautogui.moveTo(50, 50)
       # print(f"Expected text for {itemId}: {expectedText}")
       detectedItemText, detectedItemPrice, screenHash = take_screenshot_and_detect_price()
-      while screenHash == currentScreenHash:
-          print("Retaking screenshot because still seeing same stuff")
+      expectedText_similarity = fuzz.ratio(detectedItemText, expectedText)
+      retry_count = 0
+      max_retries = 5
+      shouldSkip = False
+
+      while (detectedItemText == "" or detectedItemPrice == "" or \
+        (currentScreenHash is not None and abs(screenHash - currentScreenHash) <= 3) or
+        expectedText_similarity < 80):
+          print(f"Retaking screenshot because still seeing same stuff ({abs(screenHash - currentScreenHash)}) ({expectedText_similarity})\nDetected text: {detectedItemText}\nExpected text: {expectedText}")
           detectedItemText, detectedItemPrice, screenHash = take_screenshot_and_detect_price()
-      print("Detected shit", detectedItemText, detectedItemPrice)
+          expectedText_similarity = fuzz.ratio(detectedItemText, expectedText)
+          
+          if retry_count == 1 and checkIfNoOffersFound():
+              print(f'No offers found')
+              shouldSkip = True
+              break
+          if retry_count >= max_retries:
+              print(f"Exceeded maximum retries ({max_retries}), skipping item.")
+              shouldSkip = True
+              break
+          retry_count += 1
+      if (shouldSkip):
+          print(f"Skipping id: {itemId} q: {quality}.")
+          continue
+      print("\nDetection passed:\n", itemId, "\n", detectedItemText, "\n", expectedText, "\n", abs(screenHash - currentScreenHash) if currentScreenHash is not None else "No previous hash")
       currentScreenHash = screenHash
+      
       toSend = []
       toSend.append({
           "itemId": itemId,
-          # TODO: I need to send the quality here aswell
+          "quality": int(quality),
           "price": int(detectedItemPrice.replace(",", "")),
           "location": LOCATION_NAME
       })
-      try:
-          response = requests.post(f"{SERVER_URL}/update-ocr-prices", json=toSend)
-          if response.status_code == 201:
-              print(f"Successfully sent data for {item['name']}: {toSend}")
-          else:
-              print(f"Failed to send data for {item['name']}. Status code: {response.status_code}")
-      except Exception as e:
-          print(f"Error sending POST request for {item['name']}: {e}")
+      threading.Thread(
+        target=send_price_update,
+        args=(toSend, expectedText),
+        daemon=True
+      ).start()
 
 
 # === Hotkey Toggle Handler ===

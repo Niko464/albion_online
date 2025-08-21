@@ -341,6 +341,7 @@ export class PricesService {
         where: {
           itemId: el.itemId,
           location: el.location,
+          quality: el.quality,
         },
       });
       await this.prismaService.ocrPrice.create({
@@ -348,6 +349,7 @@ export class PricesService {
           itemId: el.itemId,
           location: el.location,
           price: el.price,
+          quality: el.quality,
         },
       });
     }

@@ -2105,16 +2105,19 @@ export namespace Prisma {
   }
 
   export type OcrPriceAvgAggregateOutputType = {
+    quality: number | null
     price: number | null
   }
 
   export type OcrPriceSumAggregateOutputType = {
+    quality: number | null
     price: number | null
   }
 
   export type OcrPriceMinAggregateOutputType = {
     id: string | null
     itemId: string | null
+    quality: number | null
     location: string | null
     price: number | null
     createdAt: Date | null
@@ -2123,6 +2126,7 @@ export namespace Prisma {
   export type OcrPriceMaxAggregateOutputType = {
     id: string | null
     itemId: string | null
+    quality: number | null
     location: string | null
     price: number | null
     createdAt: Date | null
@@ -2131,6 +2135,7 @@ export namespace Prisma {
   export type OcrPriceCountAggregateOutputType = {
     id: number
     itemId: number
+    quality: number
     location: number
     price: number
     createdAt: number
@@ -2139,16 +2144,19 @@ export namespace Prisma {
 
 
   export type OcrPriceAvgAggregateInputType = {
+    quality?: true
     price?: true
   }
 
   export type OcrPriceSumAggregateInputType = {
+    quality?: true
     price?: true
   }
 
   export type OcrPriceMinAggregateInputType = {
     id?: true
     itemId?: true
+    quality?: true
     location?: true
     price?: true
     createdAt?: true
@@ -2157,6 +2165,7 @@ export namespace Prisma {
   export type OcrPriceMaxAggregateInputType = {
     id?: true
     itemId?: true
+    quality?: true
     location?: true
     price?: true
     createdAt?: true
@@ -2165,6 +2174,7 @@ export namespace Prisma {
   export type OcrPriceCountAggregateInputType = {
     id?: true
     itemId?: true
+    quality?: true
     location?: true
     price?: true
     createdAt?: true
@@ -2260,6 +2270,7 @@ export namespace Prisma {
   export type OcrPriceGroupByOutputType = {
     id: string
     itemId: string
+    quality: number
     location: string
     price: number
     createdAt: Date
@@ -2287,6 +2298,7 @@ export namespace Prisma {
   export type OcrPriceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     itemId?: boolean
+    quality?: boolean
     location?: boolean
     price?: boolean
     createdAt?: boolean
@@ -2295,6 +2307,7 @@ export namespace Prisma {
   export type OcrPriceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     itemId?: boolean
+    quality?: boolean
     location?: boolean
     price?: boolean
     createdAt?: boolean
@@ -2303,6 +2316,7 @@ export namespace Prisma {
   export type OcrPriceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     itemId?: boolean
+    quality?: boolean
     location?: boolean
     price?: boolean
     createdAt?: boolean
@@ -2311,12 +2325,13 @@ export namespace Prisma {
   export type OcrPriceSelectScalar = {
     id?: boolean
     itemId?: boolean
+    quality?: boolean
     location?: boolean
     price?: boolean
     createdAt?: boolean
   }
 
-  export type OcrPriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemId" | "location" | "price" | "createdAt", ExtArgs["result"]["ocrPrice"]>
+  export type OcrPriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemId" | "quality" | "location" | "price" | "createdAt", ExtArgs["result"]["ocrPrice"]>
 
   export type $OcrPricePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "OcrPrice"
@@ -2324,6 +2339,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       itemId: string
+      quality: number
       location: string
       price: number
       createdAt: Date
@@ -2752,6 +2768,7 @@ export namespace Prisma {
   interface OcrPriceFieldRefs {
     readonly id: FieldRef<"OcrPrice", 'String'>
     readonly itemId: FieldRef<"OcrPrice", 'String'>
+    readonly quality: FieldRef<"OcrPrice", 'Int'>
     readonly location: FieldRef<"OcrPrice", 'String'>
     readonly price: FieldRef<"OcrPrice", 'Int'>
     readonly createdAt: FieldRef<"OcrPrice", 'DateTime'>
@@ -3155,6 +3172,7 @@ export namespace Prisma {
   export const OcrPriceScalarFieldEnum: {
     id: 'id',
     itemId: 'itemId',
+    quality: 'quality',
     location: 'location',
     price: 'price',
     createdAt: 'createdAt'
@@ -3333,6 +3351,7 @@ export namespace Prisma {
     NOT?: OcrPriceWhereInput | OcrPriceWhereInput[]
     id?: StringFilter<"OcrPrice"> | string
     itemId?: StringFilter<"OcrPrice"> | string
+    quality?: IntFilter<"OcrPrice"> | number
     location?: StringFilter<"OcrPrice"> | string
     price?: IntFilter<"OcrPrice"> | number
     createdAt?: DateTimeFilter<"OcrPrice"> | Date | string
@@ -3341,6 +3360,7 @@ export namespace Prisma {
   export type OcrPriceOrderByWithRelationInput = {
     id?: SortOrder
     itemId?: SortOrder
+    quality?: SortOrder
     location?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
@@ -3352,6 +3372,7 @@ export namespace Prisma {
     OR?: OcrPriceWhereInput[]
     NOT?: OcrPriceWhereInput | OcrPriceWhereInput[]
     itemId?: StringFilter<"OcrPrice"> | string
+    quality?: IntFilter<"OcrPrice"> | number
     location?: StringFilter<"OcrPrice"> | string
     price?: IntFilter<"OcrPrice"> | number
     createdAt?: DateTimeFilter<"OcrPrice"> | Date | string
@@ -3360,6 +3381,7 @@ export namespace Prisma {
   export type OcrPriceOrderByWithAggregationInput = {
     id?: SortOrder
     itemId?: SortOrder
+    quality?: SortOrder
     location?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
@@ -3376,6 +3398,7 @@ export namespace Prisma {
     NOT?: OcrPriceScalarWhereWithAggregatesInput | OcrPriceScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"OcrPrice"> | string
     itemId?: StringWithAggregatesFilter<"OcrPrice"> | string
+    quality?: IntWithAggregatesFilter<"OcrPrice"> | number
     location?: StringWithAggregatesFilter<"OcrPrice"> | string
     price?: IntWithAggregatesFilter<"OcrPrice"> | number
     createdAt?: DateTimeWithAggregatesFilter<"OcrPrice"> | Date | string
@@ -3482,6 +3505,7 @@ export namespace Prisma {
   export type OcrPriceCreateInput = {
     id?: string
     itemId: string
+    quality?: number
     location: string
     price: number
     createdAt?: Date | string
@@ -3490,6 +3514,7 @@ export namespace Prisma {
   export type OcrPriceUncheckedCreateInput = {
     id?: string
     itemId: string
+    quality?: number
     location: string
     price: number
     createdAt?: Date | string
@@ -3498,6 +3523,7 @@ export namespace Prisma {
   export type OcrPriceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     itemId?: StringFieldUpdateOperationsInput | string
+    quality?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3506,6 +3532,7 @@ export namespace Prisma {
   export type OcrPriceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     itemId?: StringFieldUpdateOperationsInput | string
+    quality?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3514,6 +3541,7 @@ export namespace Prisma {
   export type OcrPriceCreateManyInput = {
     id?: string
     itemId: string
+    quality?: number
     location: string
     price: number
     createdAt?: Date | string
@@ -3522,6 +3550,7 @@ export namespace Prisma {
   export type OcrPriceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     itemId?: StringFieldUpdateOperationsInput | string
+    quality?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3530,6 +3559,7 @@ export namespace Prisma {
   export type OcrPriceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     itemId?: StringFieldUpdateOperationsInput | string
+    quality?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3679,18 +3709,21 @@ export namespace Prisma {
   export type OcrPriceCountOrderByAggregateInput = {
     id?: SortOrder
     itemId?: SortOrder
+    quality?: SortOrder
     location?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
   }
 
   export type OcrPriceAvgOrderByAggregateInput = {
+    quality?: SortOrder
     price?: SortOrder
   }
 
   export type OcrPriceMaxOrderByAggregateInput = {
     id?: SortOrder
     itemId?: SortOrder
+    quality?: SortOrder
     location?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
@@ -3699,12 +3732,14 @@ export namespace Prisma {
   export type OcrPriceMinOrderByAggregateInput = {
     id?: SortOrder
     itemId?: SortOrder
+    quality?: SortOrder
     location?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
   }
 
   export type OcrPriceSumOrderByAggregateInput = {
+    quality?: SortOrder
     price?: SortOrder
   }
 

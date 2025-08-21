@@ -137,6 +137,7 @@ exports.Prisma.MarketOrderScalarFieldEnum = {
 exports.Prisma.OcrPriceScalarFieldEnum = {
   id: 'id',
   itemId: 'itemId',
+  quality: 'quality',
   location: 'location',
   price: 'price',
   createdAt: 'createdAt'

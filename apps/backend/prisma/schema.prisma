@@ -32,6 +32,7 @@ model MarketOrder {
 model OcrPrice {
   id        String   @id @default(cuid())
   itemId    String
+  quality   Int  @default(1)
   location  String
   price     Int
   createdAt DateTime @default(now())
