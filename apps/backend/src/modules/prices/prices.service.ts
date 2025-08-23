@@ -180,7 +180,7 @@ export class PricesService {
           el.locationName.includes(city),
         );
 
-        if (itemId === 'T6_MEAL_SANDWICH_AVALON') {
+        if (itemId === 'T7_MEAL_ROAST_FISH@3') {
           console.log('DEBUG WW avalon stuff', ocrPriceData, currentPrice);
         }
 

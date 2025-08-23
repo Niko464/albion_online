@@ -110,11 +110,11 @@ export function CookingRecipesPage() {
   console.log('DEBUG WW all ids', allIds)
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
-    "Martlock",
+    // "Martlock",
     "Bridgewatch",
-    "Lymhurst",
-    `FortSterling`,
-    "Thetford",
+    // "Lymhurst",
+    // `FortSterling`,
+    // "Thetford",
   ]);
   const {
     data: priceData,
