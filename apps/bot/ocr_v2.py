@@ -184,44 +184,52 @@ def getShopCategories(itemData):
   subCat3  = itemData.get("-shopsubcategory3")
   return category, subCat1, subCat2, subCat3
 
-
-
-#TODO: write this function
-def selectCategory(itemData, uiMap):
+def isCategoryValid(itemData, uiMap):
   category, subCat1, subCat2, subCat3 = getShopCategories(itemData)
+  itemId = {itemData["-uniquename"]}
 
   # --- Level 1: category ---
   categoryUiElem = next((el for el in uiMap if el.get("id") == category), None)
   if categoryUiElem is None and category is not None:
-      print("Missing category", category)
-      return
+      print(f"Missing category {category} ({itemId})")
+      return False
 
   # --- Level 2: subcategory 1 ---
   subcategories = categoryUiElem.get("subcategories", []) if categoryUiElem else []
   subCatUiElem = next((el for el in subcategories if el.get("id") == subCat1), None)
   if subCatUiElem is None and subCat1 is not None:
-      print("Missing subcategory1", subCat1)
-      return
+      print(f"Missing subcategory1 {subCat1} inside {category} ({itemId})")
+      return False
 
   # --- Level 3: subcategory 2 ---
   subcategories = subCatUiElem.get("subcategories", []) if subCatUiElem else []
   subCat2UiElem = next((el for el in subcategories if el.get("id") == subCat2), None)
   if subCat2UiElem is None and subCat2 is not None:
-      print("Missing subcategory2", subCat2)
-      return
+      print(f"Missing subcategory2 {subCat2} inside {category} {subCat1} ({itemId})")
+      return False
 
   # --- Level 4: subcategory 3 ---
   subcategories = subCat2UiElem.get("subcategories", []) if subCat2UiElem else []
   subCat3UiElem = next((el for el in subcategories if el.get("id") == subCat3), None)
   if subCat3UiElem is None and subCat3 is not None:
-      print("Missing subcategory3", subCat3)
-      return
+      print(f"Missing subcategory3 {subCat3} inside {category} {subCat1} {subCat2} ({itemId})")
+      return False
 
   # --- Extract indexes ---
   categoryIdx     = categoryUiElem.get('idx') if categoryUiElem else None
   subCategory1Idx = subCatUiElem.get('idx') if subCatUiElem else None
   subCategory2Idx = subCat2UiElem.get('idx') if subCat2UiElem else None
   subCategory3Idx = subCat3UiElem.get('idx') if subCat3UiElem else None
+  return categoryIdx, subCategory1Idx, subCategory2Idx, subCategory3Idx
+
+#TODO: write this function
+def selectCategory(itemData, uiMap):
+  category, subCat1, subCat2, subCat3 = getShopCategories(itemData)
+  categoryIdx, subCategory1Idx, subCategory2Idx, subCategory3Idx = isCategoryValid(itemData, uiMap)
+  if categoryIdx is None:
+      print("Error while selectingCategory")
+      sys.exit(1)
+      return False
 
   # --- Prevent unnecessary clicks ---
   global currentCategory, currentSubCategory1, currentSubCategory2, currentSubCategory3
@@ -230,7 +238,7 @@ def selectCategory(itemData, uiMap):
       subCategory1Idx == currentSubCategory1 and \
       subCategory2Idx == currentSubCategory2 and \
       subCategory3Idx == currentSubCategory3:
-      return
+      return True
 
   # --- Click navigation ---
   pyautogui.click(*POS_CATEGORY_FIELD)
@@ -256,6 +264,7 @@ def selectCategory(itemData, uiMap):
   currentSubCategory1 = subCategory1Idx
   currentSubCategory2 = subCategory2Idx
   currentSubCategory3 = subCategory3Idx
+  return True
 
 
 def selectTier(level):
@@ -298,7 +307,7 @@ def findItemInItemList(itemList, itemId):
 
 def loadItemList():
   json = loadJsonFile('./items.json')
-  return json["items"]["simpleitem"]
+  return json["items"]["simpleitem"] + json["items"]["consumableitem"]
 
 def get_item_enchantment(item_id):
     # Look for LEVEL_X
@@ -328,17 +337,26 @@ def start_watching_prices(watch_list):
   global currentScreenHash
   uiMap = loadJsonFile("./outputs/startMap.json")
   translations = loadJsonFile("./parsed_translations.json")
-  
-  # selectTier(2)
-  # selectEnchantment(2)
-  # selectQuality(2)
-  
-  
-  categories     = set()
-  subcategories1 = set()
-  subcategories2 = set()
-  subcategories3 = set()
   itemList = loadItemList()
+  
+  invalidItemIds = []
+  # First check validity of all categories
+  for watchListItem in watch_list:
+    itemId = watchListItem['itemId']
+    itemData = findItemInItemList(itemList, itemId)
+    if (itemData is None):
+      print("CRITICAL: Invalid item data:", itemId)
+      sys.exit(1)
+      return
+    isValid = isCategoryValid(itemData, uiMap)
+    if not isValid:
+        invalidItemIds.append(itemId)
+        continue
+  if (len(invalidItemIds) > 0):
+      print("Invalid item IDs found:", invalidItemIds)
+      return
+
+
   for watchListItem in watch_list:
     itemId = watchListItem['itemId']
     itemData = findItemInItemList(itemList, itemId)

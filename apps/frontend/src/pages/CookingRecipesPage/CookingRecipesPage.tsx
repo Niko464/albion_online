@@ -107,6 +107,8 @@ export function CookingRecipesPage() {
     return [...new Set([...ingredientIds, ...recipeIds])];
   }, [ingredientIds, recipeIds]);
 
+  console.log('DEBUG WW all ids', allIds)
+
   const [selectedCities, setSelectedCities] = useState<string[]>([
     "Martlock",
     "Bridgewatch",

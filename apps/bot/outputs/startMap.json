@@ -820,19 +820,23 @@
   {
     "idx": 9,
     "text": "Consumable",
+    "id": "consumables",
     "subcategories": [
       {
         "idx": 2,
         "text": "Food",
+        "id": "food",
         "subcategories": [
           {
             "idx": 2,
             "text": "Soups",
+            "id": "soups",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "Salads",
+            "id": "salads",
             "subcategories": []
           },
           {
@@ -997,6 +1001,7 @@
       {
         "idx": 5,
         "text": "Other",
+        "id": "other",
         "subcategories": [
           {
             "idx": 2,
@@ -1099,6 +1104,7 @@
       {
         "idx": 4,
         "text": "Tokens",
+        "id": "tokens",
         "subcategories": [
           {
             "idx": 2,
@@ -1113,6 +1119,7 @@
           {
             "idx": 4,
             "text": "Other",
+            "id": "other",
             "subcategories": []
           }
         ]
@@ -1156,6 +1163,7 @@
       {
         "idx": 6,
         "text": "Fish",
+        "id": "fish",
         "subcategories": [
           {
             "idx": 2,
@@ -1176,40 +1184,48 @@
           {
             "idx": 3,
             "text": "Rare",
+            "id": "rare",
             "subcategories": [
               {
                 "idx": 2,
                 "text": "Eel",
+                "id": "fish_forest",
                 "subcategories": []
               },
               {
                 "idx": 3,
                 "text": "Lurcher",
+                "id": "fish_highlands",
                 "subcategories": []
               },
               {
                 "idx": 4,
                 "text": "Deadeye",
+                "id": "fish_mountain",
                 "subcategories": []
               },
               {
                 "idx": 5,
                 "text": "Crabs",
+                "id": "fish_steppe",
                 "subcategories": []
               },
               {
                 "idx": 6,
                 "text": "Clams",
+                "id": "fish_swamp",
                 "subcategories": []
               },
               {
                 "idx": 7,
-                "text": "‘Snapper",
+                "text": "Snapper",
+                "id": "fish_avalon",
                 "subcategories": []
               },
               {
                 "idx": 8,
                 "text": "Kraken",
+                "id": "fish_saltwater",
                 "subcategories": []
               }
             ]
@@ -1217,6 +1233,7 @@
           {
             "idx": 4,
             "text": "Other",
+            "id": "other",
             "subcategories": []
           }
         ]
@@ -1287,10 +1304,12 @@
   {
     "idx": 13,
     "text": "Farming",
+    "id": "farming",
     "subcategories": [
       {
         "idx": 2,
-        "text": "[no text detected]",
+        "text": "Farm",
+        "id": "farm",
         "subcategories": [
           {
             "idx": 2,
@@ -1341,45 +1360,54 @@
           {
             "idx": 3,
             "text": "Plants",
+            "id": "plants",
             "subcategories": [
               {
                 "idx": 2,
                 "text": "Carrots",
+                "id": "carrot",
                 "subcategories": []
               },
               {
                 "idx": 3,
                 "text": "Beans",
+                "id": "bean",
                 "subcategories": []
               },
               {
                 "idx": 4,
                 "text": "Wheat",
+                "id": "wheat",
                 "subcategories": []
               },
               {
                 "idx": 5,
                 "text": "Turnip",
+                "id": "turnip",
                 "subcategories": []
               },
               {
                 "idx": 6,
                 "text": "Cabbages",
+                "id": "cabbage",
                 "subcategories": []
               },
               {
                 "idx": 7,
                 "text": "Potato",
+                "id": "potato",
                 "subcategories": []
               },
               {
                 "idx": 8,
                 "text": "Corn",
+                "id": "corn",
                 "subcategories": []
               },
               {
                 "idx": 9,
                 "text": "Pumpkin",
+                "id": "pumpkin",
                 "subcategories": []
               }
             ]
@@ -1389,6 +1417,7 @@
       {
         "idx": 3,
         "text": "Herb Garden",
+        "id": "herbgarden",
         "subcategories": [
           {
             "idx": 2,
@@ -1397,36 +1426,43 @@
               {
                 "idx": 2,
                 "text": "Agaric",
+                "id": "agaric",
                 "subcategories": []
               },
               {
                 "idx": 3,
                 "text": "Comfrey",
+                "id": "comfrey",
                 "subcategories": []
               },
               {
                 "idx": 4,
                 "text": "Burdock",
+                "id": "burdock",
                 "subcategories": []
               },
               {
                 "idx": 5,
                 "text": "Teasel",
+                "id": "teasel",
                 "subcategories": []
               },
               {
                 "idx": 6,
                 "text": "Foxglove",
+                "id": "foxglove",
                 "subcategories": []
               },
               {
                 "idx": 7,
                 "text": "Mullein",
+                "id": "mullein",
                 "subcategories": []
               },
               {
                 "idx": 8,
                 "text": "Yarrow",
+                "id": "yarrow",
                 "subcategories": []
               }
             ]
@@ -1434,40 +1470,48 @@
           {
             "idx": 3,
             "text": "Herbs",
+            "id": "herbs",
             "subcategories": [
               {
                 "idx": 2,
                 "text": "Agaric",
+                "id": "agaric",
                 "subcategories": []
               },
               {
                 "idx": 3,
                 "text": "Comfrey",
+                "id": "comfrey",
                 "subcategories": []
               },
               {
                 "idx": 4,
                 "text": "Burdock",
+                "id": "burdock",
                 "subcategories": []
               },
               {
                 "idx": 5,
                 "text": "Teasel",
+                "id": "teasel",
                 "subcategories": []
               },
               {
                 "idx": 6,
                 "text": "Foxglove",
+                "id": "foxglove",
                 "subcategories": []
               },
               {
                 "idx": 7,
                 "text": "Mullein",
+                "id": "mullein",
                 "subcategories": []
               },
               {
                 "idx": 8,
                 "text": "Yarrow",
+                "id": "yarrow",
                 "subcategories": []
               }
             ]
@@ -1477,6 +1521,7 @@
       {
         "idx": 4,
         "text": "Pasture",
+        "id": "pasture",
         "subcategories": [
           {
             "idx": 2,
@@ -1593,11 +1638,13 @@
           {
             "idx": 4,
             "text": "Eggs",
+            "id": "egg",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Milk",
+            "id": "milk",
             "subcategories": []
           }
         ]
@@ -1733,30 +1780,36 @@
       {
         "idx": 6,
         "text": "Farming Products",
+        "id": "farmingproducts",
         "subcategories": [
           {
             "idx": 2,
             "text": "Alcohol",
+            "id": "alcohol",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "Bread",
+            "id": "bread",
             "subcategories": []
           },
           {
             "idx": 4,
             "text": "Butter",
+            "id": "butter",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Flour",
+            "id": "flour",
             "subcategories": []
           },
           {
             "idx": 6,
             "text": "Meat",
+            "id": "meat",
             "subcategories": []
           }
         ]
@@ -1776,6 +1829,7 @@
   {
     "idx": 16,
     "text": "Other",
+    "id": "other",
     "subcategories": []
   }
 ]
