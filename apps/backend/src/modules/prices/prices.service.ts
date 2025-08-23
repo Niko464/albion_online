@@ -44,6 +44,9 @@ export class PricesService {
         itemId: {
           in: dto.itemIds,
         },
+        quality: {
+          in: [0, 1],
+        },
         location: {
           in: dto.cities,
         },
@@ -163,15 +166,23 @@ export class PricesService {
       }
       // NOTE: here we check if ocr has fresher prices than ABD or prisma
       for (const city of dto.cities) {
-        const ocrPriceData = ocrPrices.find(
-          (el) => el.itemId === itemId && el.location === city,
-        );
+        const ocrPriceData = ocrPrices
+          .sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          )
+          .find((el) => el.itemId === itemId && el.location === city);
+
         if (!ocrPriceData) {
           continue;
         }
         const currentPrice = marketsToPush.markets.find((el) =>
           el.locationName.includes(city),
         );
+
+        if (itemId === 'T6_MEAL_SANDWICH_AVALON') {
+          console.log('DEBUG WW avalon stuff', ocrPriceData, currentPrice);
+        }
 
         if (!currentPrice) {
           marketsToPush.markets.push({

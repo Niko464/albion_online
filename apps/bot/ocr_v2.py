@@ -13,6 +13,8 @@ import hashlib
 import pyautogui
 import pytesseract
 from rapidfuzz import fuzz
+import cv2
+import numpy as np
 
 # === Coordinates ===
 POS_NAME_FIELD = (645, 270)
@@ -103,6 +105,37 @@ def checkIfNoOffersFound():
         print(f"Error checking for 'No offers found': {e}")
         return False
 
+# RGB T1 104, 244, 141    HSV 136 57.4 95.7
+# rgb T2 71 230 245       HSV 185 71.0 96.1
+# rgb T3 132 98 180       HSV 265 45.6 70.6
+def detectEnchantmentFromImage(image):
+    # Convert PIL Image → NumPy array (RGB)
+    np_image = np.array(image)
+
+    # Convert RGB → BGR (OpenCV uses BGR by default)
+    np_image = cv2.cvtColor(np_image, cv2.COLOR_RGB2BGR)
+
+    # Now safely convert BGR → HSV
+    hsv = cv2.cvtColor(np_image, cv2.COLOR_BGR2HSV)
+
+    # Define HSV ranges (OpenCV scale: H=0-179, S/V=0-255)
+    targets = {
+        1: ([63-10, 100, 100], [63+10, 255, 255]),   # T1 (≈ Hue 136/2 = 68)
+        2: ([93-10, 100, 100], [93+10, 255, 255]),   # T2 (≈ Hue 185/2 = 92)
+        3: ([133-10, 40, 40], [133+10, 255, 255])    # T3 (≈ Hue 265/2 = 133)
+    }
+
+    for key, (lower, upper) in targets.items():
+        lower = np.array(lower, dtype=np.uint8)
+        upper = np.array(upper, dtype=np.uint8)
+
+        mask = cv2.inRange(hsv, lower, upper)
+        if cv2.countNonZero(mask) > 0:
+            return key
+
+    return 0
+    
+
 def take_screenshot_and_detect_price():
     try:
         # --- Bounding box: REGION_0 top-left → OCR_REGION_2 bottom-right ---
@@ -124,7 +157,10 @@ def take_screenshot_and_detect_price():
             REGION_0_BOTTOM_RIGHT[0] - left,
             REGION_0_BOTTOM_RIGHT[1] - top
         )
-        # region0 = full_screenshot.crop(region0_crop_box)
+        region0 = full_screenshot.crop(region0_crop_box)
+        print(region0.height)
+        enchantment_region = region0.crop((20, region0.height - 15, region0.width - 38, region0.height - 5))
+        detected_enchantment = detectEnchantmentFromImage(enchantment_region)
 
         # Compute hash of region 0
         region0_hash = imagehash.phash(full_screenshot)
@@ -151,7 +187,7 @@ def take_screenshot_and_detect_price():
         text1 = pytesseract.image_to_string(name_region, config='--psm 6').strip().replace("\n", " ")
         text2 = pytesseract.image_to_string(price_region, config='--psm 6').strip().replace("\n", " ")
 
-        return text1, text2, region0_hash
+        return text1, text2, region0_hash, detected_enchantment
 
     except Exception as e:
         print(f"Error in screenshot/OCR: {e}")
@@ -303,7 +339,16 @@ def selectQuality(level):
   currentQuality = level
 
 def findItemInItemList(itemList, itemId):
-  return next((item for item in itemList if item.get("-uniquename") == itemId), None)
+  found = next((item for item in itemList if item.get("-uniquename") == itemId), None)
+  if (found):
+    return found
+  #If not found let's check if there is an enchantment
+  enchantmentLevel = get_item_enchantment(itemId)
+  if (enchantmentLevel == 0):
+    return None
+  modifiedItemId = itemId.replace(f"@{enchantmentLevel}", "")
+  found = next((item for item in itemList if item.get("-uniquename") == modifiedItemId), None)
+  return found
 
 def loadItemList():
   json = loadJsonFile('./items.json')
@@ -375,17 +420,18 @@ def start_watching_prices(watch_list):
       selectQuality(quality)
       pyautogui.moveTo(50, 50)
       # print(f"Expected text for {itemId}: {expectedText}")
-      detectedItemText, detectedItemPrice, screenHash = take_screenshot_and_detect_price()
+      detectedItemText, detectedItemPrice, screenHash, detectedEnchantment = take_screenshot_and_detect_price()
       expectedText_similarity = fuzz.ratio(detectedItemText, expectedText)
       retry_count = 0
       max_retries = 5
       shouldSkip = False
 
       while (detectedItemText == "" or detectedItemPrice == "" or \
+        detectedEnchantment != targetEnchantment or \
         (currentScreenHash is not None and abs(screenHash - currentScreenHash) <= 3) or
         expectedText_similarity < 80):
-          print(f"Retaking screenshot because still seeing same stuff ({abs(screenHash - currentScreenHash)}) ({expectedText_similarity})\nDetected text: {detectedItemText}\nExpected text: {expectedText}")
-          detectedItemText, detectedItemPrice, screenHash = take_screenshot_and_detect_price()
+          print(f"Retaking screenshot because still seeing same stuff ({abs(screenHash - currentScreenHash)}) ({expectedText_similarity})\nDetected text: {detectedItemText}\nExpected text: {expectedText} (target enchant: {targetEnchantment} curr enchant: {detectedEnchantment})")
+          detectedItemText, detectedItemPrice, screenHash, detectedEnchantment = take_screenshot_and_detect_price()
           expectedText_similarity = fuzz.ratio(detectedItemText, expectedText)
           
           if retry_count == 1 and checkIfNoOffersFound():
