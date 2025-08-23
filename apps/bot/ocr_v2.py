@@ -432,7 +432,7 @@ def start_watching_prices(watch_list):
       while (detectedItemText == "" or detectedItemPrice == "" or \
         detectedEnchantment != targetEnchantment or \
         # (currentScreenHash is not None and abs(screenHash - currentScreenHash) <= 3) or
-        expectedText_similarity < 80):
+        expectedText_similarity < 90):
           print(f"Retaking screenshot because still seeing same stuff ({abs(screenHash - currentScreenHash)}) ({expectedText_similarity})\nDetected text: {detectedItemText}\nExpected text: {expectedText} (target enchant: {targetEnchantment} curr enchant: {detectedEnchantment})")
           detectedItemText, detectedItemPrice, screenHash, detectedEnchantment = take_screenshot_and_detect_price()
           expectedText_similarity = fuzz.ratio(detectedItemText, expectedText)

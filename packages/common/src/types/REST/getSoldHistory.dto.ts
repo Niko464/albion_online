@@ -1,9 +1,11 @@
 export type GetSoldHistoryResponse = {
   histories: {
     itemId: string;
-    location: string;
-    avgPrice: number;
-    avgAmount: number;
-    stdDev: number;
+    markets: {
+      location: string;
+      avgPrice: number;
+      avgAmount: number;
+      stdDev: number;
+    }[];
   }[];
 };

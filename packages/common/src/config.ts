@@ -10,6 +10,15 @@ export const allCities: string[] = [
   // "Brecilien",
 ];
 
+export const cityNamesToIds: Record<string, string> = {
+  "Thetford": "7",
+  "Lymhurst": "1002",
+  "Bridgewatch": "2004",
+  "Martlock": "3008",
+  "FortSterling": "4002",
+  "Caerleon": "3003",
+}
+
 export const cityColors: Record<string, string> = {
   Bridgewatch: "#eab308",
   "Bridgewatch Market": "#eab308",

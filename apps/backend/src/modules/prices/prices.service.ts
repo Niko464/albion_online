@@ -15,6 +15,7 @@ import { ABDGetPricesResponse } from '@/utils/zod/ABDGetPricesSchema';
 import { OCRPriceUpdate } from '@/utils/zod/OCRPriceUpdateSchema';
 import { ABDGetHistoryResponse } from '@/utils/zod/ABDGetHistorySchema';
 import { calculateMarketStats } from '@/utils/weightedAverage';
+import { getABDLocationIds } from '@/utils/getABDLocationIds';
 
 @Injectable()
 export class PricesService {
@@ -22,7 +23,7 @@ export class PricesService {
 
   async getPrices(dto: GetPricesDto): Promise<GetPricesResponse> {
     const itemParam = dto.itemIds.join(',');
-    const cityParam = dto.cities.join(',');
+    const cityParam = getABDLocationIds(dto.cities).join(',');
     const abdPrices = await axios.get<ABDGetPricesResponse>(
       `${ABD_ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`,
     );
@@ -180,9 +181,9 @@ export class PricesService {
           el.locationName.includes(city),
         );
 
-        if (itemId === 'T7_MEAL_ROAST_FISH@3') {
-          console.log('DEBUG WW avalon stuff', ocrPriceData, currentPrice);
-        }
+        // if (itemId === 'T7_MEAL_ROAST_FISH@3') {
+        //   console.log('DEBUG WW avalon stuff', ocrPriceData, currentPrice);
+        // }
 
         if (!currentPrice) {
           marketsToPush.markets.push({
@@ -368,7 +369,7 @@ export class PricesService {
 
   async averageSoldPerDay(dto: GetPricesDto): Promise<GetSoldHistoryResponse> {
     const itemParam = dto.itemIds.join(',');
-    const cityParam = dto.cities.join(',');
+    const cityParam = getABDLocationIds(dto.cities).join(',');
     const abdHistory = await axios.get<ABDGetHistoryResponse>(
       `${ABD_ENDPOINT}/api/v2/stats/history/${itemParam}?locations=${cityParam}&qualities=1&time-scale=24`,
     );
@@ -376,6 +377,8 @@ export class PricesService {
     const result: GetSoldHistoryResponse = {
       histories: [],
     };
+
+    console.log('DEBUG avg stuff', abdHistory.data);
     for (const itemId of dto.itemIds) {
       const historyItems = abdHistory.data.filter(
         (el) => el.item_id === itemId,
@@ -385,7 +388,9 @@ export class PricesService {
         markets: [],
       };
       for (const city of dto.cities) {
-        const priceData = historyItems.find((el) => el.location === city);
+        const priceData = historyItems.find(
+          (el) => el.location.replace(' ', '') === city,
+        );
 
         if (!priceData) {
           continue;
