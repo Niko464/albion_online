@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import type { CitySelectionsType } from "../CookingRecipesPage";
+import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "../components/renderMarketSelect";
 
 const columnHelper = createColumnHelper<RecipeRowData>();

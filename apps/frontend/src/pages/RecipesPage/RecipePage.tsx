@@ -14,9 +14,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { getBestMarket } from "./getBestMarket";
 import {
   allCities,
-  allCookingRecipes,
   type PlayerSpecializationStats,
 } from "@albion_online/common";
+import recipesJSON from "../../utils/recipes.json";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -45,20 +45,21 @@ import {
 } from "@/components/ui/select";
 import { useQuantitySoldHistory } from "@/hooks/useQuantitySoldHistory";
 import { useItemTranslations } from "@/hooks/useItemTranslations";
+import { useParams } from "react-router-dom";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
-  specializations: {
-    Soup: 29,
-    Salad: 13,
-    Pie: 54,
-    Roast: 19,
-    Omelette: 2,
-    Stew: 64,
-    Sandwich: 29,
-    Ingredient: 8,
-    Butcher: 51,
-  },
+  // specializations: {
+  //   Soup: 29,
+  //   Salad: 13,
+  //   Pie: 54,
+  //   Roast: 19,
+  //   Omelette: 2,
+  //   Stew: 64,
+  //   Sandwich: 29,
+  //   Ingredient: 8,
+  //   Butcher: 51,
+  // },
   // specializations: {
   //   Soup: 50,
   //   Salad: 50,
@@ -70,38 +71,65 @@ const playerSpec: PlayerSpecializationStats = {
   //   Ingredient: 50,
   //   Butcher: 50,
   // },
-  // specializations: {
-  //   Soup: 100,
-  //   Salad: 100,
-  //   Pie: 100,
-  //   Roast: 100,
-  //   Omelette: 100,
-  //   Stew: 100,
-  //   Sandwich: 100,
-  //   Ingredient: 100,
-  //   Butcher: 100,
-  // },
+  specializations: {
+    Soup: 100,
+    Salad: 100,
+    Pie: 100,
+    Roast: 100,
+    Omelette: 100,
+    Stew: 100,
+    Sandwich: 100,
+    Ingredient: 100,
+    Butcher: 100,
+  },
 };
 
 export type CitySelectionsType = Record<string, string | null>;
 
-const branchNames = Object.keys(playerSpec.specializations);
+// TODO: solve the bug where for some reason some lines that have opacity at 100
+// which means that they have no missing prices, don't render a marketSelect (which should only happen if no selection is set)
+// which should only happen if no price is found
 
+// TODO: make the specialization customizable
+
+// TODO: the specialization bonuses should be configurable according to the crafting branch
 // -------------------- Main Component --------------------
-export function CookingRecipesPage() {
+export function RecipeRecipesPage() {
+  const { craftingCategory } = useParams();
+
+  if (!craftingCategory) {
+    throw new Error("No crafting category provided in URL");
+  }
+
+  const allRecipes = useMemo(() => {
+    return recipesJSON.filter((el) => el.craftingCategory === craftingCategory);
+  }, [craftingCategory]);
+
+  const branchNames = useMemo(() => {
+    return allRecipes.reduce((acc, curr) => {
+      const branchName = curr.specializationBranchName;
+      if (branchName && !acc.includes(branchName)) {
+        acc.push(branchName);
+      }
+      return acc;
+    }, [] as string[])
+  }, [allRecipes]);
+
+  console.log('DEBUG haha', branchNames);
+
   const ingredientIds = useMemo(() => {
     return [
       ...new Set(
-        allCookingRecipes.flatMap((recipe) =>
+        allRecipes.flatMap((recipe) =>
           recipe.ingredients.map((ingredient) => ingredient.itemId)
         )
       ),
     ];
-  }, []);
+  }, [allRecipes]);
 
   const recipeIds = useMemo(() => {
-    return allCookingRecipes.map((recipe) => recipe.recipeId);
-  }, []);
+    return allRecipes.map((recipe) => recipe.recipeId);
+  }, [allRecipes]);
 
   const allIds = useMemo(() => {
     return [...new Set([...ingredientIds, ...recipeIds])];
@@ -109,8 +137,8 @@ export function CookingRecipesPage() {
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
     // "Martlock",
-    "Bridgewatch",
-    // "Lymhurst",
+    // "Bridgewatch",
+    "Lymhurst",
     // `FortSterling`,
     // "Thetford",
   ]);
@@ -176,7 +204,7 @@ export function CookingRecipesPage() {
 
   const data: RecipeRowData[] = useMemo(() => {
     if (!priceData || !soldHistoryData || !missingPriceDataItemIds) return [];
-    return allCookingRecipes.map((recipe) => {
+    return allRecipes.map((recipe) => {
       const withoutFocusRecipeStats = calculateRecipeProfit(
         recipe,
         priceData,
@@ -255,7 +283,8 @@ export function CookingRecipesPage() {
         focusCostWithSpecialization: effectiveFocusWithSpecialization,
         famePerSilverInvested,
         famePerSilverInvestedSellCity,
-        otherSilverPerFoca: withFocusRecipeStats.profit / effectiveFocusWithSpecialization
+        otherSilverPerFoca:
+          withFocusRecipeStats.profit / effectiveFocusWithSpecialization,
       } satisfies RecipeRowData;
     });
   }, [
@@ -264,6 +293,7 @@ export function CookingRecipesPage() {
     missingPriceDataItemIds,
     selections,
     useInstantSell,
+    allRecipes,
   ]);
 
   const filteredData = useMemo(() => {

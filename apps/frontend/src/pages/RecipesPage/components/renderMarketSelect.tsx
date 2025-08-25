@@ -10,7 +10,7 @@ import {
 const MANUAL_OPTION_VALUE = "__manual_price__";
 import { getMinutesAgo } from "@/utils/getMinutesAgo";
 import type { GetPricesResponse } from "@albion_online/common";
-import type { CitySelectionsType } from "../CookingRecipesPage";
+import type { CitySelectionsType } from "../RecipePage";
 
 import { memo, useMemo } from "react";
 
@@ -69,7 +69,10 @@ export const MarketSelect = memo(
     const currentSelection = selections[itemId] || "";
     const isManualSelection = currentSelection.startsWith("manual:");
 
-    if (!currentSelection) return null;
+    if (!currentSelection) {
+      console.log(itemId);
+      return null;
+    }
 
     return (
       <Select

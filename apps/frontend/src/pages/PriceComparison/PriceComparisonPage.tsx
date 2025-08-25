@@ -26,7 +26,7 @@ import {
 import { useMemo, useState } from "react";
 import { usePriceComparisonColumns } from "./hooks/usePriceComparisonColumns";
 import { cn } from "@/utils/utils";
-import { renderItemImage } from "../CookingRecipesPage/components/renderItemImage";
+import { renderItemImage } from "../RecipesPage/components/renderItemImage";
 
 export default function PriceComparisonPage() {
   const allIds = useMemo(() => {

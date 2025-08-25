@@ -1,4 +1,4 @@
-import type { RecipeCostDetails } from "@/pages/CookingRecipesPage/utils/calculateRecipeCost";
+import type { RecipeCostDetails } from "@/pages/RecipesPage/utils/calculateRecipeCost";
 import type { GetPricesResponse, GetSoldHistoryResponse, Recipe } from "@albion_online/common";
 
 export interface MarketData {

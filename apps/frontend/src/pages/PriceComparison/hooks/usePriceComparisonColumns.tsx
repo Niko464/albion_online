@@ -1,4 +1,4 @@
-import { renderItemImage } from "@/pages/CookingRecipesPage/components/renderItemImage";
+import { renderItemImage } from "@/pages/RecipesPage/components/renderItemImage";
 import { Tag } from "@/pages/CustomRessourcePrices/Tag";
 import type { PriceComparisonRowData } from "@/utils/types";
 import { createColumnHelper, type ColumnDef } from "@tanstack/react-table";

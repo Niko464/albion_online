@@ -17,7 +17,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Carrot, DollarSign } from "lucide-react";
+import recipesJSON from "../../utils/recipes.json";
 
+const recipeCategories = recipesJSON.reduce((acc, recipe) => {
+  if (!acc.has(recipe.craftingCategory)) acc.add(recipe.craftingCategory);
+  return acc;
+}, new Set<string>());
+console.log('debug ', recipeCategories)
 const items = [
   {
     title: "Albion Online Prices",
@@ -72,12 +78,15 @@ const items = [
     ],
   },
   {
-    title: "Cooking",
+    title: "Recipes",
     icon: Carrot,
     children: [
       {
         title: "Recipes",
-        children: [{ title: "All", url: "/cooking/recipes" }],
+        children: Array.from(recipeCategories).map((category: string) => ({
+          title: category,
+          url: `/recipes/${category}`,
+        })),
       },
     ],
   },

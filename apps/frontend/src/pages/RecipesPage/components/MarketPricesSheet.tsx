@@ -22,7 +22,7 @@ import {
 import { getMinutesAgo } from "@/utils/getMinutesAgo";
 import type { GetPricesResponse } from "@albion_online/common";
 import { memo, useCallback, useMemo } from "react";
-import type { CitySelectionsType } from "../CookingRecipesPage";
+import type { CitySelectionsType } from "../RecipePage";
 
 type Props = {
   ingredientIds: string[];

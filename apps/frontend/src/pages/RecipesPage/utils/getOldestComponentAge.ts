@@ -1,6 +1,6 @@
 import type { GetPricesResponse, Recipe } from "@albion_online/common";
 import { getMarketData } from "./getMarketData";
-import type { CitySelectionsType } from "../CookingRecipesPage";
+import type { CitySelectionsType } from "../RecipePage";
 
 export const getOldestComponentAge = (
   recipe: Recipe,

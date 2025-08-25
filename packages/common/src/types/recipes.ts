@@ -7,6 +7,7 @@ export type Recipe = {
   focus: number | null;
   fame: number | null;
   specializationBranchName: string | null;
+  craftingCategory: string;
 };
 
 export type PlayerSpecializationStats = {

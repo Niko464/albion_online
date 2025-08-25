@@ -12,7 +12,7 @@ import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "./renderItemImage";
 import type { ColumnDef } from "@tanstack/react-table";
 import { cn } from "@/utils/utils";
-import type { CitySelectionsType } from "../CookingRecipesPage";
+import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "./renderMarketSelect";
 
 interface RecipeRowProps {

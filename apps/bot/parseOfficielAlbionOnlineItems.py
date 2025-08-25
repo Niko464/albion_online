@@ -55,10 +55,10 @@ properties_to_remove = [
     "-skincount"
 ]
 
-equipment_items = data.get("items", {}).get("consumableitem", [])
+equipment_items = data.get("items", {}).get("consumableitem", []) + data.get("items", {}).get("weapon", []) + data.get("items", {}).get("simpleitem", []) + data.get("items", {}).get("equipmentitem", [])
 craftable_items = [
     item for item in equipment_items
-    if item.get("craftingrequirements") is not None and item.get("-craftingcategory") == "food"
+    if item.get("craftingrequirements") is not None
 ]
 
 # Remove specified properties from each item
