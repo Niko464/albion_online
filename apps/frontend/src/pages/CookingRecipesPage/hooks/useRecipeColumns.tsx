@@ -202,6 +202,31 @@ export const useRecipeColumns = (
       size: 120,
       meta: { align: "left" },
     }),
+    columnHelper.accessor("otherSilverPerFoca", {
+      header: "Other Silver/focus (with spec)",
+      cell: ({ row }) => {
+        return (
+          <Tooltip>
+            <TooltipTrigger>
+              <span>
+                {row.original.otherSilverPerFoca.toFixed(2)}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="flex flex-col">
+              <span>
+                Base focus cost: {(row.original.recipe.focus || 0 * row.original.recipe.quantity)?.toFixed(2)}
+              </span>
+              <span>
+                Spec focus cost:{" "}
+                {row.original.focusCostWithSpecialization.toFixed(2)}
+              </span>
+            </TooltipContent>
+          </Tooltip>
+        );
+      },
+      size: 120,
+      meta: { align: "left" },
+    }),
     columnHelper.accessor("famePerSilverInvested", {
       header: "Fame/silver (buying item)",
       cell: ({ row }) => {

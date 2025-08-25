@@ -50,14 +50,14 @@ const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
   specializations: {
     Soup: 29,
-    Salad: 9,
+    Salad: 13,
     Pie: 54,
-    Roast: 18,
+    Roast: 19,
     Omelette: 2,
-    Stew: 49,
-    Sandwich: 27,
+    Stew: 64,
+    Sandwich: 29,
     Ingredient: 8,
-    Butcher: 50,
+    Butcher: 51,
   },
   // specializations: {
   //   Soup: 50,
@@ -106,8 +106,6 @@ export function CookingRecipesPage() {
   const allIds = useMemo(() => {
     return [...new Set([...ingredientIds, ...recipeIds])];
   }, [ingredientIds, recipeIds]);
-
-  console.log('DEBUG WW all ids', allIds)
 
   const [selectedCities, setSelectedCities] = useState<string[]>([
     // "Martlock",
@@ -257,6 +255,7 @@ export function CookingRecipesPage() {
         focusCostWithSpecialization: effectiveFocusWithSpecialization,
         famePerSilverInvested,
         famePerSilverInvestedSellCity,
+        otherSilverPerFoca: withFocusRecipeStats.profit / effectiveFocusWithSpecialization
       } satisfies RecipeRowData;
     });
   }, [

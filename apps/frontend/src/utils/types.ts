@@ -26,6 +26,7 @@ export type RecipeRowData = {
   oldestAge: number;
   famePerSilverInvested: number;
   famePerSilverInvestedSellCity: string;
+  otherSilverPerFoca: number;
 };
 
 export type PriceComparisonRowData = {
