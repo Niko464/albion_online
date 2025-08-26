@@ -885,75 +885,90 @@
       {
         "idx": 3,
         "text": "Potions",
+        "id": "potions",
         "subcategories": [
           {
             "idx": 2,
             "text": "Heal",
+            "id": "heal",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "Energy",
+            "id": "energy",
             "subcategories": []
           },
           {
             "idx": 4,
             "text": "Gigantify",
+            "id": "gigantify",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Resistance",
+            "id": "resistance",
             "subcategories": []
           },
           {
             "idx": 6,
             "text": "Sticky",
+            "id": "slowfield",
             "subcategories": []
           },
           {
             "idx": 7,
             "text": "Poison",
+            "id": "poison",
             "subcategories": []
           },
           {
             "idx": 8,
             "text": "Invisibility",
+            "id": "invisibility",
             "subcategories": []
           },
           {
             "idx": 9,
             "text": "Calming",
+            "id": "calming",
             "subcategories": []
           },
           {
             "idx": 10,
             "text": "Cleansing",
+            "id": "cleanse",
             "subcategories": []
           },
           {
             "idx": 11,
             "text": "Acid",
+            "id": "acid",
             "subcategories": []
           },
           {
             "idx": 12,
             "text": "Berserk",
+            "id": "berserk",
             "subcategories": []
           },
           {
             "idx": 13,
             "text": "Hellfire",
+            "id": "lava",
             "subcategories": []
           },
           {
             "idx": 14,
             "text": "Gathering",
+            "id": "gather",
             "subcategories": []
           },
           {
             "idx": 15,
             "text": "Tornado",
+            "id": "tornado",
             "subcategories": []
           },
           {
@@ -1247,40 +1262,48 @@
       {
         "idx": 7,
         "text": "Alchemy",
+        "id": "alchemy",
         "subcategories": [
           {
             "idx": 2,
             "text": "Shadow Claws",
+            "id": "remains_panther",
             "subcategories": []
           },
           {
             "idx": 3,
             "text": "sylvian Root",
+            "id": "remains_ent",
             "subcategories": []
           },
           {
             "idx": 4,
             "text": "Spirit Paws",
+            "id": "remains_direbear",
             "subcategories": []
           },
           {
             "idx": 5,
             "text": "Werewolf Fangs",
+            "id": "remains_werewolf",
             "subcategories": []
           },
           {
             "idx": 6,
             "text": "Imp's Horn",
+            "id": "remains_imp",
             "subcategories": []
           },
           {
             "idx": 7,
             "text": "Runestone Tooth",
+            "id": "remains_elemental",
             "subcategories": []
           },
           {
             "idx": 8,
             "text": "Dawnfeather",
+            "id": "remains_eagle",
             "subcategories": []
           },
           {
@@ -1291,6 +1314,7 @@
           {
             "idx": 10,
             "text": "Arcane Extract",
+            "id": "extract",
             "subcategories": []
           },
           {

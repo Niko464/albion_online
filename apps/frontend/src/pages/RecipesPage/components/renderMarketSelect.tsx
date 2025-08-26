@@ -66,13 +66,12 @@ export const MarketSelect = memo(
       );
     }, [itemId, priceData, useInstantSell]);
 
-    const currentSelection = selections[itemId] || "";
-    const isManualSelection = currentSelection.startsWith("manual:");
+    const currentSelection = selections[itemId];
 
     if (!currentSelection) {
-      console.log(itemId);
       return null;
     }
+    const isManualSelection = currentSelection.startsWith("manual:");
 
     return (
       <Select
@@ -113,7 +112,7 @@ export const MarketSelect = memo(
               </SelectItem>
             ))
           ) : (
-            <SelectItem value="" disabled>
+            <SelectItem value="no-available" disabled>
               No market data available
             </SelectItem>
           )}

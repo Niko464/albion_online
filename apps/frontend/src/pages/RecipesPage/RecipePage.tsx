@@ -107,6 +107,7 @@ export function RecipeRecipesPage() {
     // "Thetford",
   ]);
   const [selectedCities, setSelectedCities] = useState<string[]>([]);
+
   const {
     data: priceData,
     isLoading: isLoadingPriceData,
@@ -127,6 +128,7 @@ export function RecipeRecipesPage() {
   >(null);
 
   const initializeSelections = useCallback(() => {
+    console.log('DEBUG WW rerunning initializeSelections')
     const missingPriceDataItemIds: string[] = [];
     const initial: CitySelectionsType = {};
     [...new Set(ingredientIds)].forEach((itemId) => {
@@ -136,7 +138,7 @@ export function RecipeRecipesPage() {
       }
       initial[itemId] = bestMarket ? bestMarket.locationName : null;
     });
-    [...new Set(recipeIds)].forEach((itemId) => {
+      [...new Set(recipeIds)].forEach((itemId) => {
       const bestMarket = getBestMarket(itemId, priceData, true);
       if (!bestMarket) {
         missingPriceDataItemIds.push(itemId);
@@ -147,11 +149,14 @@ export function RecipeRecipesPage() {
     return initial;
   }, [priceData, ingredientIds, recipeIds]);
 
+  console.log('DEBUG branchNames', branchNames, selectedCities, uiSelectedCities, missingPriceDataItemIds, allIds)
+
+
   useEffect(() => {
-    if (priceData && !missingPriceDataItemIds) {
+    if (priceData) {
       setSelections(initializeSelections());
     }
-  }, [priceData, missingPriceDataItemIds, initializeSelections]);
+  }, [priceData, initializeSelections]);
 
   const handleSelectionChange = useCallback((itemId: string, value: string) => {
     setSelections((prev) => ({
@@ -246,17 +251,17 @@ export function RecipeRecipesPage() {
             <span>Use Instant Sell</span>
           </Label> */}
 
-          <MarketPricesSheet
+          {/* <MarketPricesSheet
             handleSelectionChange={handleSelectionChange}
             selections={selections}
             ingredientIds={ingredientIds}
             priceData={priceData}
             useInstantSell={useInstantSell}
             recipeIds={recipeIds}
-          />
+          /> */}
 
           <Select
-            value={branchFilter ?? undefined}
+            value={branchFilter}
             onValueChange={(value) => setBranchFilter(value)}
           >
             <SelectTrigger>
