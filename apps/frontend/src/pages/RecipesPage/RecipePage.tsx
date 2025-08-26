@@ -12,10 +12,7 @@ import { useCustomPrices } from "@/hooks/useCustomPrices";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { getBestMarket } from "./getBestMarket";
-import {
-  allCities,
-  type PlayerSpecializationStats,
-} from "@albion_online/common";
+import { allCities } from "@albion_online/common";
 import recipesJSON from "../../utils/recipes.json";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -43,43 +40,9 @@ import { useItemTranslations } from "@/hooks/useItemTranslations";
 import { useParams } from "react-router-dom";
 import debounce from "lodash.debounce";
 import { useRecipeData } from "./hooks/useRecipeData";
-
-const playerSpec: PlayerSpecializationStats = {
-  mastery: 100,
-  // specializations: {
-  //   Soup: 29,
-  //   Salad: 13,
-  //   Pie: 54,
-  //   Roast: 19,
-  //   Omelette: 2,
-  //   Stew: 64,
-  //   Sandwich: 29,
-  //   Ingredient: 8,
-  //   Butcher: 51,
-  // },
-  // specializations: {
-  //   Soup: 50,
-  //   Salad: 50,
-  //   Pie: 50,
-  //   Roast: 50,
-  //   Omelette: 50,
-  //   Stew: 50,
-  //   Sandwich: 50,
-  //   Ingredient: 50,
-  //   Butcher: 50,
-  // },
-  specializations: {
-    Soup: 100,
-    Salad: 100,
-    Pie: 100,
-    Roast: 100,
-    Omelette: 100,
-    Stew: 100,
-    Sandwich: 100,
-    Ingredient: 100,
-    Butcher: 100,
-  },
-};
+import { usePlayerSpecHelper } from "./hooks/usePlayerSpecHelper";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -112,8 +75,6 @@ export function RecipeRecipesPage() {
     }, [] as string[]);
   }, [allRecipes]);
 
-  console.log("DEBUG haha", branchNames);
-
   const ingredientIds = useMemo(() => {
     return [
       ...new Set(
@@ -132,6 +93,12 @@ export function RecipeRecipesPage() {
     return [...new Set([...ingredientIds, ...recipeIds])];
   }, [ingredientIds, recipeIds]);
 
+  const [simulateMaxSpec, setSimulateMaxSpec] = useState<boolean>(false);
+  const { playerSpec, updateSpecialization, setMaxSpec } = usePlayerSpecHelper(
+    craftingCategory,
+    branchNames
+  );
+
   const [uiSelectedCities, setUiSelectedCities] = useState<string[]>([
     // "Martlock",
     // "Bridgewatch",
@@ -139,9 +106,7 @@ export function RecipeRecipesPage() {
     // `FortSterling`,
     // "Thetford",
   ]);
-  const [selectedCities, setSelectedCities] = useState<string[]>([
-    
-  ]);
+  const [selectedCities, setSelectedCities] = useState<string[]>([]);
   const {
     data: priceData,
     isLoading: isLoadingPriceData,
@@ -210,7 +175,7 @@ export function RecipeRecipesPage() {
     soldHistoryData,
     missingPriceDataItemIds,
     playerSpec
-  )
+  );
 
   const filteredData = useMemo(() => {
     return data.filter((row) => {
@@ -307,7 +272,8 @@ export function RecipeRecipesPage() {
             </SelectContent>
           </Select>
         </div>
-        <div>
+        <Card className="flex flex-col gap-4 p-4 rounded-md">
+          <h1 className="text-xl font-bold">City</h1>
           <div className="flex flex-row gap-4">
             {allCities.map((city) => (
               <div
@@ -330,8 +296,43 @@ export function RecipeRecipesPage() {
               </div>
             ))}
           </div>
-        </div>
-        <Card className="overflow-x-auto rounded-xl border shadow-sm">
+        </Card>
+        <Card className="flex flex-col gap-4 p-4 rounded-md">
+          <div className="flex flex-row gap-4">
+            <h1 className="text-xl font-bold">Specializations</h1>
+            <Label className="flex items-center gap-2">
+              <Checkbox
+                checked={simulateMaxSpec}
+                onCheckedChange={(checked) => {
+                  setMaxSpec(!!checked);
+                  setSimulateMaxSpec(!!checked);
+                }}
+              />
+              <span>Max Spec</span>
+            </Label>
+          </div>
+          <div className="flex flex-wrap gap-4 max-w-[60%]">
+            {["mastery", ...branchNames].map((el) => (
+              <div key={el} className="flex justify-between w-40">
+                <span>{el}</span>
+                <Input
+                  className="max-w-16"
+                  type="number"
+                  value={
+                    el === "mastery"
+                      ? playerSpec.mastery
+                      : playerSpec.specializations[el]
+                  }
+                  onFocus={(e) => e.target.select()}
+                  onChange={(e) =>
+                    updateSpecialization(el, Number(e.target.value))
+                  }
+                />
+              </div>
+            ))}
+          </div>
+        </Card>
+        <Card className="overflow-x-auto rounded-md p-4 border shadow-sm">
           <Table className="w-full table-fixed">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (

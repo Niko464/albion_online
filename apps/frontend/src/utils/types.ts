@@ -24,8 +24,6 @@ export type RecipeRowData = {
   silverPerFocusWithoutSpecialization: number;
   silverPerFocusWithSpecialization: number;
   oldestAge: number;
-  famePerSilverInvested: number;
-  famePerSilverInvestedSellCity: string;
   otherSilverPerFoca: number;
 };
 

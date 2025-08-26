@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import { calculateRecipeProfit } from "../utils/calculateRecipeProfit";
 import { getOldestComponentAge } from "../utils/getOldestComponentAge";
 import { getEffectiveFocusCost } from "../utils/calculateEffectiveFocusCost";
-import { getBestMarket } from "../getBestMarket";
 import type {
   GetPricesResponse,
   GetSoldHistoryResponse,
@@ -57,26 +56,13 @@ export const useRecipeData = (
         playerSpec
       );
 
-      // NOTE: the place where I can buy the recipe the cheapest at
-      const cheapestMarketPrice = getBestMarket(
-        recipe.recipeId,
-        priceData,
-        false
-      );
 
       // if (!cheapestMarketPrice) {
       //   throw new Error(
       //     `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
       //   );
       // }
-      const famePerSilverInvestedSellCity =
-        cheapestMarketPrice?.locationName || "Non existing";
 
-      // TODO: I am trying to maximize fame, I need to make a list
-      const famePerSilverInvested = recipe.fame
-        ? (recipe.fame * 2.75) /
-          ((cheapestMarketPrice?.offerOrders[0].price || 1) * recipe.quantity)
-        : 0;
 
       const selectedCity = selections[recipe.recipeId];
       const selectedCityMarketStats = soldHistoryData.histories
@@ -100,8 +86,6 @@ export const useRecipeData = (
           (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
           effectiveFocusWithSpecialization,
         focusCostWithSpecialization: effectiveFocusWithSpecialization,
-        famePerSilverInvested,
-        famePerSilverInvestedSellCity,
         otherSilverPerFoca:
           withFocusRecipeStats.profit / effectiveFocusWithSpecialization,
       } satisfies RecipeRowData;

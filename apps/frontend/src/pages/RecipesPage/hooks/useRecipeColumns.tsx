@@ -227,19 +227,19 @@ export const useRecipeColumns = (
       size: 120,
       meta: { align: "left" },
     }),
-    columnHelper.accessor("famePerSilverInvested", {
-      header: "Fame/silver (buying item)",
-      cell: ({ row }) => {
-        return (
-          <span>
-            {row.original.famePerSilverInvested.toFixed(2)} (
-            {row.original.famePerSilverInvestedSellCity})
-          </span>
-        );
-      },
-      size: 150,
-      meta: { align: "left" },
-    }),
+    // columnHelper.accessor("famePerSilverInvested", {
+    //   header: "Fame/silver (buying item)",
+    //   cell: ({ row }) => {
+    //     return (
+    //       <span>
+    //         {row.original.famePerSilverInvested.toFixed(2)} (
+    //         {row.original.famePerSilverInvestedSellCity})
+    //       </span>
+    //     );
+    //   },
+    //   size: 150,
+    //   meta: { align: "left" },
+    // }),
 
     // columnHelper.accessor("recipe.fame", {
     //   header: "Fame",
