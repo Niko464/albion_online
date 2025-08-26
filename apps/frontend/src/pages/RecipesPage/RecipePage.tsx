@@ -30,12 +30,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 
-// -------------------- Utility functions (memoized calculations) --------------------
 import { useRecipeColumns } from "./hooks/useRecipeColumns";
-import type { RecipeRowData } from "@/utils/types";
-import { calculateRecipeProfit } from "./utils/calculateRecipeProfit";
-import { getOldestComponentAge } from "./utils/getOldestComponentAge";
-import { getEffectiveFocusCost } from "./utils/calculateEffectiveFocusCost";
 import {
   Select,
   SelectContent,
@@ -46,6 +41,8 @@ import {
 import { useQuantitySoldHistory } from "@/hooks/useQuantitySoldHistory";
 import { useItemTranslations } from "@/hooks/useItemTranslations";
 import { useParams } from "react-router-dom";
+import debounce from "lodash.debounce";
+import { useRecipeData } from "./hooks/useRecipeData";
 
 const playerSpec: PlayerSpecializationStats = {
   mastery: 100,
@@ -105,17 +102,17 @@ export function RecipeRecipesPage() {
     return recipesJSON.filter((el) => el.craftingCategory === craftingCategory);
   }, [craftingCategory]);
 
-  const branchNames = useMemo(() => {
+  const branchNames: string[] = useMemo(() => {
     return allRecipes.reduce((acc, curr) => {
       const branchName = curr.specializationBranchName;
       if (branchName && !acc.includes(branchName)) {
         acc.push(branchName);
       }
       return acc;
-    }, [] as string[])
+    }, [] as string[]);
   }, [allRecipes]);
 
-  console.log('DEBUG haha', branchNames);
+  console.log("DEBUG haha", branchNames);
 
   const ingredientIds = useMemo(() => {
     return [
@@ -135,12 +132,15 @@ export function RecipeRecipesPage() {
     return [...new Set([...ingredientIds, ...recipeIds])];
   }, [ingredientIds, recipeIds]);
 
-  const [selectedCities, setSelectedCities] = useState<string[]>([
+  const [uiSelectedCities, setUiSelectedCities] = useState<string[]>([
     // "Martlock",
     // "Bridgewatch",
     "Lymhurst",
     // `FortSterling`,
     // "Thetford",
+  ]);
+  const [selectedCities, setSelectedCities] = useState<string[]>([
+    
   ]);
   const {
     data: priceData,
@@ -202,99 +202,15 @@ export function RecipeRecipesPage() {
     }));
   }, []);
 
-  const data: RecipeRowData[] = useMemo(() => {
-    if (!priceData || !soldHistoryData || !missingPriceDataItemIds) return [];
-    return allRecipes.map((recipe) => {
-      const withoutFocusRecipeStats = calculateRecipeProfit(
-        recipe,
-        priceData,
-        selections,
-        useInstantSell,
-        // TODO: not make this hardcoded
-        1000,
-        false
-      );
-      const withFocusRecipeStats = calculateRecipeProfit(
-        recipe,
-        priceData,
-        selections,
-        useInstantSell,
-        // TODO: not make this hardcoded
-        1000,
-        true
-      );
-      const oldestAge = getOldestComponentAge(
-        recipe,
-        priceData,
-        selections,
-        useInstantSell
-      );
-      const effectiveFocusWithoutSpecialization = getEffectiveFocusCost(
-        recipe,
-        null
-      );
-      const effectiveFocusWithSpecialization = getEffectiveFocusCost(
-        recipe,
-        playerSpec
-      );
-
-      // NOTE: the place where I can buy the recipe the cheapest at
-      const cheapestMarketPrice = getBestMarket(
-        recipe.recipeId,
-        priceData,
-        false
-      );
-
-      // if (!cheapestMarketPrice) {
-      //   throw new Error(
-      //     `No market data found for recipe ${recipe.recipeId} (cheapestMarketPrice)`
-      //   );
-      // }
-      const famePerSilverInvestedSellCity =
-        cheapestMarketPrice?.locationName || "Non existing";
-
-      // TODO: I am trying to maximize fame, I need to make a list
-      const famePerSilverInvested = recipe.fame
-        ? (recipe.fame * 2.75) /
-          ((cheapestMarketPrice?.offerOrders[0].price || 1) * recipe.quantity)
-        : 0;
-
-      const selectedCity = selections[recipe.recipeId];
-      const selectedCityMarketStats = soldHistoryData.histories
-        .find((el) => el.itemId === recipe.recipeId)
-        ?.markets.find((el) => el.location === selectedCity);
-
-      // if (!selectedCityMarketStats) {
-      //   throw new Error("No market stats for selected sell city");
-      // }
-
-      return {
-        recipe,
-        sellCityMarketStats: selectedCityMarketStats,
-        withFocusRecipeStats,
-        withoutFocusRecipeStats,
-        oldestAge,
-        silverPerFocusWithoutSpecialization:
-          (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
-          effectiveFocusWithoutSpecialization,
-        silverPerFocusWithSpecialization:
-          (withFocusRecipeStats.profit - withoutFocusRecipeStats.profit) /
-          effectiveFocusWithSpecialization,
-        focusCostWithSpecialization: effectiveFocusWithSpecialization,
-        famePerSilverInvested,
-        famePerSilverInvestedSellCity,
-        otherSilverPerFoca:
-          withFocusRecipeStats.profit / effectiveFocusWithSpecialization,
-      } satisfies RecipeRowData;
-    });
-  }, [
+  const data = useRecipeData(
     priceData,
-    soldHistoryData,
-    missingPriceDataItemIds,
     selections,
     useInstantSell,
     allRecipes,
-  ]);
+    soldHistoryData,
+    missingPriceDataItemIds,
+    playerSpec
+  )
 
   const filteredData = useMemo(() => {
     return data.filter((row) => {
@@ -326,10 +242,19 @@ export function RecipeRecipesPage() {
     getSortedRowModel: getSortedRowModel(),
   });
 
+  const debouncedUpdate = useMemo(
+    () => debounce((cities: string[]) => setSelectedCities(cities), 1500),
+    []
+  );
+
+  useEffect(() => {
+    debouncedUpdate(uiSelectedCities);
+  }, [uiSelectedCities, debouncedUpdate]);
+
   if (!priceData || isLoading || !missingPriceDataItemIds) {
     return (
       <div className="p-6">
-        <h1 className="text-3xl font-bold mb-4">Cooking Recipes</h1>
+        <h1 className="text-3xl font-bold mb-4">{craftingCategory} Recipes</h1>
         <Card className="p-4">
           <Skeleton className="h-6 w-48 mb-2" />
           <Skeleton className="h-6 w-32 mb-2" />
@@ -345,9 +270,9 @@ export function RecipeRecipesPage() {
 
   return (
     <TooltipProvider>
-      <div className="p-6">
-        <div className="flex items-center gap-4 mb-6">
-          <h1 className="text-3xl font-bold">Cooking Recipes</h1>
+      <div className="p-6 gap-6 flex flex-col">
+        <div className="flex items-center gap-4 ">
+          <h1 className="text-3xl font-bold">{craftingCategory} Recipes</h1>
           {/* <Label className="flex items-center gap-2">
             <Checkbox
               checked={useInstantSell}
@@ -364,28 +289,7 @@ export function RecipeRecipesPage() {
             useInstantSell={useInstantSell}
             recipeIds={recipeIds}
           />
-          <div className="flex flex-row gap-4">
-            {allCities.map((city) => (
-              <div
-                key={city}
-                className="flex justify-center items-center gap-1"
-              >
-                <Checkbox
-                  checked={selectedCities.includes(city)}
-                  onCheckedChange={(checked) => {
-                    if (checked) {
-                      setSelectedCities((prev) => [...prev, city]);
-                    } else {
-                      setSelectedCities((prev) =>
-                        prev.filter((c) => c !== city)
-                      );
-                    }
-                  }}
-                />
-                <span>{city}</span>
-              </div>
-            ))}
-          </div>
+
           <Select
             value={branchFilter ?? undefined}
             onValueChange={(value) => setBranchFilter(value)}
@@ -402,6 +306,30 @@ export function RecipeRecipesPage() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div>
+          <div className="flex flex-row gap-4">
+            {allCities.map((city) => (
+              <div
+                key={city}
+                className="flex justify-center items-center gap-1"
+              >
+                <Checkbox
+                  checked={uiSelectedCities.includes(city)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setUiSelectedCities((prev) => [...prev, city]);
+                    } else {
+                      setUiSelectedCities((prev) =>
+                        prev.filter((c) => c !== city)
+                      );
+                    }
+                  }}
+                />
+                <span>{city}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <Card className="overflow-x-auto rounded-xl border shadow-sm">
           <Table className="w-full table-fixed">
