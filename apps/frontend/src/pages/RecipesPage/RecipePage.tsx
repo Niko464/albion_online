@@ -43,6 +43,7 @@ import { useRecipeData } from "./hooks/useRecipeData";
 import { usePlayerSpecHelper } from "./hooks/usePlayerSpecHelper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -111,13 +112,18 @@ export function RecipeRecipesPage() {
   const {
     data: priceData,
     isLoading: isLoadingPriceData,
+    fetchStatus: priceDataFetchStatus,
     error,
+    refetch: refetchPrices,
   } = useCustomPrices(allIds, selectedCities);
   const itemTranslations = useItemTranslations(allIds);
   const { data: soldHistoryData, isLoading: isLoadingSoldHistory } =
     useQuantitySoldHistory(recipeIds, selectedCities);
 
-  const isLoading = isLoadingPriceData || isLoadingSoldHistory;
+  const isLoading =
+    isLoadingPriceData ||
+    priceDataFetchStatus === "fetching" ||
+    isLoadingSoldHistory;
 
   const [selections, setSelections] = useState<CitySelectionsType>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
@@ -128,7 +134,7 @@ export function RecipeRecipesPage() {
   >(null);
 
   const initializeSelections = useCallback(() => {
-    console.log('DEBUG WW rerunning initializeSelections')
+    console.log("DEBUG WW rerunning initializeSelections");
     const missingPriceDataItemIds: string[] = [];
     const initial: CitySelectionsType = {};
     [...new Set(ingredientIds)].forEach((itemId) => {
@@ -138,7 +144,7 @@ export function RecipeRecipesPage() {
       }
       initial[itemId] = bestMarket ? bestMarket.locationName : null;
     });
-      [...new Set(recipeIds)].forEach((itemId) => {
+    [...new Set(recipeIds)].forEach((itemId) => {
       const bestMarket = getBestMarket(itemId, priceData, true);
       if (!bestMarket) {
         missingPriceDataItemIds.push(itemId);
@@ -149,8 +155,14 @@ export function RecipeRecipesPage() {
     return initial;
   }, [priceData, ingredientIds, recipeIds]);
 
-  console.log('DEBUG branchNames', branchNames, selectedCities, uiSelectedCities, missingPriceDataItemIds, allIds)
-
+  console.log(
+    "DEBUG branchNames",
+    branchNames,
+    selectedCities,
+    uiSelectedCities,
+    missingPriceDataItemIds,
+    allIds
+  );
 
   useEffect(() => {
     if (priceData) {
@@ -280,6 +292,15 @@ export function RecipeRecipesPage() {
         <Card className="flex flex-col gap-4 p-4 rounded-md">
           <h1 className="text-xl font-bold">City</h1>
           <div className="flex flex-row gap-4">
+            <Button
+              onClick={() => {
+                refetchPrices();
+              }}
+              variant={"secondary"}
+              size="sm"
+            >
+              Refresh prices
+            </Button>
             {allCities.map((city) => (
               <div
                 key={city}

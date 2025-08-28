@@ -105,10 +105,7 @@ def checkIfNoOffersFound():
         print(f"Error checking for 'No offers found': {e}")
         return False
 
-# RGB T1 104, 244, 141    HSV 136 57.4 95.7
-# rgb T2 71 230 245       HSV 185 71.0 96.1
-# rgb T3 132 98 180       HSV 265 45.6 70.6
-def detectEnchantmentFromImage(image):
+def getTierFromImage(image):
     # Convert PIL Image → NumPy array (RGB)
     np_image = np.array(image)
 
@@ -134,7 +131,28 @@ def detectEnchantmentFromImage(image):
             return key
 
     return 0
+  
+
+# RGB T1 104, 244, 141    HSV 136 57.4 95.7
+# rgb T2 71 230 245       HSV 185 71.0 96.1
+# rgb T3 132 98 180       HSV 265 45.6 70.6
+def detectEnchantmentFromImage(image):
+    enchantment_region = image.crop((20, image.height - 15, image.width - 38, image.height - 5))
+    left_region = image.crop((0, 0, 6, image.height))
+    right_region = image.crop((image.width - 12, 0, image.width - 6, image.height))
+    top_region = image.crop((0, 0, image.width, 6))
+    bottom_region = image.crop((0, image.height - 6, image.width, image.height))
+
     
+    detections = [
+      getTierFromImage(left_region),
+      getTierFromImage(right_region),
+      getTierFromImage(top_region),
+      getTierFromImage(bottom_region),
+      getTierFromImage(enchantment_region)
+    ]
+    #return the majority tier
+    return max(set(detections), key=detections.count)
 
 def take_screenshot_and_detect_price():
     try:
@@ -158,9 +176,7 @@ def take_screenshot_and_detect_price():
             REGION_0_BOTTOM_RIGHT[1] - top
         )
         region0 = full_screenshot.crop(region0_crop_box)
-        print(region0.height)
-        enchantment_region = region0.crop((20, region0.height - 15, region0.width - 38, region0.height - 5))
-        detected_enchantment = detectEnchantmentFromImage(enchantment_region)
+        detected_enchantment = detectEnchantmentFromImage(region0)
 
         # Compute hash of region 0
         region0_hash = imagehash.phash(full_screenshot)
@@ -356,7 +372,15 @@ def loadItemList():
   return json["items"]["simpleitem"] + json["items"]["consumableitem"]
 
 def get_item_enchantment(item_id):
-    if item_id == "T1_FISHSAUCE_LEVEL1" or item_id == "T1_FISHSAUCE_LEVEL2" or item_id == "T1_FISHSAUCE_LEVEL3":
+    specialCases = [
+      "T1_FISHSAUCE_LEVEL1",
+      "T1_FISHSAUCE_LEVEL2",
+      "T1_FISHSAUCE_LEVEL3",
+      "T1_ALCHEMY_EXTRACT_LEVEL1",
+      "T1_ALCHEMY_EXTRACT_LEVEL2",
+      "T1_ALCHEMY_EXTRACT_LEVEL3"
+    ]
+    if item_id in specialCases:
       return 0
     # Look for LEVEL_X
     match = re.search(r'LEVEL(\d+)', item_id)
