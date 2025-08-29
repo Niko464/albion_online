@@ -225,8 +225,8 @@ export function RecipeRecipesPage() {
   });
 
   const favoriteData = useMemo(() => {
-    return data.filter((row) => favoriteList.includes(row.recipe.id));
-  }, [data, favoriteList]);
+    return filteredData.filter((row) => favoriteList.includes(row.recipe.recipeId));
+  }, [filteredData, favoriteList]);
 
   const favoriteTable = useReactTable({
     data: favoriteData,

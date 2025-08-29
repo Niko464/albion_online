@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/tooltip";
 import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "../components/renderMarketSelect";
-import { Star } from "lucide-react";
+import { ChevronDown, ChevronUp, Star } from "lucide-react";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
@@ -33,9 +33,10 @@ export const useRecipeColumns = (
       header: "Recipe",
       cell: ({ row }) => {
         const isFavorite = favoriteList.includes(row.original.recipe.recipeId);
+        const isExpanded = !!expandedRows[row.original.recipe.recipeId];
         return (
           <div className="flex items-center gap-2">
-            {expanded ? (
+            {isExpanded ? (
               <ChevronUp className="h-4 w-4" />
             ) : (
               <ChevronDown className="h-4 w-4" />
