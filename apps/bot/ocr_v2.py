@@ -368,7 +368,7 @@ def findItemInItemList(itemList, itemId):
   return found
 
 def loadItemList():
-  json = loadJsonFile('./items.json')
+  json = loadJsonFile('./inputs/items.json')
   return json["items"]["simpleitem"] + json["items"]["consumableitem"]
 
 def get_item_enchantment(item_id):

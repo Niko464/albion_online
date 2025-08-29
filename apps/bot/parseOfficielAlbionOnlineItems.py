@@ -2,7 +2,7 @@ import json
 import copy
 
 # Read the items.json file
-with open('items.json', 'r') as file:
+with open('./inputs/items.json', 'r') as file:
     data = json.load(file)
 
 # List of properties to remove
@@ -71,5 +71,5 @@ for item in craftable_items:
     filtered_items.append(filtered_item)
 
 # Write the filtered weapons to parsed_items.json
-with open('parsed_items.json', 'w') as file:
+with open('./outputs/parsed_items.json', 'w') as file:
     json.dump(filtered_items, file, indent=2)

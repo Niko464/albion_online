@@ -1,7 +1,7 @@
 import json
 
 # Read the parsed_items.json file
-with open('parsed_items.json', 'r') as file:
+with open('outputs/parsed_items.json', 'r') as file:
     items = json.load(file)
 
 # Transform items into Recipe format

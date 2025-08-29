@@ -5,11 +5,8 @@
     "**/build/**": true,
     "**/.turbo/**": true,
     "**/.next/**": true,
-    "**/.cache/**": true
+    "**/.cache/**": true,
+    "**/bot/inputs/**": true,
+    "**/bot/outputs/**": true
   },
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/build": true
-  }
 }

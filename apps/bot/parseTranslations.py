@@ -2,7 +2,7 @@ import json
 
 # Read the input JSON file with UTF-8 encoding
 try:
-    with open('translations.json', 'r', encoding='utf-8') as file:
+    with open('inputs/translations.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
 except json.JSONDecodeError as e:
     print(f"Error decoding JSON: {e}")
@@ -46,7 +46,7 @@ for index, item in enumerate(data):
 
 # Write the parsed data to a new JSON file with UTF-8 encoding
 try:
-    with open('parsed_translations.json', 'w', encoding='utf-8') as file:
+    with open('outputs/parsed_translations.json', 'w', encoding='utf-8') as file:
         json.dump(parsed_data, file, indent=2, ensure_ascii=False)
     print(f"Successfully wrote {len(parsed_data)} items to parsed_translations.json")
 except Exception as e:

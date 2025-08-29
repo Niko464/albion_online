@@ -2,7 +2,7 @@ import json
 
 # Load data
 current_recipes = []  # Placeholder for current_recipes
-with open('parsed_items.json', 'r') as file:
+with open('outputs/parsed_items.json', 'r') as file:
     items = json.load(file)
 
 # Category mappings
