@@ -5,7 +5,6 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { getBestMarket } from "./getBestMarket";
 import { allCities } from "@albion_online/common";
-import recipesJSON from "../../utils/recipes.json";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -37,6 +36,7 @@ import { RecipeTable } from "./components/RecipeTable";
 import { useFavoriteRecipes } from "./hooks/useFavoriteRecipes";
 import { ShoppingCartWindow } from "@/features/ShoppingCart/ShoppingCart";
 import { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
+import { useRecipes } from "./hooks/useRecipes";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -66,37 +66,8 @@ export function RecipeRecipesPage() {
     removeRecipeFromCart,
   } = useShoppingCart(craftingCategory);
 
-  const allRecipes = useMemo(() => {
-    return recipesJSON.filter((el) => el.craftingCategory === craftingCategory);
-  }, [craftingCategory]);
-
-  const branchNames: string[] = useMemo(() => {
-    return allRecipes.reduce((acc, curr) => {
-      const branchName = curr.specializationBranchName;
-      if (branchName && !acc.includes(branchName)) {
-        acc.push(branchName);
-      }
-      return acc;
-    }, [] as string[]);
-  }, [allRecipes]);
-
-  const ingredientIds = useMemo(() => {
-    return [
-      ...new Set(
-        allRecipes.flatMap((recipe) =>
-          recipe.ingredients.map((ingredient) => ingredient.itemId)
-        )
-      ),
-    ];
-  }, [allRecipes]);
-
-  const recipeIds = useMemo(() => {
-    return allRecipes.map((recipe) => recipe.recipeId);
-  }, [allRecipes]);
-
-  const allIds = useMemo(() => {
-    return [...new Set([...ingredientIds, ...recipeIds])];
-  }, [ingredientIds, recipeIds]);
+  const { allRecipes, branchNames, ingredientIds, recipeIds, allIds } =
+    useRecipes(craftingCategory);
 
   const [simulateMaxSpec, setSimulateMaxSpec] = useState<boolean>(false);
   const { playerSpec, updateSpecialization, setMaxSpec } = usePlayerSpecHelper(
@@ -258,6 +229,7 @@ export function RecipeRecipesPage() {
 
   useEffect(() => {
     debouncedUpdate(uiSelectedCities);
+    return () => debouncedUpdate.cancel();
   }, [uiSelectedCities, debouncedUpdate]);
 
   if (!priceData || isLoading || !missingPriceDataItemIds) {
