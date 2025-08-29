@@ -37,6 +37,7 @@ import { useFavoriteRecipes } from "./hooks/useFavoriteRecipes";
 import { ShoppingCartWindow } from "@/features/ShoppingCart/ShoppingCart";
 import { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
 import { useRecipes } from "./hooks/useRecipes";
+import { cn } from "@/utils/utils";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -222,6 +223,22 @@ export function RecipeRecipesPage() {
     getSortedRowModel: getSortedRowModel(),
   });
 
+  const [selectedRow, setSelectedRow] = useState<RecipeRowData | null>(null);
+
+  const selectedRowTableData = useMemo(() => {
+    if (!selectedRow) return [];
+    return [selectedRow];
+  }, [selectedRow]);
+
+  const selectedRowTable = useReactTable({
+    data: selectedRowTableData,
+    columns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
   const debouncedUpdate = useMemo(
     () => debounce((cities: string[]) => setSelectedCities(cities), 1500),
     []
@@ -374,6 +391,7 @@ export function RecipeRecipesPage() {
             missingPriceDataItemIds={missingPriceDataItemIds}
             expandedRows={expandedRows}
             toggleExpandedRow={toggleExpandedRow}
+            setSelectedRow={setSelectedRow}
           />
         </Card>
         <Card className="overflow-x-auto rounded-md p-4 border shadow-sm">
@@ -388,8 +406,26 @@ export function RecipeRecipesPage() {
             missingPriceDataItemIds={missingPriceDataItemIds}
             expandedRows={expandedRows}
             toggleExpandedRow={toggleExpandedRow}
+            setSelectedRow={setSelectedRow}
           />
         </Card>
+        {/* <div className={cn("fixed z-20 bottom-0 left-0 right-0 w-full bg-accent", selectedRow ? "block" : "hidden")}>
+          <Card className="overflow-x-auto rounded-md p-4 border shadow-sm">
+            <RecipeTable
+              table={selectedRowTable}
+              isLoading={isLoading}
+              priceData={priceData}
+              selections={selections}
+              handleSelectionChange={handleSelectionChange}
+              itemTranslations={itemTranslations}
+              columns={columns}
+              missingPriceDataItemIds={missingPriceDataItemIds}
+              expandedRows={expandedRows}
+              toggleExpandedRow={toggleExpandedRow}
+              setSelectedRow={setSelectedRow}
+            />
+          </Card>
+        </div> */}
       </div>
     </TooltipProvider>
   );
