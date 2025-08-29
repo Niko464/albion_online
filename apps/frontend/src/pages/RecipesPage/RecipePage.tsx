@@ -35,6 +35,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { RecipeTable } from "./components/RecipeTable";
 import { useFavoriteRecipes } from "./hooks/useFavoriteRecipes";
+import { ShoppingCartWindow } from "@/features/ShoppingCart/ShoppingCart";
+import { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -55,6 +57,14 @@ export function RecipeRecipesPage() {
   if (!craftingCategory) {
     throw new Error("No crafting category provided in URL");
   }
+
+  const {
+    cartItems,
+    requiredMaterials,
+    resetCart,
+    addRecipeToCart,
+    removeRecipeFromCart,
+  } = useShoppingCart(craftingCategory);
 
   const allRecipes = useMemo(() => {
     return recipesJSON.filter((el) => el.craftingCategory === craftingCategory);
@@ -210,7 +220,9 @@ export function RecipeRecipesPage() {
     favoriteList,
     toggleFavorite,
     expandedRows,
-    toggleExpandedRow
+    toggleExpandedRow,
+    addRecipeToCart,
+    removeRecipeFromCart
   );
 
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -225,7 +237,9 @@ export function RecipeRecipesPage() {
   });
 
   const favoriteData = useMemo(() => {
-    return filteredData.filter((row) => favoriteList.includes(row.recipe.recipeId));
+    return filteredData.filter((row) =>
+      favoriteList.includes(row.recipe.recipeId)
+    );
   }, [filteredData, favoriteList]);
 
   const favoriteTable = useReactTable({
@@ -265,7 +279,12 @@ export function RecipeRecipesPage() {
 
   return (
     <TooltipProvider>
-      <div className="p-6 gap-6 flex flex-col">
+      <div className="p-6 gap-6 flex flex-col relative">
+        <ShoppingCartWindow
+          cartItems={cartItems}
+          requiredMaterials={requiredMaterials}
+          resetCart={resetCart}
+        />
         <div className="flex items-center gap-4 ">
           <h1 className="text-3xl font-bold">{craftingCategory} Recipes</h1>
           {/* <Label className="flex items-center gap-2">

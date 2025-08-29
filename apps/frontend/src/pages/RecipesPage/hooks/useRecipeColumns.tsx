@@ -1,8 +1,5 @@
 import { createColumnHelper, type ColumnDef } from "@tanstack/react-table";
-import type {
-  GetPricesResponse,
-  GetSoldHistoryResponse,
-} from "@albion_online/common";
+import type { GetPricesResponse } from "@albion_online/common";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "../components/renderItemImage";
 import {
@@ -12,7 +9,8 @@ import {
 } from "@/components/ui/tooltip";
 import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "../components/renderMarketSelect";
-import { ChevronDown, ChevronUp, Star } from "lucide-react";
+import { ChevronDown, ChevronUp, Minus, Plus, Star } from "lucide-react";
+import type { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
@@ -25,26 +23,33 @@ export const useRecipeColumns = (
   favoriteList: string[],
   toggleFavorite: (recipeId: string) => void,
   expandedRows: Record<string, boolean>,
-  toggleExpanded: (recipeId: string) => void
+  toggleExpanded: (recipeId: string) => void,
+  addToCart: ReturnType<typeof useShoppingCart>["addRecipeToCart"],
+  removeFromCart: ReturnType<typeof useShoppingCart>["removeRecipeFromCart"]
 ): ColumnDef<RecipeRowData, any>[] => {
   return [
     columnHelper.accessor((row: RecipeRowData) => row.recipe, {
       id: "recipe",
       header: "Recipe",
       cell: ({ row }) => {
-        const isFavorite = favoriteList.includes(row.original.recipe.recipeId);
-        const isExpanded = !!expandedRows[row.original.recipe.recipeId];
+        const recipe = row.original.recipe;
+        const isFavorite = favoriteList.includes(recipe.recipeId);
+        const isExpanded = !!expandedRows[recipe.recipeId];
+
         return (
           <div className="flex items-center gap-2">
+            {/* expand arrow */}
             {isExpanded ? (
               <ChevronUp className="h-4 w-4" />
             ) : (
               <ChevronDown className="h-4 w-4" />
             )}
+
+            {/* favorite star */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                toggleFavorite(row.original.recipe.recipeId);
+                toggleFavorite(recipe.recipeId);
               }}
               className="focus:outline-none"
             >
@@ -58,14 +63,39 @@ export const useRecipeColumns = (
               />
             </button>
 
-            {renderItemImage(
-              row.original.recipe.recipeId,
-              itemTranslations[row.original.recipe.recipeId]
-            )}
+            {/* image with plus/minus controls */}
+            <div className="relative flex items-center">
+              {renderItemImage(
+                recipe.recipeId,
+                itemTranslations[recipe.recipeId]
+              )}
+
+              {/* vertical plus/minus buttons */}
+              <div className="flex flex-col ml-1 bg-accent">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(recipe);
+                  }}
+                  className="text-green-600 hover:text-green-800"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removeFromCart(recipe);
+                  }}
+                  className="text-red-600 hover:text-red-800"
+                >
+                  <Minus className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         );
       },
-      size: 110,
+      size: 210,
       meta: { align: "left" },
     }),
     columnHelper.accessor("oldestAge", {
