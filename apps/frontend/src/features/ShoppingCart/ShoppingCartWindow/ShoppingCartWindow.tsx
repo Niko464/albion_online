@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   ShoppingCart as ShoppingCartIcon,
   Minimize2,
@@ -14,6 +14,7 @@ import type { useShoppingCart } from "../useShoppingCart";
 import type { CitySelectionsType } from "@/pages/RecipesPage/RecipePage";
 import type { GetPricesResponse } from "@albion_online/common";
 import { MaterialRow } from "./MaterialRow";
+import { getListMarketsForItemId } from "@/pages/RecipesPage/hooks/useListMarketsForItemId";
 
 type Props = {
   cartItems: CartItem[];
@@ -40,6 +41,28 @@ export function ShoppingCartWindow({
 }: Props) {
   const [minimized, setMinimized] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
+
+  const totalExpenses = useMemo(() => {
+    return cartItems.reduce((acc, item) => {
+      const itemTotal =
+        item.amount *
+        item.recipe.ingredients.reduce((sum, ingredient) => {
+          const markets = getListMarketsForItemId(
+            ingredient.itemId,
+            priceData,
+            useInstantSell
+          );
+          const selectedMarket = markets.find(
+            (el) => el.locationName === selections[ingredient.itemId]
+          );
+          return (
+            sum +
+            (selectedMarket ? selectedMarket.price * ingredient.quantity : 0)
+          );
+        }, 0);
+      return acc + itemTotal;
+    }, 0);
+  }, [cartItems, priceData, selections, useInstantSell]);
 
   return (
     <div
@@ -90,7 +113,7 @@ export function ShoppingCartWindow({
             }}
             exit={{ opacity: 0 }}
           >
-            <Card className="w-80 max-h-[70vh] flex flex-col shadow-xl rounded-xl overflow-hidden">
+            <Card className="w-100 max-h-[70vh] flex flex-col shadow-xl rounded-xl overflow-hidden">
               <CardHeader className="flex justify-between items-center bg-accent">
                 <h3 className="font-semibold flex items-center gap-2">
                   <ShoppingCartIcon className="w-5 h-5" />
@@ -164,6 +187,12 @@ export function ShoppingCartWindow({
                       ))}
                     </ul>
                   )}
+                </div>
+                <div className="border-t border-gray-300 my-2" />
+
+                <div className="flex justify-between items-center font-semibold text-lg">
+                  <span>Total</span>
+                  <span>{totalExpenses.toLocaleString()} silver</span>
                 </div>
               </CardContent>
             </Card>

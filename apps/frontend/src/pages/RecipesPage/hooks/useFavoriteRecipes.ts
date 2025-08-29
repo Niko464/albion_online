@@ -32,7 +32,9 @@ export const useFavoriteRecipes = (craftingCategory: string) => {
   }, [loadFromStorage]);
 
   useEffect(() => {
-    saveToStorage();
+    if (favoriteList.length > 0) {
+      saveToStorage();
+    }
   }, [favoriteList, saveToStorage]);
 
   return { favoriteList, toggleFavorite };

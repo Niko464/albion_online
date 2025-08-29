@@ -61,16 +61,16 @@ export const useShoppingCart = (craftingCategory: string) => {
       }
       return prev;
     });
-  console.log('DEBUG WW add')
-
+    console.log("DEBUG WW add");
   }, []);
 
   const resetCart = useCallback(() => {
     setCartItems([]);
-  }, []);
+    localStorage.removeItem(`shoppingCart:${craftingCategory}`);
+  }, [craftingCategory]);
 
   useEffect(() => {
-    console.log('DEBUG LOADING FROM STORAGE')
+    console.log("DEBUG LOADING FROM STORAGE");
     const elem = localStorage.getItem(`shoppingCart:${craftingCategory}`);
     if (elem) {
       setCartItems(JSON.parse(elem));
@@ -78,11 +78,13 @@ export const useShoppingCart = (craftingCategory: string) => {
   }, [craftingCategory]);
 
   useEffect(() => {
-    console.log('DEBUG SAVING TO STORAGE')
-    localStorage.setItem(
-      `shoppingCart:${craftingCategory}`,
-      JSON.stringify(cartItems)
-    );
+    console.log("DEBUG SAVING TO STORAGE");
+    if (cartItems.length > 0) {
+      localStorage.setItem(
+        `shoppingCart:${craftingCategory}`,
+        JSON.stringify(cartItems)
+      );
+    }
   }, [cartItems, craftingCategory]);
 
   return {

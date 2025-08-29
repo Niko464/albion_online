@@ -33,12 +33,12 @@ export function MaterialRow({
 
   return (
     <li className="flex items-center gap-2 text-sm">
-      <span className="font-medium">x{material.amount}</span>
+      <span className="font-medium w-10">x{material.amount}</span>
       {renderItemImage(material.itemId, itemTranslations[material.itemId])}
       {selectedMarket ? (
         <span>
           {Math.round(selectedMarket?.price * material.amount).toLocaleString()}{" "}
-          ({selectedMarket?.minutesAgo} mins ago)
+          (x1 = {selectedMarket.price.toLocaleString()} {selectedMarket?.minutesAgo} mins ago)
         </span>
       ) : (
         <span>No market data available</span>
