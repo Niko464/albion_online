@@ -6,7 +6,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { flexRender } from "@tanstack/react-table";
 import type { RecipeRowData } from "@/utils/types";
 import { renderItemImage } from "./renderItemImage";
@@ -19,13 +18,13 @@ interface RecipeRowProps {
   recipe: Recipe;
   priceData: GetPricesResponse;
   selections: CitySelectionsType;
-  expanded: boolean;
-  toggleRow: (recipeId: string) => void;
   handleSelectionChange: (itemId: string, value: string) => void;
   itemTranslations: Record<string, string>;
   rowData: RecipeRowData;
   columns: ColumnDef<RecipeRowData>[];
   missingPriceDataItemIds: string[];
+  isExpanded: boolean;
+  toggleExpandedRow: (recipeId: string) => void;
 }
 
 export const RecipeRow = memo(
@@ -33,23 +32,28 @@ export const RecipeRow = memo(
     recipe,
     priceData,
     selections,
-    expanded,
-    toggleRow,
     handleSelectionChange,
     rowData,
     itemTranslations,
     columns,
-    missingPriceDataItemIds
+    missingPriceDataItemIds,
+    isExpanded,
+    toggleExpandedRow,
   }: RecipeRowProps) => {
-    const itemIds = [...recipe.recipeId, ...recipe.ingredients.flatMap(ing => ing.itemId)];
-    const isMissingAnyPriceData = itemIds.some(id => missingPriceDataItemIds.includes(id));
+    const itemIds = [
+      ...recipe.recipeId,
+      ...recipe.ingredients.flatMap((ing) => ing.itemId),
+    ];
+    const isMissingAnyPriceData = itemIds.some((id) =>
+      missingPriceDataItemIds.includes(id)
+    );
     return (
       <Collapsible
         key={recipe.recipeId}
-        open={expanded}
+        open={isExpanded}
         onOpenChange={() => {
           try {
-            toggleRow(recipe.recipeId);
+            toggleExpandedRow(recipe.recipeId);
           } catch (error) {
             console.error("Error toggling row:", error);
           }
@@ -83,15 +87,12 @@ export const RecipeRow = memo(
                 {column.id === "recipe" ? (
                   <div className="flex items-center gap-2">
                     <CollapsibleTrigger className="flex items-center gap-2">
-                      {expanded ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                      {renderItemImage(
-                        recipe.recipeId,
-                        itemTranslations[recipe.recipeId] || recipe.recipeId
-                      )}
+                      {flexRender(column.cell, {
+                        getValue: () => cellValue,
+                        row: { original: rowData },
+                        column: { id: column.id },
+                        table: {},
+                      } as any)}
                     </CollapsibleTrigger>
                   </div>
                 ) : (
@@ -133,7 +134,6 @@ export const RecipeRow = memo(
                         placeholder="Select market"
                         widthClass="w-40"
                       />
-                     
                     </div>
                   );
                 } catch (error) {

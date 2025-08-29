@@ -12,29 +12,58 @@ import {
 } from "@/components/ui/tooltip";
 import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "../components/renderMarketSelect";
+import { Star } from "lucide-react";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
 export const useRecipeColumns = (
   itemTranslations: Record<string, string>,
   priceData: GetPricesResponse | undefined,
-  soldHistoryData: GetSoldHistoryResponse | undefined,
   selections: CitySelectionsType,
   useInstantSell: boolean,
-  handleSelectionChange: (itemId: string, value: string) => void
+  handleSelectionChange: (itemId: string, value: string) => void,
+  favoriteList: string[],
+  toggleFavorite: (recipeId: string) => void,
+  expandedRows: Record<string, boolean>,
+  toggleExpanded: (recipeId: string) => void
 ): ColumnDef<RecipeRowData, any>[] => {
   return [
     columnHelper.accessor((row: RecipeRowData) => row.recipe, {
       id: "recipe",
       header: "Recipe",
-      cell: ({ row }) => (
-        <div className="flex items-center gap-2">
-          {renderItemImage(
-            row.original.recipe.recipeId,
-            itemTranslations[row.original.recipe.recipeId]
-          )}
-        </div>
-      ),
+      cell: ({ row }) => {
+        const isFavorite = favoriteList.includes(row.original.recipe.recipeId);
+        return (
+          <div className="flex items-center gap-2">
+            {expanded ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFavorite(row.original.recipe.recipeId);
+              }}
+              className="focus:outline-none"
+            >
+              <Star
+                size={18}
+                className={`cursor-pointer transition-colors ${
+                  isFavorite
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "text-gray-400"
+                }`}
+              />
+            </button>
+
+            {renderItemImage(
+              row.original.recipe.recipeId,
+              itemTranslations[row.original.recipe.recipeId]
+            )}
+          </div>
+        );
+      },
       size: 110,
       meta: { align: "left" },
     }),

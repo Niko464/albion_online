@@ -1,13 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { useCustomPrices } from "@/hooks/useCustomPrices";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -17,12 +9,9 @@ import recipesJSON from "../../utils/recipes.json";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { MarketPricesSheet } from "./components/MarketPricesSheet";
-import { RecipeRow } from "./components/RecipeRow";
 import {
   getCoreRowModel,
   getSortedRowModel,
-  flexRender,
   useReactTable,
   type SortingState,
 } from "@tanstack/react-table";
@@ -44,6 +33,8 @@ import { usePlayerSpecHelper } from "./hooks/usePlayerSpecHelper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { RecipeTable } from "./components/RecipeTable";
+import { useFavoriteRecipes } from "./hooks/useFavoriteRecipes";
 
 export type CitySelectionsType = Record<string, string | null>;
 
@@ -51,9 +42,12 @@ export type CitySelectionsType = Record<string, string | null>;
 // which means that they have no missing prices, don't render a marketSelect (which should only happen if no selection is set)
 // which should only happen if no price is found
 
-// TODO: make the specialization customizable
+// TODO: add favorite recipes
 
-// TODO: the specialization bonuses should be configurable according to the crafting branch
+// TODO: add calculated for how many I want to craft of something
+
+// TODO: have an export watch list button
+
 // -------------------- Main Component --------------------
 export function RecipeRecipesPage() {
   const { craftingCategory } = useParams();
@@ -100,6 +94,15 @@ export function RecipeRecipesPage() {
     branchNames
   );
 
+  const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+
+  const toggleExpandedRow = useCallback((recipeId: string) => {
+    setExpandedRows((prev) => ({
+      ...prev,
+      [recipeId]: !prev[recipeId],
+    }));
+  }, []);
+
   const [uiSelectedCities, setUiSelectedCities] = useState<string[]>([
     // "Martlock",
     // "Bridgewatch",
@@ -127,7 +130,6 @@ export function RecipeRecipesPage() {
 
   const [selections, setSelections] = useState<CitySelectionsType>({});
   const [useInstantSell, setUseInstantSell] = useState(false);
-  const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   const [branchFilter, setBranchFilter] = useState<string>("All");
   const [missingPriceDataItemIds, setMissingPriceDataItemIds] = useState<
     string[] | null
@@ -177,13 +179,6 @@ export function RecipeRecipesPage() {
     }));
   }, []);
 
-  const toggleRow = useCallback((recipeId: string) => {
-    setExpandedRows((prev) => ({
-      ...prev,
-      [recipeId]: !prev[recipeId],
-    }));
-  }, []);
-
   const data = useRecipeData(
     priceData,
     selections,
@@ -204,19 +199,37 @@ export function RecipeRecipesPage() {
     });
   }, [data, branchFilter]);
 
+  const { favoriteList, toggleFavorite } = useFavoriteRecipes(craftingCategory);
+
   const columns = useRecipeColumns(
     itemTranslations,
     priceData,
-    soldHistoryData,
     selections,
     useInstantSell,
-    handleSelectionChange
+    handleSelectionChange,
+    favoriteList,
+    toggleFavorite,
+    expandedRows,
+    toggleExpandedRow
   );
 
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data: filteredData,
+    columns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  const favoriteData = useMemo(() => {
+    return data.filter((row) => favoriteList.includes(row.recipe.id));
+  }, [data, favoriteList]);
+
+  const favoriteTable = useReactTable({
+    data: favoriteData,
     columns,
     state: { sorting },
     onSortingChange: setSorting,
@@ -359,67 +372,32 @@ export function RecipeRecipesPage() {
           </div>
         </Card>
         <Card className="overflow-x-auto rounded-md p-4 border shadow-sm">
-          <Table className="w-full table-fixed">
-            <TableHeader>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} className="flex items-center">
-                  {headerGroup.headers.map((header) => (
-                    <TableHead
-                      key={header.id}
-                      onClick={header.column.getToggleSortingHandler()}
-                      className={`cursor-pointer select-none overflow-hidden`}
-                      style={{
-                        width: header.column.getSize(),
-                        minWidth: header.column.getSize(),
-                      }}
-                    >
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                      {header.column.getIsSorted() === "asc"
-                        ? " ↑"
-                        : header.column.getIsSorted() === "desc"
-                        ? " ↓"
-                        : ""}
-                    </TableHead>
-                  ))}
-                </TableRow>
-              ))}
-            </TableHeader>
-            <TableBody>
-              {isLoading
-                ? Array.from({ length: 5 }).map((_, i) => (
-                    <TableRow key={i}>
-                      {columns.map((column, index) => (
-                        <TableCell
-                          key={index}
-                          style={{ width: column.size, minWidth: column.size }}
-                        >
-                          <Skeleton className="w-full h-6" />
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))
-                : table
-                    .getRowModel()
-                    .rows.map((row) => (
-                      <RecipeRow
-                        key={row.original.recipe.recipeId}
-                        recipe={row.original.recipe}
-                        priceData={priceData}
-                        selections={selections}
-                        expanded={!!expandedRows[row.original.recipe.recipeId]}
-                        toggleRow={toggleRow}
-                        handleSelectionChange={handleSelectionChange}
-                        rowData={row.original}
-                        itemTranslations={itemTranslations}
-                        columns={columns}
-                        missingPriceDataItemIds={missingPriceDataItemIds}
-                      />
-                    ))}
-            </TableBody>
-          </Table>
+          <RecipeTable
+            table={favoriteTable}
+            isLoading={isLoading}
+            priceData={priceData}
+            selections={selections}
+            handleSelectionChange={handleSelectionChange}
+            itemTranslations={itemTranslations}
+            columns={columns}
+            missingPriceDataItemIds={missingPriceDataItemIds}
+            expandedRows={expandedRows}
+            toggleExpandedRow={toggleExpandedRow}
+          />
+        </Card>
+        <Card className="overflow-x-auto rounded-md p-4 border shadow-sm">
+          <RecipeTable
+            table={table}
+            isLoading={isLoading}
+            priceData={priceData}
+            selections={selections}
+            handleSelectionChange={handleSelectionChange}
+            itemTranslations={itemTranslations}
+            columns={columns}
+            missingPriceDataItemIds={missingPriceDataItemIds}
+            expandedRows={expandedRows}
+            toggleExpandedRow={toggleExpandedRow}
+          />
         </Card>
       </div>
     </TooltipProvider>
