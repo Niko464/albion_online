@@ -13,6 +13,7 @@ import type { GetPricesResponse } from "@albion_online/common";
 import type { CitySelectionsType } from "../RecipePage";
 
 import { memo, useMemo } from "react";
+import { useListMarketsForItemId } from "../hooks/useListMarketsForItemId";
 
 interface MarketSelectProps {
   itemId: string;
@@ -34,37 +35,7 @@ export const MarketSelect = memo(
     placeholder,
     widthClass = "w-full",
   }: MarketSelectProps) => {
-    const markets = useMemo(() => {
-      const itemData = priceData?.prices.find((el) => el.itemId === itemId);
-      return (
-        itemData?.markets
-          .filter((market) =>
-            useInstantSell
-              ? market.requestOrders?.length
-              : market.offerOrders?.length
-          )
-          .map((market) => ({
-            locationName: market.locationName,
-            price: useInstantSell
-              ? Math.max(
-                  ...(market.requestOrders?.map((order) => order.price) || [0])
-                )
-              : Math.min(
-                  ...(market.offerOrders?.map((order) => order.price) || [0])
-                ),
-            minutesAgo: getMinutesAgo(
-              (useInstantSell
-                ? market.requestOrders?.[0]
-                : market.offerOrders?.[0]
-              )?.receivedAt
-            ),
-          }))
-          .filter((market) => market.price && market.minutesAgo !== undefined)
-          .sort((a, b) =>
-            useInstantSell ? b.price - a.price : a.price - b.price
-          ) || []
-      );
-    }, [itemId, priceData, useInstantSell]);
+    const markets = useListMarketsForItemId(itemId, priceData, useInstantSell);
 
     const currentSelection = selections[itemId];
 

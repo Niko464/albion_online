@@ -1,5 +1,6 @@
 import type { Recipe } from "@albion_online/common";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { CartItem, MaterialItem } from "./types";
 
 export const useShoppingCart = (craftingCategory: string) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -69,6 +70,7 @@ export const useShoppingCart = (craftingCategory: string) => {
   }, []);
 
   useEffect(() => {
+    console.log('DEBUG LOADING FROM STORAGE')
     const elem = localStorage.getItem(`shoppingCart:${craftingCategory}`);
     if (elem) {
       setCartItems(JSON.parse(elem));
@@ -76,6 +78,7 @@ export const useShoppingCart = (craftingCategory: string) => {
   }, [craftingCategory]);
 
   useEffect(() => {
+    console.log('DEBUG SAVING TO STORAGE')
     localStorage.setItem(
       `shoppingCart:${craftingCategory}`,
       JSON.stringify(cartItems)

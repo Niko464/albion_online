@@ -34,7 +34,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { RecipeTable } from "./components/RecipeTable";
 import { useFavoriteRecipes } from "./hooks/useFavoriteRecipes";
-import { ShoppingCartWindow } from "@/features/ShoppingCart/ShoppingCart";
+import { ShoppingCartWindow } from "@/features/ShoppingCart/ShoppingCartWindow/ShoppingCartWindow";
 import { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
 import { useRecipes } from "./hooks/useRecipes";
 import { cn } from "@/utils/utils";
@@ -138,15 +138,6 @@ export function RecipeRecipesPage() {
     setMissingPriceDataItemIds(missingPriceDataItemIds);
     return initial;
   }, [priceData, ingredientIds, recipeIds]);
-
-  console.log(
-    "DEBUG branchNames",
-    branchNames,
-    selectedCities,
-    uiSelectedCities,
-    missingPriceDataItemIds,
-    allIds
-  );
 
   useEffect(() => {
     if (priceData) {
@@ -273,6 +264,12 @@ export function RecipeRecipesPage() {
           cartItems={cartItems}
           requiredMaterials={requiredMaterials}
           resetCart={resetCart}
+          itemTranslations={itemTranslations}
+          addToCart={addRecipeToCart}
+          removeFromCart={removeRecipeFromCart}
+          priceData={priceData}
+          useInstantSell={useInstantSell}
+          selections={selections}
         />
         <div className="flex items-center gap-4 ">
           <h1 className="text-3xl font-bold">{craftingCategory} Recipes</h1>

@@ -11,6 +11,7 @@ import type { CitySelectionsType } from "../RecipePage";
 import { MarketSelect } from "../components/renderMarketSelect";
 import { ChevronDown, ChevronUp, Minus, Plus, Star } from "lucide-react";
 import type { useShoppingCart } from "@/features/ShoppingCart/useShoppingCart";
+import { ShoppingAddItem } from "@/features/ShoppingCart/ShoppingAddItem";
 
 const columnHelper = createColumnHelper<RecipeRowData>();
 
@@ -70,27 +71,11 @@ export const useRecipeColumns = (
                 itemTranslations[recipe.recipeId]
               )}
 
-              {/* vertical plus/minus buttons */}
-              <div className="flex flex-col ml-1 bg-accent">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addToCart(recipe);
-                  }}
-                  className="text-green-600 hover:text-green-800"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeFromCart(recipe);
-                  }}
-                  className="text-red-600 hover:text-red-800"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-              </div>
+              <ShoppingAddItem
+                recipe={recipe}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}
+              />
             </div>
           </div>
         );
