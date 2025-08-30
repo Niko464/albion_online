@@ -26,6 +26,9 @@ export class PricesService {
     const cityParam = getABDLocationIds(dto.cities).join(',');
     const abdPrices = await axios.get<ABDGetPricesResponse>(
       `${ABD_ENDPOINT}/api/v2/stats/prices/${itemParam}?locations=${cityParam}&qualities=1`,
+      {
+        timeout: 10000,
+      },
     );
 
     const prices = await this.prismaService.marketOrder.findMany({
@@ -372,6 +375,9 @@ export class PricesService {
     const cityParam = getABDLocationIds(dto.cities).join(',');
     const abdHistory = await axios.get<ABDGetHistoryResponse>(
       `${ABD_ENDPOINT}/api/v2/stats/history/${itemParam}?locations=${cityParam}&qualities=1&time-scale=24`,
+      {
+        timeout: 10000,
+      },
     );
 
     const result: GetSoldHistoryResponse = {

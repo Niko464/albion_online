@@ -211,7 +211,7 @@ def take_screenshot_and_detect_price():
 
 
   
-watch_list = loadJsonFile("watch_list.json")
+watch_list = loadJsonFile("outputs/watch_list.json")
 # Have a list of itemIds with combination of quality
 # Loop over the list and use the uiMap to figure out what to click
 # When clicking the ui remember what are the current selected options so that we don't reclick the same options if they are already selected
@@ -408,7 +408,7 @@ def send_price_update(toSend, expectedText):
 def start_watching_prices(watch_list):
   global currentScreenHash
   uiMap = loadJsonFile("./outputs/startMap.json")
-  translations = loadJsonFile("./parsed_translations.json")
+  translations = loadJsonFile("./outputs/parsed_translations.json")
   itemList = loadItemList()
   
   invalidItemIds = []
