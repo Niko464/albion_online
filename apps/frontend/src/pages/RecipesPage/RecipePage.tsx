@@ -168,7 +168,7 @@ export function RecipeRecipesPage() {
         branchFilter === "All" ||
         row.recipe.specializationBranchName === branchFilter;
       return passesBranchCheck;
-      // && row.recipe.ingredients.find((el) => el.itemId === "T3_MEAT")
+      // && row.recipe.ingredients.find((el) => el.itemId === "T2_AGARIC")
     });
   }, [data, branchFilter]);
 

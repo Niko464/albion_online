@@ -1,4 +1,4 @@
-export const renderItemImage = (itemId: string, translation: string) => (
+export const renderItemImage = (itemId: string, translation: string, size: number = 16) => (
   <a
     href={`https://europe.albiononline2d.com/en/item/id/${itemId}`}
     target="_blank"
@@ -8,7 +8,7 @@ export const renderItemImage = (itemId: string, translation: string) => (
       <img
         src={`https://render.albiononline.com/v1/item/${itemId}.png`}
         alt={itemId}
-        className="w-16 h-16 object-contain"
+        className={`w-${size} h-${size} min-w-[${size}] min-h-[${size}] object-contain`}
       />
       <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8">
         {translation}

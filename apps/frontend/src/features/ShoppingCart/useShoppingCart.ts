@@ -23,7 +23,7 @@ export const useShoppingCart = (craftingCategory: string) => {
     return materials;
   }, [cartItems]);
 
-  const addRecipeToCart = useCallback((recipe: Recipe) => {
+  const addRecipeToCart = useCallback((recipe: Recipe, amount: number = 1) => {
     setCartItems((prev) => {
       const alreadyInCart = prev.find(
         (item) => item.recipe.recipeId === recipe.recipeId
@@ -32,25 +32,25 @@ export const useShoppingCart = (craftingCategory: string) => {
       if (alreadyInCart) {
         return prev.map((item) =>
           item.recipe.recipeId === recipe.recipeId
-            ? { ...item, amount: item.amount + 1 }
+            ? { ...item, amount: item.amount + amount }
             : item
         );
       } else {
-        return [...prev, { recipe, amount: 1 }];
+        return [...prev, { recipe, amount: amount }];
       }
     });
   }, []);
 
-  const removeRecipeFromCart = useCallback((recipe: Recipe) => {
+  const removeRecipeFromCart = useCallback((recipe: Recipe, amount: number = 1) => {
     setCartItems((prev) => {
       const existing = prev.find(
         (item) => item.recipe.recipeId === recipe.recipeId
       );
       if (existing) {
-        if (existing.amount > 1) {
+        if (existing.amount > amount) {
           return prev.map((item) =>
             item.recipe.recipeId === recipe.recipeId
-              ? { ...item, amount: item.amount - 1 }
+              ? { ...item, amount: item.amount - amount }
               : item
           );
         } else {

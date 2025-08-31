@@ -1,10 +1,11 @@
 import type { Recipe } from "@albion_online/common";
 import { Minus, Plus } from "lucide-react";
+import type { useShoppingCart } from "./useShoppingCart";
 
 type Props = {
   recipe: Recipe;
-  addToCart: (recipe: Recipe) => void;
-  removeFromCart: (recipe: Recipe) => void;
+  addToCart: ReturnType<typeof useShoppingCart>['addRecipeToCart'];
+  removeFromCart: ReturnType<typeof useShoppingCart>['removeRecipeFromCart'];
 };
 
 export function ShoppingAddItem({ recipe, addToCart, removeFromCart }: Props) {
@@ -13,6 +14,11 @@ export function ShoppingAddItem({ recipe, addToCart, removeFromCart }: Props) {
       <button
         onClick={(e) => {
           e.stopPropagation();
+          if (e.shiftKey) {
+            addToCart(recipe, 5);
+            return;
+          }
+
           addToCart(recipe);
         }}
         className="text-green-600 hover:text-green-800"
@@ -22,6 +28,10 @@ export function ShoppingAddItem({ recipe, addToCart, removeFromCart }: Props) {
       <button
         onClick={(e) => {
           e.stopPropagation();
+          if (e.shiftKey) {
+            removeFromCart(recipe, 5);
+            return;
+          }
           removeFromCart(recipe);
         }}
         className="text-red-600 hover:text-red-800"

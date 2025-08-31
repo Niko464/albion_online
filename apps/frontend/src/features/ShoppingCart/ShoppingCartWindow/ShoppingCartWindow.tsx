@@ -149,19 +149,40 @@ export function ShoppingCartWindow({
                       {cartItems.map((item) => (
                         <li
                           key={item.recipe.recipeId}
-                          className="flex items-center gap-2 text-sm"
+                          className="flex gap-2 text-sm w-full"
                         >
-                          <Card className="flex flex-row bg-accent justify-center items-center px-4 py-0 gap-2">
-                            <span className="font-medium">x{item.amount}</span>
-                            {renderItemImage(
-                              item.recipe.recipeId,
-                              itemTranslations[item.recipe.recipeId]
-                            )}
-                            <ShoppingAddItem
-                              recipe={item.recipe}
-                              addToCart={addToCart}
-                              removeFromCart={removeFromCart}
-                            />
+                          <Card className="flex flex-row bg-accent justify-start items-center px-4 py-0 gap-2 w-full max-h-[75px] h-[75px]">
+                            <div className="flex flex-row items-center justify-between gap-2 min-w-[125px] ">
+                              <span className="font-medium">
+                                x{item.amount}
+                              </span>
+                              <div className="flex items-center">
+                                {renderItemImage(
+                                  item.recipe.recipeId,
+                                  itemTranslations[item.recipe.recipeId]
+                                )}
+                                <ShoppingAddItem
+                                  recipe={item.recipe}
+                                  addToCart={addToCart}
+                                  removeFromCart={removeFromCart}
+                                />
+                              </div>
+                            </div>
+                            <div className="flex flex-row flex-wrap gap-x-2 gap-y-1">
+                              {item.recipe.ingredients.map((ingredient) => (
+                                <div
+                                  key={ingredient.itemId}
+                                  className="flex flex-row items-center justify-between  w-16  border rounded-sm px-1"
+                                >
+                                  x{ingredient.quantity}
+                                  {renderItemImage(
+                                    ingredient.itemId,
+                                    itemTranslations[ingredient.itemId],
+                                    8
+                                  )}
+                                </div>
+                              ))}
+                            </div>
                           </Card>
                         </li>
                       ))}
